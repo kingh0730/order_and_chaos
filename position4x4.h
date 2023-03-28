@@ -7,11 +7,13 @@ class Position4x4
 private:
     Player player;
     char rows[4];
+    char cols[4];
+    char diag;
+    char neg_diag;
 
 public:
     Position4x4();
     Position4x4(Player player);
-    Position4x4(Player player, char rows[4]);
 
     Position4x4(const Position4x4 &other) = default;
     Position4x4 &operator=(const Position4x4 &other) = default;

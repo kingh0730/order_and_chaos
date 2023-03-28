@@ -7,8 +7,12 @@
 #define ROW_XXXX 0b11111111
 
 Position4x4::Position4x4() : Position4x4(Player::Order) {}
-Position4x4::Position4x4(Player player) : player(player), rows{0, 0, 0, 0} {}
-Position4x4::Position4x4(Player player, char rows[4]) : player(player), rows{*rows} {}
+Position4x4::Position4x4(Player player)
+    : player(player),
+      rows{0, 0, 0, 0},
+      cols{0, 0, 0, 0},
+      diag(0),
+      neg_diag(0) {}
 
 bool Position4x4::has_4_in_a_row()
 {
