@@ -8,7 +8,7 @@ private:
     Player player;
     char rows[4];
     char cols[4];
-    char diag;
+    char pos_diag;
     char neg_diag;
 
 public:
