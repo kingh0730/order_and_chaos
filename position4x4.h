@@ -34,6 +34,7 @@ public:
     bool has_4_in_a_row();
 
     std::vector<Move> generate_moves();
+    Position4x4 do_move(Move &move);
 
     // Formatting
     std::string format();
