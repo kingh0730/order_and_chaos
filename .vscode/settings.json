@@ -3,7 +3,19 @@
     "algorithm": "cpp",
     "cassert": "cpp",
     "iostream": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "compare": "cpp",
+    "concepts": "cpp",
+    "functional": "cpp",
+    "ios": "cpp",
+    "iterator": "cpp",
+    "memory": "cpp",
+    "string": "cpp",
+    "xiosbase": "cpp",
+    "xlocnum": "cpp",
+    "xmemory": "cpp",
+    "xstring": "cpp",
+    "xutility": "cpp"
   },
   "cSpell.words": [
     "cassert",
