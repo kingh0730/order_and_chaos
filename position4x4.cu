@@ -7,6 +7,11 @@
 #define FOUR_OOOO 0b10101010
 #define FOUR_XXXX 0b11111111
 
+#define FOUR_TAKEN_0 0b00000010
+#define FOUR_TAKEN_1 0b00001000
+#define FOUR_TAKEN_2 0b00100000
+#define FOUR_TAKEN_3 0b10000000
+
 bool char_has_4_in_a_row(char c)
 {
     if (c == FOUR_OOOO)
@@ -49,11 +54,37 @@ bool Position4x4::has_4_in_a_row()
     return false;
 }
 
+std::vector<Move> Position4x4::generate_moves()
+{
+    std::vector<Move> result = std::vector<Move>();
+
+    char taken_masks[4] = {
+        FOUR_TAKEN_0,
+        FOUR_TAKEN_1,
+        FOUR_TAKEN_2,
+        FOUR_TAKEN_3};
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            // If not taken
+            if (!(this->rows[i] & taken_masks[j]))
+            {
+                result.push_back(Move(Move::Piece::O, i, j));
+                result.push_back(Move(Move::Piece::X, i, j));
+            }
+        }
+    }
+
+    return result;
+}
+
 // Formatting
 
 std::string Position4x4::format()
 {
-    std::string result = std::string();
+    std::string result = "";
 
     result += format_player(this->player) + '\n';
 
@@ -67,7 +98,7 @@ std::string Position4x4::format()
 
 std::string Position4x4::format_pretty()
 {
-    std::string result = std::string();
+    std::string result = "";
 
     result += format_player(this->player) + '\n';
 
