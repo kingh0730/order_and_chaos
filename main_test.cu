@@ -24,15 +24,15 @@ int main()
     assert(moves_size == 32);
     std::cout << moves_size << '\n';
 
-    for (const Move &m : moves)
-    {
-        std::cout << m.format() << '\n';
+    // for (const Move &m : moves)
+    // {
+    //     std::cout << m.format() << '\n';
 
-        Position4x4 after = p.do_move(m);
+    //     Position4x4 after = p.do_move(m);
 
-        std::cout << after.format() << '\n';
-        std::cout << after.format_pretty() << '\n';
-    }
+    //     std::cout << after.format() << '\n';
+    //     std::cout << after.format_pretty() << '\n';
+    // }
 
     // Solve
     Solver solver = Solver();
