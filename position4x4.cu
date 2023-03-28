@@ -56,8 +56,22 @@ Position4x4 Position4x4::do_move(Move &move)
     // Copy
     Position4x4 result = *this;
 
-    this->rows[move.x] = this->rows[move.x] & CLEAR_MASKS[move.y];
-    // TODO
+    result.rows[move.x] &= CLEAR_MASKS[move.y];
+
+    switch (move.piece)
+    {
+    case Move::Piece::O:
+        result.rows[move.x] |= SET_O_MASKS[move.y];
+        break;
+
+    case Move::Piece::X:
+        result.rows[move.x] |= SET_X_MASKS[move.y];
+        break;
+
+    default:
+        std::cerr << "Invalid move: " << move.piece << std::endl;
+        throw std::invalid_argument("Invalid move");
+    }
 
     return result;
 }
