@@ -1,0 +1,5 @@
+enum Player
+{
+    order,
+    chaos,
+};
