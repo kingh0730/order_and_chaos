@@ -36,11 +36,12 @@ public:
     Position4x4(const Position4x4 &other) = default;
     Position4x4 &operator=(const Position4x4 &other) = default;
 
-    bool has_4_in_a_row();
-
+    // Moves
     Position4x4 do_move(Move &move);
     std::vector<Move> generate_moves();
 
+    // Primitive values
+    bool has_4_in_a_row();
     PrimitiveValue primitive_value();
 
     // Formatting
