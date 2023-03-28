@@ -27,6 +27,18 @@
 #define FOUR_SET_X_2 0b00110000
 #define FOUR_SET_X_3 0b11000000
 
+char TAKEN_MASKS[4] = {
+    (char)FOUR_TAKEN_0,
+    (char)FOUR_TAKEN_1,
+    (char)FOUR_TAKEN_2,
+    (char)FOUR_TAKEN_3};
+
+char CLEAR_MASKS[4] = {
+    (char)FOUR_CLEAR_0,
+    (char)FOUR_CLEAR_1,
+    (char)FOUR_CLEAR_2,
+    (char)FOUR_CLEAR_3};
+
 bool char_has_4_in_a_row(char c)
 {
     if (c == FOUR_OOOO)
@@ -73,18 +85,12 @@ std::vector<Move> Position4x4::generate_moves()
 {
     std::vector<Move> result = std::vector<Move>();
 
-    char taken_masks[4] = {
-        (char)FOUR_TAKEN_0,
-        (char)FOUR_TAKEN_1,
-        (char)FOUR_TAKEN_2,
-        (char)FOUR_TAKEN_3};
-
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
         {
             // If not taken
-            if (!(this->rows[i] & taken_masks[j]))
+            if (!(this->rows[i] & TAKEN_MASKS[j]))
             {
                 result.push_back(Move(Move::Piece::O, i, j));
                 result.push_back(Move(Move::Piece::X, i, j));
