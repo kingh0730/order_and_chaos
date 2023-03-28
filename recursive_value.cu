@@ -10,13 +10,13 @@ GameResult to_game_result(const PrimitiveValue &pv)
         return GameResult::Undecided;
 
     case PrimitiveValue::Win:
-        return GameResult::Win;
+        return GameResult::GameWin;
 
     case PrimitiveValue::Lose:
-        return GameResult::Lose;
+        return GameResult::GameLose;
 
     case PrimitiveValue::Tie:
-        return GameResult::Tie;
+        return GameResult::GameTie;
 
     default:
         std::cerr << "Unknown primitive value: " << pv << std::endl;

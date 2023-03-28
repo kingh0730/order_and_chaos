@@ -5,10 +5,10 @@
 enum GameResult
 {
     Undecided,
-    Win,
-    Lose,
-    Tie,
-    Draw,
+    GameWin,
+    GameLose,
+    GameTie,
+    GameDraw,
 };
 
 GameResult to_game_result(const PrimitiveValue &pv);
