@@ -29,6 +29,8 @@ bool Position4x4::has_4_in_a_row()
     return false;
 }
 
+// Printing
+
 void Position4x4::print()
 {
     print_player(this->player);
