@@ -52,7 +52,7 @@ bool Position4x4::has_4_in_a_row()
 
 void Position4x4::print()
 {
-    print_player(this->player);
+    std::cout << format_player(this->player);
     std::cout << '\n';
 
     for (int i = 0; i < 4; i++)
@@ -63,7 +63,7 @@ void Position4x4::print()
 
 void Position4x4::print_pretty()
 {
-    print_player(this->player);
+    std::cout << format_player(this->player);
     std::cout << '\n';
 
     for (int i = 0; i < 4; i++)
