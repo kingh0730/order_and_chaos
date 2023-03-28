@@ -1,20 +1,20 @@
+#include <iostream>
+#include <string>
+
 #include "player.h"
 
-void print_player(Player &player)
+std::string format_player(Player &player)
 {
     switch (player)
     {
     case Player::Order:
-        std::cout << "Player::Order";
-        break;
+        return "Player::Order";
 
     case Player::Chaos:
-        std::cout << "Player::Chaos";
-        break;
+        return "Player::Chaos";
 
     default:
-        std::cout << "Player::Unknown\n";
-        std::cout << "value: " << player << std::endl;
+        return "Player::Unknown(" + std::to_string(player) + ")";
         throw std::invalid_argument("unknown player type");
     }
 }
