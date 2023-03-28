@@ -100,7 +100,34 @@ std::string Position4x4::format_pretty()
 
     for (int i = 0; i < 4; i++)
     {
-        // TODO
+        result += '|';
+
+        char row = this->rows[i];
+
+        for (int j = 0; j < 4; j++)
+        {
+            if (row & TAKEN_MASKS[3])
+            {
+                if (row >= (char)SET_X_3)
+                {
+                    result += 'X';
+                }
+                else
+                {
+                    result += 'O';
+                }
+            }
+            else
+            {
+                result += ' ';
+            }
+
+            result += '|';
+
+            row <<= 2;
+        }
+
+        result += "\n---------\n";
     }
 
     return result;

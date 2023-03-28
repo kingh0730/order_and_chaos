@@ -11,6 +11,7 @@ int main()
 
     Position4x4 p = Position4x4();
     std::cout << p.format();
+    std::cout << p.format_pretty();
 
     Move m = Move(Move::Piece::X, 0, 0);
     std::cout << m.format() << '\n';
@@ -27,6 +28,8 @@ int main()
         std::cout << m.format() << '\n';
 
         Position4x4 after = p.do_move(m);
+
         std::cout << after.format() << '\n';
+        std::cout << after.format_pretty() << '\n';
     }
 }
