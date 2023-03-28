@@ -39,3 +39,14 @@ void Position4x4::print()
         std::cout << std::bitset<8>(this->rows[i]) << '\n';
     }
 }
+
+void Position4x4::print_pretty()
+{
+    print_player(this->player);
+    std::cout << '\n';
+
+    for (int i = 0; i < 4; i++)
+    {
+        // TODO
+    }
+}

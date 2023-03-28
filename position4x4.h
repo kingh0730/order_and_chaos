@@ -18,5 +18,7 @@ public:
 
     bool has_4_in_a_row();
 
+    // Printing
     void print();
+    void print_pretty();
 };
