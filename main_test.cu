@@ -22,7 +22,7 @@ int main()
     assert(moves_size == 32);
     std::cout << moves_size << '\n';
 
-    for (Move m : moves)
+    for (Move &m : moves)
     {
         std::cout << m.format() << '\n';
     }
