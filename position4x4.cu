@@ -49,7 +49,7 @@ bool Position4x4::has_4_in_a_row()
     return false;
 }
 
-// Printing
+// Formatting
 
 std::string Position4x4::format()
 {
