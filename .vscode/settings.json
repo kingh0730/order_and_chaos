@@ -4,5 +4,6 @@
     "cassert": "cpp",
     "iostream": "cpp",
     "vector": "cpp"
-  }
+  },
+  "cSpell.words": ["cerr", "cout", "Crafters", "endl", "iostream"]
 }
