@@ -1,3 +1,5 @@
+#pragma once
+
 #include "player.h"
 
 class Position4x4
@@ -15,4 +17,6 @@ public:
     Position4x4 &operator=(const Position4x4 &other) = default;
 
     bool has_4_in_a_row();
+
+    void print();
 };
