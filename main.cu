@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "position4x4.cu"
+#include "position4x4.h"
 
 int main()
 {
