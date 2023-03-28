@@ -8,28 +8,31 @@ __global__ void vectorAdd(
     const int *__restrict a,
     const int *__restrict b,
     int *__restrict c,
-    int N
-) {
+    int N)
+{
   // Calculate global thread ID
   int tid = (blockIdx.x * blockDim.x) + threadIdx.x;
 
   // Boundary check
-  if (tid < N) c[tid] = a[tid] + b[tid];
+  if (tid < N)
+    c[tid] = a[tid] + b[tid];
 }
 
 // Check vector add result
 void verify_result(
     std::vector<int> &a,
     std::vector<int> &b,
-    std::vector<int> &c
-) {
-  for (int i = 0; i < a.size(); i++) {
+    std::vector<int> &c)
+{
+  for (int i = 0; i < a.size(); i++)
+  {
     assert(c[i] == a[i] + b[i]);
   }
 }
 
 // Main
-int main() {
+int main()
+{
   // Array size of 2^16 (65536 elements)
   constexpr int N = 1 << 16;
   constexpr size_t bytes = sizeof(int) * N;
@@ -43,7 +46,8 @@ int main() {
   c.reserve(N);
 
   // Initialize random numbers in each array
-  for (int i = 0; i < N; i++) {
+  for (int i = 0; i < N; i++)
+  {
     a.push_back(rand() % 100);
     b.push_back(rand() % 100);
   }
