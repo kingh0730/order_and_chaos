@@ -9,8 +9,8 @@ int main()
               << std::endl;
 
     Position4x4 p = Position4x4();
-    p.print();
+    std::cout << p.format();
 
     Move m = Move(Move::Piece::X, 0, 0);
-    m.print();
+    std::cout << m.format();
 }
