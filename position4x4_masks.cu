@@ -2,7 +2,7 @@
 
 #include "position4x4_masks.h"
 
-bool char_has_4_in_a_row(char c)
+bool char_has_4_in_a_row(const char &c)
 {
     if (c == ALL_OOOO)
     {

@@ -49,6 +49,6 @@ const char SET_X_MASKS[4] = {
     (char)SET_X_2,
     (char)SET_X_3};
 
-bool char_has_4_in_a_row(char c);
+bool char_has_4_in_a_row(const char &c);
 
 void char_set_piece(char &c, size_t i, Move::Piece piece);
