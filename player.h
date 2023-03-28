@@ -4,8 +4,8 @@
 
 enum Player
 {
-    Order,
-    Chaos,
+    Order = 0,
+    Chaos = 1,
 };
 
 void print_player(Player &player);
