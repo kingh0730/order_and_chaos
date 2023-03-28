@@ -4,7 +4,8 @@
 
 int main()
 {
-    std::cout << "GamesCrafters!" << std::endl;
+    std::cout << "GamesCrafters!\n"
+              << std::endl;
 
     Position4x4 p = Position4x4();
     p.print();
