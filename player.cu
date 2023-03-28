@@ -3,7 +3,7 @@
 
 #include "player.h"
 
-std::string format_player(Player &player)
+std::string format_player(const Player &player)
 {
     switch (player)
     {

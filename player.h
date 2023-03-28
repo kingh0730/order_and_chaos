@@ -6,4 +6,4 @@ enum Player
     Chaos = 1,
 };
 
-std::string format_player(Player &player);
+std::string format_player(const Player &player);

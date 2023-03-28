@@ -37,7 +37,7 @@ public:
     Position4x4 &operator=(const Position4x4 &other) = default;
 
     // Moves
-    Position4x4 do_move(Move &move);
+    Position4x4 do_move(const Move &move);
     std::vector<Move> generate_moves();
 
     // Primitive values

@@ -51,7 +51,7 @@ std::vector<Move> Position4x4::generate_moves()
     return result;
 }
 
-Position4x4 Position4x4::do_move(Move &move)
+Position4x4 Position4x4::do_move(const Move &move)
 {
     // Copy
     Position4x4 result = *this;
