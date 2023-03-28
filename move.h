@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 class Move
 {
 public:
@@ -17,5 +19,5 @@ private:
 public:
     Move(Piece p, size_t x, size_t y) : piece(p), x(x), y(y) {}
 
-    void print();
+    std::string format();
 };
