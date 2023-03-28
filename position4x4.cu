@@ -1,4 +1,4 @@
-#include "player.cu"
+#include "player.h"
 
 class Position4x4
 {
