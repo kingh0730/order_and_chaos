@@ -14,7 +14,7 @@ std::string format_player(Player &player)
         return "Player::Chaos";
 
     default:
-        return "Player::Unknown(" + std::to_string(player) + ")";
+        std::cerr << "Player::Unknown(" + std::to_string(player) + ")";
         throw std::invalid_argument("unknown player type");
     }
 }
