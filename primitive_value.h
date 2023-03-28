@@ -7,3 +7,5 @@ enum PrimitiveValue
     Lose = 2,
     Tie = 3,
 };
+
+std::string format_primitive_value(PrimitiveValue &pv);
