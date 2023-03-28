@@ -60,24 +60,22 @@ Position4x4 Position4x4::do_move(Move &move)
     result.player = Player(1 - result.player);
 
     // rows
-    result.rows[move.x] &= CLEAR_MASKS[move.y];
+    char_set_piece(result.rows[move.x], move.y, move.piece);
 
-    switch (move.piece)
+    // cols
+    char_set_piece(result.cols[move.y], move.x, move.piece);
+
+    // pos_diag
+    if (move.x == move.y)
     {
-    case Move::Piece::O:
-        result.rows[move.x] |= SET_O_MASKS[move.y];
-        break;
-
-    case Move::Piece::X:
-        result.rows[move.x] |= SET_X_MASKS[move.y];
-        break;
-
-    default:
-        std::cerr << "Invalid move: " << move.piece << std::endl;
-        throw std::invalid_argument("Invalid move");
+        char_set_piece(pos_diag, move.x, move.piece);
     }
 
-    // TODO
+    // neg_diag
+    if (move.x == 3 - move.y)
+    {
+        char_set_piece(neg_diag, move.x, move.piece);
+    }
 
     // num_spaces_remaining
     result.num_spaces_remaining -= 1;
