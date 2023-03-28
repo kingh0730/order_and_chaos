@@ -7,5 +7,6 @@ private:
     char rows[4];
 
 public:
+    Position4x4(Player player);
     bool has_4_in_a_row();
 };
