@@ -25,5 +25,8 @@ int main()
     for (Move &m : moves)
     {
         std::cout << m.format() << '\n';
+
+        Position4x4 after = p.do_move(m);
+        std::cout << after.format() << '\n';
     }
 }
