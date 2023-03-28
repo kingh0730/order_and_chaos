@@ -9,10 +9,13 @@ class Position4x4
 {
 private:
     Player player;
+
     char rows[4];
     char cols[4];
     char pos_diag;
     char neg_diag;
+
+    int num_spaces_remaining;
 
 public:
     Position4x4() : Position4x4(Player::Order)
@@ -24,7 +27,8 @@ public:
           rows{0, 0, 0, 0},
           cols{0, 0, 0, 0},
           pos_diag(0),
-          neg_diag(0)
+          neg_diag(0),
+          num_spaces_remaining(4 * 4)
     {
     }
 
