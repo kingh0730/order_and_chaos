@@ -1,5 +1,6 @@
 #include <iostream>
 #include <bitset>
+#include <string>
 
 #include "position4x4.h"
 
@@ -50,24 +51,30 @@ bool Position4x4::has_4_in_a_row()
 
 // Printing
 
-void Position4x4::print()
+std::string Position4x4::format()
 {
-    std::cout << format_player(this->player);
-    std::cout << '\n';
+    std::string result = std::string();
+
+    result += format_player(this->player) + '\n';
 
     for (int i = 0; i < 4; i++)
     {
-        std::cout << std::bitset<8>(this->rows[i]) << '\n';
+        result += std::bitset<8>(this->rows[i]).to_string() + '\n';
     }
+
+    return result;
 }
 
-void Position4x4::print_pretty()
+std::string Position4x4::format_pretty()
 {
-    std::cout << format_player(this->player);
-    std::cout << '\n';
+    std::string result = std::string();
+
+    result += format_player(this->player) + '\n';
 
     for (int i = 0; i < 4; i++)
     {
         // TODO
     }
+
+    return result;
 }
