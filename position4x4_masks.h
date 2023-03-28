@@ -35,4 +35,16 @@ const char CLEAR_MASKS[4] = {
     (char)CLEAR_2,
     (char)CLEAR_3};
 
+const char SET_O_MASKS[4] = {
+    (char)SET_O_0,
+    (char)SET_O_1,
+    (char)SET_O_2,
+    (char)SET_O_3};
+
+const char SET_X_MASKS[4] = {
+    (char)SET_X_0,
+    (char)SET_X_1,
+    (char)SET_X_2,
+    (char)SET_X_3};
+
 bool char_has_4_in_a_row(char c);
