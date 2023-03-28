@@ -37,14 +37,14 @@ public:
     Position4x4 &operator=(const Position4x4 &other) = default;
 
     // Moves
-    Position4x4 do_move(const Move &move);
-    std::vector<Move> generate_moves();
+    Position4x4 do_move(const Move &move) const;
+    std::vector<Move> generate_moves() const;
 
     // Primitive values
-    bool has_4_in_a_row();
-    PrimitiveValue primitive_value();
+    bool has_4_in_a_row() const;
+    PrimitiveValue primitive_value() const;
 
     // Formatting
-    std::string format();
-    std::string format_pretty();
+    std::string format() const;
+    std::string format_pretty() const;
 };

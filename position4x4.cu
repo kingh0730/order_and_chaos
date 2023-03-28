@@ -5,7 +5,7 @@
 #include "position4x4.h"
 #include "position4x4_masks.h"
 
-bool Position4x4::has_4_in_a_row()
+bool Position4x4::has_4_in_a_row() const
 {
     for (int i = 0; i < 4; i++)
     {
@@ -31,7 +31,7 @@ bool Position4x4::has_4_in_a_row()
     return false;
 }
 
-std::vector<Move> Position4x4::generate_moves()
+std::vector<Move> Position4x4::generate_moves() const
 {
     std::vector<Move> result = std::vector<Move>();
 
@@ -51,7 +51,7 @@ std::vector<Move> Position4x4::generate_moves()
     return result;
 }
 
-Position4x4 Position4x4::do_move(const Move &move)
+Position4x4 Position4x4::do_move(const Move &move) const
 {
     // Copy
     Position4x4 result = *this;
@@ -68,13 +68,13 @@ Position4x4 Position4x4::do_move(const Move &move)
     // pos_diag
     if (move.x == move.y)
     {
-        char_set_piece(pos_diag, move.x, move.piece);
+        char_set_piece(result.pos_diag, move.x, move.piece);
     }
 
     // neg_diag
     if (move.x == 3 - move.y)
     {
-        char_set_piece(neg_diag, move.x, move.piece);
+        char_set_piece(result.neg_diag, move.x, move.piece);
     }
 
     // num_spaces_remaining
@@ -83,7 +83,7 @@ Position4x4 Position4x4::do_move(const Move &move)
     return result;
 }
 
-PrimitiveValue Position4x4::primitive_value()
+PrimitiveValue Position4x4::primitive_value() const
 {
     if (this->has_4_in_a_row())
     {
@@ -119,7 +119,7 @@ PrimitiveValue Position4x4::primitive_value()
 
 // Formatting
 
-std::string Position4x4::format()
+std::string Position4x4::format() const
 {
     std::string result = "";
 
@@ -136,7 +136,7 @@ std::string Position4x4::format()
     return result;
 }
 
-std::string Position4x4::format_pretty()
+std::string Position4x4::format_pretty() const
 {
     std::string result = "";
 
