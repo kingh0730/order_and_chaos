@@ -13,6 +13,8 @@ void print_player(Player &player)
         break;
 
     default:
-        std::cout << "Player::Unknown";
+        std::cout << "Player::Unknown\n";
+        std::cout << "value: " << player << std::endl;
+        throw std::invalid_argument("unknown player type");
     }
 }
