@@ -22,19 +22,6 @@ bool char_has_4_in_a_row(char c)
 
 // Position4x4
 
-Position4x4::Position4x4() : Position4x4(Player::Order)
-{
-}
-
-Position4x4::Position4x4(Player player)
-    : player(player),
-      rows{0, 0, 0, 0},
-      cols{0, 0, 0, 0},
-      pos_diag(0),
-      neg_diag(0)
-{
-}
-
 bool Position4x4::has_4_in_a_row()
 {
     for (int i = 0; i < 4; i++)

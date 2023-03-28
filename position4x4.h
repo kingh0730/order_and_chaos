@@ -12,8 +12,18 @@ private:
     char neg_diag;
 
 public:
-    Position4x4();
-    Position4x4(Player player);
+    Position4x4() : Position4x4(Player::Order)
+    {
+    }
+
+    Position4x4(Player player)
+        : player(player),
+          rows{0, 0, 0, 0},
+          cols{0, 0, 0, 0},
+          pos_diag(0),
+          neg_diag(0)
+    {
+    }
 
     Position4x4(const Position4x4 &other) = default;
     Position4x4 &operator=(const Position4x4 &other) = default;
