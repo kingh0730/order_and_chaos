@@ -1,6 +1,15 @@
 #include "solver.h"
 
-PrimitiveValue Solver::solve(const Position4x4 &position)
+GameResult Solver::solve(const Position4x4 &position)
 {
-    return PrimitiveValue::Win;
+    auto pv = position.primitive_value();
+
+    if (pv != PrimitiveValue::NotPrimitive)
+    {
+        return to_game_result(pv);
+    }
+
+    // TODO
+
+    return GameResult::Undecided;
 }
