@@ -2,7 +2,7 @@
 
 #include "move.h"
 
-std::string Move::format()
+std::string Move::format() const
 {
     std::string result = "";
 
