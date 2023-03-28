@@ -56,6 +56,10 @@ Position4x4 Position4x4::do_move(Move &move)
     // Copy
     Position4x4 result = *this;
 
+    // player
+    result.player = Player(1 - result.player);
+
+    // rows
     result.rows[move.x] &= CLEAR_MASKS[move.y];
 
     switch (move.piece)
@@ -73,6 +77,11 @@ Position4x4 Position4x4::do_move(Move &move)
         throw std::invalid_argument("Invalid move");
     }
 
+    // TODO
+
+    // num_spaces_remaining
+    result.num_spaces_remaining -= 1;
+
     return result;
 }
 
@@ -82,7 +91,9 @@ std::string Position4x4::format()
 {
     std::string result = "";
 
-    result += format_player(this->player) + '\n';
+    result += format_player(this->player) + "\t";
+    result += "num_spaces_remaining: " +
+              std::to_string(this->num_spaces_remaining) + '\n';
 
     for (int i = 0; i < 4; i++)
     {
@@ -96,7 +107,9 @@ std::string Position4x4::format_pretty()
 {
     std::string result = "";
 
-    result += format_player(this->player) + '\n';
+    result += format_player(this->player) + "\t";
+    result += "num_spaces_remaining: " +
+              std::to_string(this->num_spaces_remaining) + '\n';
 
     for (int i = 0; i < 4; i++)
     {
