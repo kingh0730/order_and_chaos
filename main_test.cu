@@ -36,7 +36,7 @@ int main()
 
     // Solve
     Solver solver = Solver();
-    PrimitiveValue pv = solver.solve(p);
+    GameResult gr = solver.solve(p);
 
-    std::cout << format_primitive_value(pv) << '\n';
+    std::cout << gr << '\n';
 }
