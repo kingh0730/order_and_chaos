@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 enum Player
 {
     Order = 0,
