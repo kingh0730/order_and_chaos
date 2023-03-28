@@ -17,7 +17,8 @@ public:
     size_t y;
 
 public:
-    Move(Piece p, size_t x, size_t y) : piece(p), x(x), y(y) {}
+    Move(const Piece &p, const size_t &x, const size_t &y)
+        : piece(p), x(x), y(y) {}
 
     std::string format() const;
 };
