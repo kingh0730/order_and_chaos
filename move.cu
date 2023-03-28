@@ -2,23 +2,29 @@
 
 #include "move.h"
 
-void Move::print()
+std::string Move::format()
 {
+    std::string result = "";
+
     switch (this->piece)
     {
     case Piece::O:
-        std::cout << "Piece::O";
+        result += "Piece::O";
         break;
 
     case Piece::X:
-        std::cout << "Piece::X";
+        result += "Piece::X";
         break;
 
     default:
-        std::cout << "Piece::Unknown\n";
-        std::cout << "value: " << this->piece << std::endl;
+        std::cerr << "Piece::Unknown\n";
+        std::cerr << "value: " << this->piece << std::endl;
         throw std::invalid_argument("unknown piece type");
     }
 
-    printf(" (%zd, %zd)", this->x, this->y);
+    result += " (" + std::to_string(this->x);
+    result += ", " + std::to_string(this->y);
+    result += ")";
+
+    return result;
 }
