@@ -3,6 +3,7 @@
 
 #include "position4x4.h"
 #include "move.h"
+#include "solver.h"
 
 int main()
 {
@@ -32,4 +33,10 @@ int main()
         std::cout << after.format() << '\n';
         std::cout << after.format_pretty() << '\n';
     }
+
+    // Solve
+    Solver solver = Solver();
+    PrimitiveValue pv = solver.solve(p);
+
+    std::cout << format_primitive_value(pv) << '\n';
 }
