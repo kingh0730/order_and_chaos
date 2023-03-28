@@ -3,57 +3,7 @@
 #include <string>
 
 #include "position4x4.h"
-
-#define FOUR_OOOO 0b10101010
-#define FOUR_XXXX 0b11111111
-
-#define FOUR_TAKEN_0 0b00000010
-#define FOUR_TAKEN_1 0b00001000
-#define FOUR_TAKEN_2 0b00100000
-#define FOUR_TAKEN_3 0b10000000
-
-#define FOUR_CLEAR_0 0b11111100
-#define FOUR_CLEAR_1 0b11110011
-#define FOUR_CLEAR_2 0b11001111
-#define FOUR_CLEAR_3 0b00111111
-
-#define FOUR_SET_O_0 0b00000010
-#define FOUR_SET_O_1 0b00001000
-#define FOUR_SET_O_2 0b00100000
-#define FOUR_SET_O_3 0b10000000
-
-#define FOUR_SET_X_0 0b00000011
-#define FOUR_SET_X_1 0b00001100
-#define FOUR_SET_X_2 0b00110000
-#define FOUR_SET_X_3 0b11000000
-
-char TAKEN_MASKS[4] = {
-    (char)FOUR_TAKEN_0,
-    (char)FOUR_TAKEN_1,
-    (char)FOUR_TAKEN_2,
-    (char)FOUR_TAKEN_3};
-
-char CLEAR_MASKS[4] = {
-    (char)FOUR_CLEAR_0,
-    (char)FOUR_CLEAR_1,
-    (char)FOUR_CLEAR_2,
-    (char)FOUR_CLEAR_3};
-
-bool char_has_4_in_a_row(char c)
-{
-    if (c == FOUR_OOOO)
-    {
-        return true;
-    }
-    if (c == FOUR_XXXX)
-    {
-        return true;
-    }
-
-    return false;
-}
-
-// Position4x4
+#include "position4x4_masks.h"
 
 bool Position4x4::has_4_in_a_row()
 {
@@ -106,6 +56,7 @@ Position4x4 Position4x4::do_move(Move &move)
     // Copy
     Position4x4 result = *this;
 
+    this->rows[move.x] = this->rows[move.x] & CLEAR_MASKS[move.y];
     // TODO
 
     return result;
