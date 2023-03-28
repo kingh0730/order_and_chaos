@@ -1,6 +1,6 @@
 #include "player.h"
 
-void print_player(Player player)
+void print_player(Player &player)
 {
     switch (player)
     {

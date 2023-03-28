@@ -8,4 +8,4 @@ enum Player
     Chaos,
 };
 
-void print_player(Player player);
+void print_player(Player &player);
