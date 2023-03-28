@@ -4,6 +4,7 @@
 
 #include "player.h"
 #include "move.h"
+#include "primitive_value.h"
 
 class Position4x4
 {
@@ -37,8 +38,10 @@ public:
 
     bool has_4_in_a_row();
 
-    std::vector<Move> generate_moves();
     Position4x4 do_move(Move &move);
+    std::vector<Move> generate_moves();
+
+    PrimitiveValue primitive_value();
 
     // Formatting
     std::string format();

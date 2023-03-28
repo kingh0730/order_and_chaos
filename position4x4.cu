@@ -83,6 +83,40 @@ Position4x4 Position4x4::do_move(Move &move)
     return result;
 }
 
+PrimitiveValue Position4x4::primitive_value()
+{
+    if (this->has_4_in_a_row())
+    {
+        switch (this->player)
+        {
+        case Player::Order:
+            return PrimitiveValue::Win;
+        case Player::Chaos:
+            return PrimitiveValue::Lose;
+        default:
+            std::cerr << "Invalid player type: " << this->player << std::endl;
+            throw std::invalid_argument("Invalid player type");
+        }
+    }
+
+    // If no space remaining
+    if (!this->num_spaces_remaining)
+    {
+        switch (this->player)
+        {
+        case Player::Order:
+            return PrimitiveValue::Lose;
+        case Player::Chaos:
+            return PrimitiveValue::Win;
+        default:
+            std::cerr << "Invalid player type: " << this->player << std::endl;
+            throw std::invalid_argument("Invalid player type");
+        }
+    }
+
+    return PrimitiveValue::NotPrimitive;
+}
+
 // Formatting
 
 std::string Position4x4::format()
