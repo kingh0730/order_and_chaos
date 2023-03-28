@@ -16,7 +16,10 @@ int main()
 
     // Generate moves
     auto moves = p.generate_moves();
-    std::cout << moves.size() << '\n';
+    auto moves_size = moves.size();
+
+    std::cout << moves_size << '\n';
+
     for (Move m : moves)
     {
         std::cout << m.format() << '\n';
