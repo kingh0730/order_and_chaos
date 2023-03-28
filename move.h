@@ -11,7 +11,7 @@ public:
         X = 1,
     };
 
-private:
+public:
     Piece piece;
     size_t x;
     size_t y;
