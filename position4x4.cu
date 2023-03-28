@@ -5,12 +5,15 @@
 
 bool Position4x4::has_4_in_a_row()
 {
-    if (this->row0 == ROW_OOOO)
+    for (int i = 0; i < 4; i++)
     {
-        return true;
-    }
-    if (this->row0 == ROW_XXXX)
-    {
-        return true;
+        if (this->rows[i] == ROW_OOOO)
+        {
+            return true;
+        }
+        if (this->rows[i] == ROW_XXXX)
+        {
+            return true;
+        }
     }
 }
