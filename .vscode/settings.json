@@ -5,5 +5,13 @@
     "iostream": "cpp",
     "vector": "cpp"
   },
-  "cSpell.words": ["cassert", "cerr", "cout", "Crafters", "endl", "iostream"]
+  "cSpell.words": [
+    "cassert",
+    "cerr",
+    "cout",
+    "Crafters",
+    "cuda",
+    "endl",
+    "iostream"
+  ]
 }
