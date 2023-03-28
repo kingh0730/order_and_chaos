@@ -59,10 +59,10 @@ std::vector<Move> Position4x4::generate_moves()
     std::vector<Move> result = std::vector<Move>();
 
     char taken_masks[4] = {
-        FOUR_TAKEN_0,
-        FOUR_TAKEN_1,
-        FOUR_TAKEN_2,
-        FOUR_TAKEN_3};
+        (char)FOUR_TAKEN_0,
+        (char)FOUR_TAKEN_1,
+        (char)FOUR_TAKEN_2,
+        (char)FOUR_TAKEN_3};
 
     for (int i = 0; i < 4; i++)
     {

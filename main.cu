@@ -12,5 +12,13 @@ int main()
     std::cout << p.format();
 
     Move m = Move(Move::Piece::X, 0, 0);
-    std::cout << m.format();
+    std::cout << m.format() << '\n';
+
+    // Generate moves
+    auto moves = p.generate_moves();
+    std::cout << moves.size() << '\n';
+    for (Move m : moves)
+    {
+        std::cout << m.format() << '\n';
+    }
 }
