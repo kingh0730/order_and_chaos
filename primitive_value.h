@@ -8,4 +8,4 @@ enum PrimitiveValue
     Tie = 3,
 };
 
-std::string format_primitive_value(PrimitiveValue &pv);
+std::string format_primitive_value(const PrimitiveValue &pv);

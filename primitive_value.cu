@@ -3,7 +3,7 @@
 
 #include "primitive_value.h"
 
-std::string format_primitive_value(PrimitiveValue &pv)
+std::string format_primitive_value(const PrimitiveValue &pv)
 {
     switch (pv)
     {

@@ -124,6 +124,7 @@ std::string Position4x4::format()
     std::string result = "";
 
     result += format_player(this->player) + "\t";
+    result += format_primitive_value(this->primitive_value()) + '\t';
     result += "num_spaces_remaining: " +
               std::to_string(this->num_spaces_remaining) + '\n';
 
@@ -140,6 +141,7 @@ std::string Position4x4::format_pretty()
     std::string result = "";
 
     result += format_player(this->player) + "\t";
+    result += format_primitive_value(this->primitive_value()) + '\t';
     result += "num_spaces_remaining: " +
               std::to_string(this->num_spaces_remaining) + '\n';
 
