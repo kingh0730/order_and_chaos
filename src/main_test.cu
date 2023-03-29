@@ -2,6 +2,7 @@
 #include <cassert>
 
 #include "position4x4.h"
+#include "position4x4_cuda.h"
 #include "move.h"
 #include "solver.h"
 
@@ -9,6 +10,9 @@ int main()
 {
     std::cout << "GamesCrafters!\n"
               << std::endl;
+
+    // CUDA test
+    test_cuda_have_4_in_a_row();
 
     // GameResult
     std::cout << "sizeof(GameResult): " << sizeof(GameResult) << '\n';
