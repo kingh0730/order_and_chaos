@@ -38,5 +38,5 @@ int main()
     Solver solver = Solver();
     GameResult gr = solver.solve(p);
 
-    std::cout << gr << '\n';
+    std::cout << format_game_result(gr) << '\n';
 }
