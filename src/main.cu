@@ -66,6 +66,8 @@ void one_game()
         PrimitiveValue pv = p.primitive_value();
         if (pv != PrimitiveValue::NotPrimitive)
         {
+            std::cout << "Game over!" << '\n';
+            std::cout << format_player(p.get_player()) << " ";
             std::cout << format_primitive_value(pv) << '\n';
             break;
         }
