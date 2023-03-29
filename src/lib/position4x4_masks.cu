@@ -79,6 +79,17 @@ std::array<unsigned char, 4> flip_vertical(const unsigned char (&chars)[4])
     return result;
 }
 
+std::array<unsigned char, 4> flip_hor_ver(const unsigned char (&chars)[4])
+{
+    std::array<unsigned char, 4> result = {
+        char_flip_vertical(chars[3]),
+        char_flip_vertical(chars[2]),
+        char_flip_vertical(chars[1]),
+        char_flip_vertical(chars[0])};
+
+    return result;
+}
+
 std::array<char, 4> flip_ox(const char (&chars)[4])
 {
     std::array<char, 4> result = {
