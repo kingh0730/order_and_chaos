@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "primitive_value.h"
 
 enum GameResult
@@ -12,6 +14,7 @@ enum GameResult
 };
 
 GameResult to_game_result(const PrimitiveValue &pv);
+GameResult game_result_recur_step(const std::vector<GameResult> &children);
 
 // TODO
 class GameResultWithRmt
