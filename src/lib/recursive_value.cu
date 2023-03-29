@@ -42,6 +42,22 @@ GameResult game_result_recur_step(const std::vector<GameResult> &children)
     return GameResult::GameLose;
 }
 
+GameResult win_lose_switch(const GameResult &gr)
+{
+    switch (gr)
+    {
+    case GameResult::GameWin:
+        return GameResult::GameLose;
+
+    case GameResult::GameLose:
+        return GameResult::GameWin;
+
+    default:
+        std::cerr << "GameResult::Error(" + std::to_string(gr) + ")";
+        throw std::invalid_argument("Error GameResult type");
+    }
+}
+
 std::string format_game_result(const GameResult &gr)
 {
     switch (gr)
