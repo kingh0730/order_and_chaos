@@ -65,19 +65,15 @@ Solver::solve_not_memoized(const Position4x4 &position)
 GameResult
 Solver::solve(const Position4x4 &position)
 {
-    if (this->memoized.count(position))
+    if (this->memoized_game_results.count(position))
     {
-        MemoizedGameResult mgr = this->memoized.at(position);
-
-        return this->memoized_to_game_result(position, mgr);
+        return this->memoized_game_results.at(position);
     }
 
     GameResult gr = this->solve_not_memoized(position);
 
-    this->memoized.insert(
-        std::pair<Position4x4, MemoizedGameResult>(
-            position,
-            game_result_to_memoized(position, gr)));
+    this->memoized_game_results.insert(
+        std::pair<Position4x4, GameResult>(position, gr));
 
     return gr;
 }
