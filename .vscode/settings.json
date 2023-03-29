@@ -24,6 +24,7 @@
     "Crafters",
     "cuda",
     "endl",
+    "ifdef",
     "iostream"
   ]
 }
