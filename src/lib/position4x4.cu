@@ -10,11 +10,13 @@ int Position4x4::get_num_spaces_remain() const
     int count = 0;
     for (int i = 0; i < 16; i++)
     {
-        if (((const uint32_t)this->rows) & INT_TAKEN_MASKS[i])
+        if (((const uint32_t &)this->rows) & INT_TAKEN_MASKS[i])
         {
             count += 1;
         }
     }
+
+    return count;
 }
 
 Player Position4x4::get_player() const
