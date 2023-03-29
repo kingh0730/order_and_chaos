@@ -7,12 +7,17 @@
 
 Player Position4x4::get_player() const
 {
-    switch (this->num_spaces_remain % 2)
+    int parity = this->num_spaces_remain % 2;
+
+    switch (parity)
     {
     case 0:
         return Player::Order;
     case 1:
         return Player::Chaos;
+    default:
+        std::cerr << "Impossible parity: " + std::to_string(parity);
+        throw std::runtime_error("Impossible parity");
     }
 }
 
