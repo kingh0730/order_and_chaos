@@ -12,16 +12,16 @@ class Solver
     // Keep small as map value
     enum MemoizedState1 : char
     {
+        MemoizedState1_0,
         MemoizedState1_1,
-        MemoizedState1_2,
     };
 
     // TODO memoized states
     // Keep small as map value
     enum MemoizedState2 : char
     {
+        MemoizedState2_0,
         MemoizedState2_1,
-        MemoizedState2_2,
     };
 
 private:
