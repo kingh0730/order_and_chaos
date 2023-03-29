@@ -20,7 +20,6 @@ int main()
     char empty[4] = {0b00000000, 0b00000000, 0b00000000, 0b00000000};
     char pos_diag = 0b10101010;
     char neg_diag = 0b11111111;
-    int num_spaces_remain = 16;
 
     p = Position4x4(Player::Order, all_4, empty, 0, 0, 12);
     std::cout << p.format();
