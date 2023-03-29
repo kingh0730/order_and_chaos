@@ -213,9 +213,12 @@ std::string Position4x4::format_pretty() const
               std::to_string(this->num_spaces_remain) + '\n';
     result += "hash: " + std::bitset<32>(this->hash()).to_string() + '\n';
 
+    result += "    ---------\n";
+    result += "j -> 3 2 1 0\n";
+
     for (int i = 0; i < 4; i++)
     {
-        result += '|';
+        result += 'i' + std::to_string(i) + "  |";
 
         char row = this->rows[i];
 
@@ -242,7 +245,7 @@ std::string Position4x4::format_pretty() const
             row <<= 2;
         }
 
-        result += "\n---------\n";
+        result += '\n';
     }
 
     return result;
