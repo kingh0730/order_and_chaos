@@ -73,28 +73,30 @@ bool Position4x4::operator<(const Position4x4 &rhs) const
 
 bool Position4x4::has_4_in_a_row() const
 {
-    for (int i = 0; i < 4; i++)
-    {
-        if (char_has_4_in_a_row(this->rows[i]))
-        {
-            return true;
-        }
-        if (char_has_4_in_a_row(this->cols[i]))
-        {
-            return true;
-        }
-    }
+    return int_has_4_in_a_row((const uint32_t &)this->rows);
 
-    if (char_has_4_in_a_row(this->pos_diag))
-    {
-        return true;
-    }
-    if (char_has_4_in_a_row(this->neg_diag))
-    {
-        return true;
-    }
+    // for (int i = 0; i < 4; i++)
+    // {
+    //     if (char_has_4_in_a_row(this->rows[i]))
+    //     {
+    //         return true;
+    //     }
+    //     if (char_has_4_in_a_row(this->cols[i]))
+    //     {
+    //         return true;
+    //     }
+    // }
 
-    return false;
+    // if (char_has_4_in_a_row(this->pos_diag))
+    // {
+    //     return true;
+    // }
+    // if (char_has_4_in_a_row(this->neg_diag))
+    // {
+    //     return true;
+    // }
+
+    // return false;
 }
 
 std::vector<Move> Position4x4::generate_moves() const
@@ -131,17 +133,17 @@ Position4x4 Position4x4::do_move(const Move &move) const
     // cols
     char_set_piece(result.cols[move.y], move.x, move.piece);
 
-    // pos_diag
-    if (move.x == move.y)
-    {
-        char_set_piece(result.pos_diag, move.x, move.piece);
-    }
+    // // pos_diag
+    // if (move.x == move.y)
+    // {
+    //     char_set_piece(result.pos_diag, move.x, move.piece);
+    // }
 
-    // neg_diag
-    if (move.x == 3 - move.y)
-    {
-        char_set_piece(result.neg_diag, move.x, move.piece);
-    }
+    // // neg_diag
+    // if (move.x == 3 - move.y)
+    // {
+    //     char_set_piece(result.neg_diag, move.x, move.piece);
+    // }
 
     // num_spaces_remain
     result.num_spaces_remain -= 1;

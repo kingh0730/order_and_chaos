@@ -13,8 +13,11 @@ private:
 
     char rows[4];
     char cols[4];
-    char pos_diag;
-    char neg_diag;
+
+    /// @deprecated
+    // char pos_diag;
+    /// @deprecated
+    // char neg_diag;
 
     int num_spaces_remain;
 
@@ -31,8 +34,8 @@ public:
         : player(player),
           rows{0, 0, 0, 0},
           cols{0, 0, 0, 0},
-          pos_diag(0),
-          neg_diag(0),
+          // pos_diag(0),
+          // neg_diag(0),
           num_spaces_remain(4 * 4)
     {
     }
@@ -41,14 +44,14 @@ public:
         Player player,
         char rows[4],
         char cols[4],
-        char pos_diag,
-        char neg_diag,
+        // char pos_diag,
+        // char neg_diag,
         int num_spaces_remain)
         : player(player),
           rows{*rows},
           cols{*cols},
-          pos_diag(pos_diag),
-          neg_diag(neg_diag),
+          // pos_diag(pos_diag),
+          // neg_diag(neg_diag),
           num_spaces_remain(num_spaces_remain)
     {
     }
