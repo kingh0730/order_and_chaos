@@ -11,6 +11,8 @@ uint32_t Position4x4::hash() const
     uint32_t cols = *(uint32_t *)this->cols;
     uint32_t rows_flip_hor = *(uint32_t *)flip_horizontal(this->rows).data();
     uint32_t cols_flip_hor = *(uint32_t *)flip_horizontal(this->cols).data();
+    uint32_t rows_flip_ver = *(uint32_t *)flip_vertical(this->rows).data();
+    uint32_t cols_flip_ver = *(uint32_t *)flip_vertical(this->cols).data();
 
     // Flip OX
     uint32_t rows_ox = *(uint32_t *)flip_ox((const char(&)[4])rows).data();
@@ -22,15 +24,26 @@ uint32_t Position4x4::hash() const
                                      (const char(&)[4])cols_flip_hor)
                                      .data();
 
+    uint32_t rows_flip_ver_ox = *(uint32_t *)flip_ox(
+                                     (const char(&)[4])rows_flip_ver)
+                                     .data();
+    uint32_t cols_flip_ver_ox = *(uint32_t *)flip_ox(
+                                     (const char(&)[4])cols_flip_ver)
+                                     .data();
+
     return std::max({
         rows,
         cols,
         rows_flip_hor,
         cols_flip_hor,
+        rows_flip_ver,
+        cols_flip_ver,
         rows_ox,
         cols_ox,
         rows_flip_hor_ox,
         cols_flip_hor_ox,
+        rows_flip_ver_ox,
+        cols_flip_ver_ox,
     });
 }
 
