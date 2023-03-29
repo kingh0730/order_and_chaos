@@ -34,8 +34,8 @@ GameResult
 Solver::solve_not_memoized(const Position4x4 &position)
 {
     // FIXME delete shortcut and print
-    // Order has to win in 6 steps or less
-    if (position.get_num_spaces_remain() <= 10)
+    // Order has to win in 8 steps or less
+    if (position.get_num_spaces_remain() <= 8)
     {
         return GameResult::GameLose;
     }
