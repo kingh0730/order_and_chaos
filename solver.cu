@@ -46,6 +46,6 @@ Solver::solve(const Position4x4 &position)
         [this, position](const Move &move)
         { return this->solve_after_move(position, move); });
 
-    // recur step
+    // recursive step
     return game_result_recur_step(grs);
 }
