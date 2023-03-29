@@ -6,6 +6,9 @@
 
 class Solver
 {
+private:
+    GameResult solve_after_move(const Position4x4 &position, const Move &move);
+
 public:
     GameResult solve(const Position4x4 &position);
 };
