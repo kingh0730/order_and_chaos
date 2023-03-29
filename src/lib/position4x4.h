@@ -19,6 +19,7 @@ private:
     int num_spaces_remain;
 
 public:
+    Player get_player() const { return player; }
     int get_num_spaces_remain() const { return num_spaces_remain; }
 
 public:
