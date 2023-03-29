@@ -10,14 +10,16 @@ bool Position4x4::operator<(const Position4x4 &rhs) const
     int32_t l_rows = *(int32_t *)this->rows;
     int32_t r_rows = *(int32_t *)rhs.rows;
 
-    int32_t l_rows_flipped = *(int32_t *)flip_along_x(this->rows).data();
-    int32_t r_rows_flipped = *(int32_t *)flip_along_x(rhs.rows).data();
+    int32_t l_rows_flipped = *(int32_t *)flip_horizontal(this->rows).data();
+    int32_t r_rows_flipped = *(int32_t *)flip_horizontal(rhs.rows).data();
 
     int32_t l_cols = *(int32_t *)this->cols;
     int32_t r_cols = *(int32_t *)rhs.cols;
 
-    int32_t l_cols_flipped = *(int32_t *)flip_along_x(this->cols).data();
-    int32_t r_cols_flipped = *(int32_t *)flip_along_x(rhs.cols).data();
+    int32_t l_cols_flipped = *(int32_t *)flip_horizontal(this->cols).data();
+    int32_t r_cols_flipped = *(int32_t *)flip_horizontal(rhs.cols).data();
+
+    // Flip OX
 
     return std::max({l_rows, l_cols,
                      l_rows_flipped, l_cols_flipped}) <
