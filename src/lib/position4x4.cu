@@ -11,8 +11,12 @@ uint32_t Position4x4::hash() const
     uint32_t cols = *(uint32_t *)this->cols;
     uint32_t rows_flip_hor = *(uint32_t *)flip_horizontal(this->rows).data();
     uint32_t cols_flip_hor = *(uint32_t *)flip_horizontal(this->cols).data();
-    uint32_t rows_flip_ver = *(uint32_t *)flip_vertical(this->rows).data();
-    uint32_t cols_flip_ver = *(uint32_t *)flip_vertical(this->cols).data();
+    uint32_t rows_flip_ver = *(uint32_t *)flip_vertical(
+                                  (const unsigned char(&)[4])this->rows)
+                                  .data();
+    uint32_t cols_flip_ver = *(uint32_t *)flip_vertical(
+                                  (const unsigned char(&)[4])this->cols)
+                                  .data();
 
     // Flip OX
     uint32_t rows_ox = *(uint32_t *)flip_ox((const char(&)[4])rows).data();
