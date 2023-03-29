@@ -1,7 +1,7 @@
-#define MAIN_TEST_PRINT
-
 #include <iostream>
 #include <cassert>
+
+#define MAIN_TEST_PRINT
 
 #include "position4x4.h"
 #include "move.h"
@@ -18,8 +18,16 @@ int main()
     std::cout << p.format_pretty();
     assert(p.primitive_value() == PrimitiveValue::NotPrimitive);
 
-    char all_4[4] = {0b10101010, 0b00000000, 0b00000000, 0b00000000};
-    char empty[4] = {0b00000000, 0b00000000, 0b00000000, 0b00000000};
+    char all_4[4] = {
+        (char)0b10101010,
+        (char)0b00000000,
+        (char)0b00000000,
+        (char)0b00000000};
+    char empty[4] = {
+        (char)0b00000000,
+        (char)0b00000000,
+        (char)0b00000000,
+        (char)0b00000000};
     char pos_diag = 0b10101010;
     char neg_diag = 0b11111111;
 
