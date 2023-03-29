@@ -7,10 +7,14 @@
 
 bool Position4x4::operator<(const Position4x4 &rhs) const
 {
-    int32_t l = *(int32_t *)this->rows;
-    int32_t r = *(int32_t *)rhs.rows;
+    int32_t l_rows = *(int32_t *)this->rows;
+    int32_t r_rows = *(int32_t *)rhs.rows;
 
-    return l < r;
+    int32_t l_cols = *(int32_t *)this->cols;
+    int32_t r_cols = *(int32_t *)rhs.cols;
+
+    return std::max(l_rows, l_cols) <
+           std::max(r_rows, r_cols);
 }
 
 bool Position4x4::has_4_in_a_row() const
