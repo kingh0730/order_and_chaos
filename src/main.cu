@@ -1,3 +1,4 @@
+#include <chrono>
 #include <iostream>
 
 #include "position4x4.h"
@@ -99,12 +100,31 @@ void one_game(Solver &solver)
 
 int main()
 {
-    std::cout << "GamesCrafters!\n"
-              << std::endl;
+    std::cout << "GamesCrafters!\n";
+
+    // Solve
+    using std::chrono::duration;
+    using std::chrono::duration_cast;
+    using std::chrono::high_resolution_clock;
+    using std::chrono::milliseconds;
+
+    auto t1 = high_resolution_clock::now();
 
     Position4x4 p = Position4x4();
     Solver solver = Solver();
     GameResult gr = solver.solve(p);
+
+    auto t2 = high_resolution_clock::now();
+
+    /* Getting number of milliseconds as an integer. */
+    auto ms_int = duration_cast<milliseconds>(t2 - t1);
+
+    /* Getting number of milliseconds as a double. */
+    duration<double, std::milli> ms_double = t2 - t1;
+
+    std::cout << ms_int.count() << "ms\n";
+    std::cout << ms_double.count() << "ms\n";
+    std::cout << std::endl;
 
     // Game loop
     while (true)
