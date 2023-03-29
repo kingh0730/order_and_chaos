@@ -15,7 +15,8 @@
     "xlocnum": "cpp",
     "xmemory": "cpp",
     "xstring": "cpp",
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "array": "cpp"
   },
   "cSpell.words": [
     "cassert",
