@@ -27,7 +27,7 @@
     },
     {
       "type": "shell",
-      "label": "Test",
+      "label": "Build test",
       "command": "nvcc.exe",
       "args": [
         "./src/main_test.cu",
@@ -46,8 +46,8 @@
         "MAIN_TEST_PRINT"
       ],
       "group": {
-        "kind": "test",
-        "isDefault": true
+        "kind": "build",
+        "isDefault": false
       },
       "detail": "nvcc main_test.cu"
     }
