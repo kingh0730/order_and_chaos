@@ -112,3 +112,5 @@ std::array<unsigned char, 4> flip_vertical(const unsigned char (&chars)[4]);
 #define NEG_DIA_OOOO (uint32_t)0b00000010000010000010000010000000
 #define NEG_DIA_XXXX (uint32_t)0b00000011000011000011000011000000
 #define NEG_DIA_MASK (uint32_t)0b00000011000011000011000011000000
+
+bool int_has_4_in_a_row(const uint32_t &chars);
