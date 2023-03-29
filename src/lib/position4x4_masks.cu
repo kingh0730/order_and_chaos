@@ -49,9 +49,20 @@ char char_flip_ox(char c)
     return c;
 }
 
-std::array<char, 4> flip_along_x(const char (&chars)[4])
+std::array<char, 4> flip_horizontal(const char (&chars)[4])
 {
     std::array<char, 4> result = {chars[3], chars[2], chars[1], chars[0]};
+
+    return result;
+}
+
+std::array<char, 4> flip_ox(char (&chars)[4])
+{
+    std::array<char, 4> result = {
+        char_flip_ox(chars[0]),
+        char_flip_ox(chars[1]),
+        char_flip_ox(chars[2]),
+        char_flip_ox(chars[3])};
 
     return result;
 }

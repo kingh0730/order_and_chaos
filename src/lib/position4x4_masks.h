@@ -68,4 +68,5 @@ void char_set_piece(char &c, size_t i, Move::Piece piece);
 
 char char_flip_ox(char c);
 
-std::array<char, 4> flip_along_x(const char (&chars)[4]);
+std::array<char, 4> flip_ox(char (&chars)[4]);
+std::array<char, 4> flip_horizontal(const char (&chars)[4]);
