@@ -33,8 +33,6 @@ Solver::solve_one_child(const Position4x4 &position, const Move &move)
 GameResult
 Solver::solve(const Position4x4 &position)
 {
-    auto pv = position.primitive_value();
-
     // FIXME delete shortcut and print
     // Order has to win in 6 steps or less
     if (position.get_num_spaces_remain() <= 10)
@@ -47,6 +45,9 @@ Solver::solve(const Position4x4 &position)
         std::cout << position.format_pretty() << std::endl;
     }
 #endif
+
+    // Primitive value
+    auto pv = position.primitive_value();
 
     // If not primitive
     if (pv != PrimitiveValue::NotPrimitive)
