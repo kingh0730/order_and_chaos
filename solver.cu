@@ -19,7 +19,7 @@ Solver::solve(const Position4x4 &position)
 
     // std::cout << position.format_pretty() << std::endl;
     // TODO delete this shortcut
-    if (position.get_num_spaces_remain() <= 12)
+    if (position.get_num_spaces_remain() <= 10)
     {
         return GameResult::GameLose;
     }
