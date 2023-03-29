@@ -27,23 +27,15 @@ int main()
     assert(p.primitive_value() == PrimitiveValue::Win);
 
     p = Position4x4(Player::Chaos, empty, all_4, 0, 0, 12);
-    std::cout << p.format();
-    std::cout << p.format_pretty();
     assert(p.primitive_value() == PrimitiveValue::Lose);
 
     p = Position4x4(Player::Order, empty, empty, pos_diag, 0, 12);
-    std::cout << p.format();
-    std::cout << p.format_pretty();
     assert(p.primitive_value() == PrimitiveValue::Win);
 
     p = Position4x4(Player::Chaos, empty, empty, 0, neg_diag, 12);
-    std::cout << p.format();
-    std::cout << p.format_pretty();
     assert(p.primitive_value() == PrimitiveValue::Lose);
 
     p = Position4x4(Player::Order, empty, empty, 0, 0, 0);
-    std::cout << p.format();
-    std::cout << p.format_pretty();
     assert(p.primitive_value() == PrimitiveValue::Lose);
 
     // Moves
