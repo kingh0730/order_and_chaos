@@ -9,17 +9,28 @@ int32_t Position4x4::hash() const
 {
     int32_t rows = *(int32_t *)this->rows;
     int32_t cols = *(int32_t *)this->cols;
-    int32_t rows_flipped = *(int32_t *)flip_horizontal(this->rows).data();
-    int32_t cols_flipped = *(int32_t *)flip_horizontal(this->cols).data();
+    int32_t rows_flip_hor = *(int32_t *)flip_horizontal(this->rows).data();
+    int32_t cols_flip_hor = *(int32_t *)flip_horizontal(this->cols).data();
 
     // Flip OX
     int32_t rows_ox = *(int32_t *)flip_ox((const char(&)[4])rows).data();
-
-    return std::max({rows,
-                     cols,
-                     rows_flipped,
-                     cols_flipped,
-                     rows_ox});
+    int32_t cols_ox = *(int32_t *)flip_ox((const char(&)[4])cols).data();
+    int32_t rows_flip_hor_ox = *(int32_t *)flip_ox(
+                                    (const char(&)[4])rows_flip_hor)
+                                    .data();
+    int32_t cols_flip_hor_ox = *(int32_t *)flip_ox(
+                                    (const char(&)[4])cols_flip_hor)
+                                    .data();
+    return std::max({
+        rows,
+        cols,
+        rows_flip_hor,
+        cols_flip_hor,
+        rows_ox,
+        cols_ox,
+        rows_flip_hor_ox,
+        cols_flip_hor_ox,
+    });
 }
 
 bool Position4x4::operator<(const Position4x4 &rhs) const
