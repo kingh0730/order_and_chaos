@@ -4,14 +4,14 @@
 #include "solver.h"
 
 GameResult
-Solver::solve_after_move(const Position4x4 &position, const Move &move)
+Solver::solve_one_child(const Position4x4 &position, const Move &move)
 {
     // TODO There could clever ways
 
     // naive approach
-    const Position4x4 after_move = position.do_move(move);
+    const Position4x4 child = position.do_move(move);
 
-    return this->solve(after_move);
+    return this->solve(child);
 }
 
 GameResult
@@ -44,7 +44,7 @@ Solver::solve(const Position4x4 &position)
     std::transform(
         moves.begin(), moves.end(), grs.begin(),
         [this, position](const Move &move)
-        { return this->solve_after_move(position, move); });
+        { return this->solve_one_child(position, move); });
 
     // recursive step
     return game_result_recur_step(grs);

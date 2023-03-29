@@ -7,7 +7,11 @@
 class Solver
 {
 private:
-    GameResult solve_after_move(const Position4x4 &position, const Move &move);
+    std::vector<GameResult> solve_children(
+        const Position4x4 &position, const std::vector<Move> &moves);
+
+    GameResult solve_one_child(
+        const Position4x4 &position, const Move &move);
 
 public:
     GameResult solve(const Position4x4 &position);
