@@ -4,7 +4,8 @@
 
 #include "primitive_value.h"
 
-enum GameResult
+// Keep small as map value
+enum GameResult : char
 {
     Undecided,
     GameWin,
