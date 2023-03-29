@@ -8,11 +8,12 @@
 
 class Solver
 {
+    // TODO memoized states
     // Keep small as map value
-    enum MemoizedGameResult : char
+    enum MemoizedState : char
     {
-        OrderLoses,
-        OrderWins,
+        MemoizedState1,
+        MemoizedState2,
     };
 
 private:
