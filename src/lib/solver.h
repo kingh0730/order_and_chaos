@@ -10,10 +10,18 @@ class Solver
 {
     // TODO memoized states
     // Keep small as map value
-    enum MemoizedState : char
+    enum MemoizedState1 : char
     {
-        MemoizedState1,
-        MemoizedState2,
+        MemoizedState1_1,
+        MemoizedState1_2,
+    };
+
+    // TODO memoized states
+    // Keep small as map value
+    enum MemoizedState2 : char
+    {
+        MemoizedState2_1,
+        MemoizedState2_2,
     };
 
 private:
