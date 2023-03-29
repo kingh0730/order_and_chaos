@@ -25,7 +25,7 @@ class Solver
     };
 
 private:
-    std::map<Position4x4, MemoizedGameResult> memoized;
+    std::map<Position4x4, GameResult> memoized_game_results;
 
     GameResult memoized_to_game_result(
         const Position4x4 &cur_position, const MemoizedGameResult &mgr);
