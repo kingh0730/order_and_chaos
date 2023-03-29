@@ -27,11 +27,13 @@
   "cSpell.words": [
     "cassert",
     "cerr",
+    "chrono",
     "cout",
     "Crafters",
     "cuda",
     "endl",
     "ifdef",
-    "iostream"
+    "iostream",
+    "milli"
   ]
 }
