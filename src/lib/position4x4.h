@@ -20,40 +20,40 @@ private:
     /// @deprecated
     // char neg_diag;
 
-    int num_spaces_remain;
+    /// @deprecated
+    // int num_spaces_remain;
 
 public:
     Player get_player() const;
-    int get_num_spaces_remain() const { return num_spaces_remain; }
+    int get_num_spaces_remain() const;
 
 public:
     Position4x4() : Position4x4(Player::Order)
     {
     }
 
-    Position4x4(Player player)
-        : // player(player),
-          rows{0, 0, 0, 0},
-          cols{0, 0, 0, 0},
-          // pos_diag(0),
-          // neg_diag(0),
-          num_spaces_remain(4 * 4)
+    Position4x4(Player player) : rows{0, 0, 0, 0},
+                                 cols{0, 0, 0, 0}
+    // player(player),
+    // pos_diag(0),
+    // neg_diag(0),
+    // num_spaces_remain(4 * 4)
     {
     }
 
     Position4x4(
-        // Player player,
         char rows[4],
-        char cols[4],
+        char cols[4]
+        // Player player,
         // char pos_diag,
         // char neg_diag,
-        int num_spaces_remain)
-        : // player(player),
-          rows{*rows},
-          cols{*cols},
-          // pos_diag(pos_diag),
-          // neg_diag(neg_diag),
-          num_spaces_remain(num_spaces_remain)
+        // int num_spaces_remain
+        ) : rows{*rows},
+            cols{*cols}
+    // player(player),
+    // pos_diag(pos_diag),
+    // neg_diag(neg_diag),
+    // num_spaces_remain(num_spaces_remain)
     {
     }
 
