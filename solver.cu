@@ -17,9 +17,9 @@ Solver::solve(const Position4x4 &position)
 {
     auto pv = position.primitive_value();
 
-    // std::cout << position.format() << std::endl;
+    // std::cout << position.format_pretty() << std::endl;
     // TODO delete this shortcut
-    if (position.get_num_spaces_remain() <= 10)
+    if (position.get_num_spaces_remain() <= 12)
     {
         return GameResult::GameLose;
     }
