@@ -56,7 +56,7 @@ std::array<char, 4> flip_horizontal(const char (&chars)[4])
     return result;
 }
 
-std::array<char, 4> flip_ox(char (&chars)[4])
+std::array<char, 4> flip_ox(const char (&chars)[4])
 {
     std::array<char, 4> result = {
         char_flip_ox(chars[0]),
