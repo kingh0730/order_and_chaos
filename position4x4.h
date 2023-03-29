@@ -16,7 +16,10 @@ private:
     char pos_diag;
     char neg_diag;
 
-    int num_spaces_remaining;
+    int num_spaces_remain;
+
+public:
+    int get_num_spaces_remain() const { return num_spaces_remain; }
 
 public:
     Position4x4() : Position4x4(Player::Order)
@@ -29,7 +32,7 @@ public:
           cols{0, 0, 0, 0},
           pos_diag(0),
           neg_diag(0),
-          num_spaces_remaining(4 * 4)
+          num_spaces_remain(4 * 4)
     {
     }
 

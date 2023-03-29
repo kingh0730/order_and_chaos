@@ -77,8 +77,8 @@ Position4x4 Position4x4::do_move(const Move &move) const
         char_set_piece(result.neg_diag, move.x, move.piece);
     }
 
-    // num_spaces_remaining
-    result.num_spaces_remaining -= 1;
+    // num_spaces_remain
+    result.num_spaces_remain -= 1;
 
     return result;
 }
@@ -99,8 +99,8 @@ PrimitiveValue Position4x4::primitive_value() const
         }
     }
 
-    // If no space remaining
-    if (!this->num_spaces_remaining)
+    // If no space remain
+    if (!this->num_spaces_remain)
     {
         switch (this->player)
         {
@@ -125,8 +125,8 @@ std::string Position4x4::format() const
 
     result += format_player(this->player) + "\t";
     result += format_primitive_value(this->primitive_value()) + '\t';
-    result += "num_spaces_remaining: " +
-              std::to_string(this->num_spaces_remaining) + '\n';
+    result += "num_spaces_remain: " +
+              std::to_string(this->num_spaces_remain) + '\n';
 
     for (int i = 0; i < 4; i++)
     {
@@ -142,8 +142,8 @@ std::string Position4x4::format_pretty() const
 
     result += format_player(this->player) + "\t";
     result += format_primitive_value(this->primitive_value()) + '\t';
-    result += "num_spaces_remaining: " +
-              std::to_string(this->num_spaces_remaining) + '\n';
+    result += "num_spaces_remain: " +
+              std::to_string(this->num_spaces_remain) + '\n';
 
     for (int i = 0; i < 4; i++)
     {
