@@ -81,7 +81,9 @@ void one_game(Solver &solver)
         {
             std::cout << "Game over!" << '\n';
             std::cout << format_player(p.get_player()) << " ";
-            std::cout << format_primitive_value(pv) << '\n';
+            std::cout << format_primitive_value(pv) << '\n'
+                      << std::endl;
+
             break;
         }
 
@@ -104,8 +106,9 @@ int main()
     Solver solver = Solver();
     GameResult gr = solver.solve(p);
 
-    std::cout << format_game_result(gr) << '\n';
-
-    // TODO game loop
-    one_game(solver);
+    // Game loop
+    while (true)
+    {
+        one_game(solver);
+    }
 }
