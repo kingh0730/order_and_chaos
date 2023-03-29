@@ -10,11 +10,19 @@ bool Position4x4::operator<(const Position4x4 &rhs) const
     int32_t l_rows = *(int32_t *)this->rows;
     int32_t r_rows = *(int32_t *)rhs.rows;
 
+    int32_t l_rows_flipped = *(int32_t *)flip_along_x(this->rows).data();
+    int32_t r_rows_flipped = *(int32_t *)flip_along_x(rhs.rows).data();
+
     int32_t l_cols = *(int32_t *)this->cols;
     int32_t r_cols = *(int32_t *)rhs.cols;
 
-    return std::max(l_rows, l_cols) <
-           std::max(r_rows, r_cols);
+    int32_t l_cols_flipped = *(int32_t *)flip_along_x(this->cols).data();
+    int32_t r_cols_flipped = *(int32_t *)flip_along_x(rhs.cols).data();
+
+    return std::max({l_rows, l_cols,
+                     l_rows_flipped, l_cols_flipped}) <
+           std::max({r_rows, r_cols,
+                     r_rows_flipped, r_cols_flipped});
 }
 
 bool Position4x4::has_4_in_a_row() const
