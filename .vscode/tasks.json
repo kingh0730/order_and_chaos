@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Build",
+      "command": "nvcc.exe",
+      "args": [
+        "main.cu",
+        "position4x4.cu",
+        "position4x4_masks.cu",
+        "player.cu",
+        "move.cu",
+        "primitive_value.cu",
+        "recursive_value.cu",
+        "solver.cu"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "nvcc"
+    }
+  ]
+}
