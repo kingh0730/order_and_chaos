@@ -36,6 +36,22 @@ public:
     {
     }
 
+    Position4x4(
+        Player player,
+        char rows[4],
+        char cols[4],
+        char pos_diag,
+        char neg_diag,
+        int num_spaces_remain)
+        : player(player),
+          rows{*rows},
+          cols{*cols},
+          pos_diag(pos_diag),
+          neg_diag(neg_diag),
+          num_spaces_remain(num_spaces_remain)
+    {
+    }
+
     Position4x4(const Position4x4 &other) = default;
     Position4x4 &operator=(const Position4x4 &other) = default;
 
