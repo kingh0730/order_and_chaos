@@ -4,11 +4,11 @@
 
 bool char_has_4_in_a_row(const char &c)
 {
-    if (c == ALL_OOOO)
+    if (c == (char)ALL_OOOO)
     {
         return true;
     }
-    if (c == ALL_XXXX)
+    if (c == (char)ALL_XXXX)
     {
         return true;
     }
