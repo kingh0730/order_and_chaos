@@ -6,7 +6,7 @@ GameResult
 Solver::solve_after_move(const Position4x4 &position, const Move &move)
 {
     // naive approach
-    Position4x4 after_move = position.do_move(move);
+    const Position4x4 after_move = position.do_move(move);
 
     return this->solve(after_move);
 }
