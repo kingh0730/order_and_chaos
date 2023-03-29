@@ -17,7 +17,7 @@ Solver::solve(const Position4x4 &position)
 {
     auto pv = position.primitive_value();
 
-    // TODO delete shortcut and print
+    // FIXME delete shortcut and print
     // Order has to win in 6 steps or less
     if (position.get_num_spaces_remain() <= 10)
     {
