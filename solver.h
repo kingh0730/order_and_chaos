@@ -8,7 +8,7 @@ class Solver
 {
 private:
     std::vector<GameResult> solve_children(
-        const Position4x4 &position, const std::vector<Move> &moves);
+        const Position4x4 &position);
 
     GameResult solve_one_child(
         const Position4x4 &position, const Move &move);

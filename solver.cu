@@ -3,6 +3,22 @@
 
 #include "solver.h"
 
+std::vector<GameResult>
+Solver::solve_children(const Position4x4 &position)
+{
+    std::vector<Move> moves = position.generate_moves();
+
+    std::vector<GameResult> grs = std::vector<GameResult>();
+    grs.resize(moves.size());
+
+    std::transform(
+        moves.begin(), moves.end(), grs.begin(),
+        [this, position](const Move &move)
+        { return this->solve_one_child(position, move); });
+
+    return grs;
+}
+
 GameResult
 Solver::solve_one_child(const Position4x4 &position, const Move &move)
 {
@@ -37,14 +53,7 @@ Solver::solve(const Position4x4 &position)
     }
 
     // children
-    std::vector<Move> moves = position.generate_moves();
-    std::vector<GameResult> grs = std::vector<GameResult>();
-    grs.resize(moves.size());
-
-    std::transform(
-        moves.begin(), moves.end(), grs.begin(),
-        [this, position](const Move &move)
-        { return this->solve_one_child(position, move); });
+    std::vector<GameResult> grs = solve_children(position);
 
     // recursive step
     return game_result_recur_step(grs);
