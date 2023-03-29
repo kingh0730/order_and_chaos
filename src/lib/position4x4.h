@@ -56,7 +56,7 @@ public:
     Position4x4(const Position4x4 &other) = default;
     Position4x4 &operator=(const Position4x4 &other) = default;
 
-    int32_t hash() const;
+    uint32_t hash() const;
 
     // As map key
     bool operator<(const Position4x4 &rhs) const;

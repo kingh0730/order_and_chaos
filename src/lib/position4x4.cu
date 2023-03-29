@@ -5,22 +5,22 @@
 #include "position4x4.h"
 #include "position4x4_masks.h"
 
-int32_t Position4x4::hash() const
+uint32_t Position4x4::hash() const
 {
-    int32_t rows = *(int32_t *)this->rows;
-    int32_t cols = *(int32_t *)this->cols;
-    int32_t rows_flip_hor = *(int32_t *)flip_horizontal(this->rows).data();
-    int32_t cols_flip_hor = *(int32_t *)flip_horizontal(this->cols).data();
+    uint32_t rows = *(uint32_t *)this->rows;
+    uint32_t cols = *(uint32_t *)this->cols;
+    uint32_t rows_flip_hor = *(uint32_t *)flip_horizontal(this->rows).data();
+    uint32_t cols_flip_hor = *(uint32_t *)flip_horizontal(this->cols).data();
 
     // Flip OX
-    int32_t rows_ox = *(int32_t *)flip_ox((const char(&)[4])rows).data();
-    int32_t cols_ox = *(int32_t *)flip_ox((const char(&)[4])cols).data();
-    int32_t rows_flip_hor_ox = *(int32_t *)flip_ox(
-                                    (const char(&)[4])rows_flip_hor)
-                                    .data();
-    int32_t cols_flip_hor_ox = *(int32_t *)flip_ox(
-                                    (const char(&)[4])cols_flip_hor)
-                                    .data();
+    uint32_t rows_ox = *(uint32_t *)flip_ox((const char(&)[4])rows).data();
+    uint32_t cols_ox = *(uint32_t *)flip_ox((const char(&)[4])cols).data();
+    uint32_t rows_flip_hor_ox = *(uint32_t *)flip_ox(
+                                     (const char(&)[4])rows_flip_hor)
+                                     .data();
+    uint32_t cols_flip_hor_ox = *(uint32_t *)flip_ox(
+                                     (const char(&)[4])cols_flip_hor)
+                                     .data();
     return std::max({
         rows,
         cols,
