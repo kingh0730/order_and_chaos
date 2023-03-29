@@ -41,7 +41,9 @@
         "-I",
         "./src",
         "-o",
-        "./build/main_test"
+        "./build/main_test",
+        "-D",
+        "MAIN_TEST_PRINT"
       ],
       "group": {
         "kind": "test",
