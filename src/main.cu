@@ -54,13 +54,26 @@ Move get_input()
     return Move(input_piece, input_i, input_j);
 }
 
-void one_game()
+void one_game(Solver &solver)
 {
     Position4x4 p = Position4x4();
 
     while (true)
     {
         std::cout << p.format_pretty() << '\n';
+
+        // Solver
+        for (const Move &m : p.generate_moves())
+        {
+            Position4x4 after = p.do_move(m);
+            GameResult gr = solver.solve(after);
+
+            std::cout << m.format() << " -> "
+                      << format_player(after.get_player()) << " "
+                      << format_game_result(gr) << '\n';
+        }
+
+        std::cout << std::endl;
 
         // Primitive value
         PrimitiveValue pv = p.primitive_value();
@@ -89,10 +102,10 @@ int main()
 
     Position4x4 p = Position4x4();
     Solver solver = Solver();
-    // GameResult gr = solver.solve(p);
+    GameResult gr = solver.solve(p);
 
-    // std::cout << format_game_result(gr) << '\n';
+    std::cout << format_game_result(gr) << '\n';
 
     // TODO game loop
-    one_game();
+    one_game(solver);
 }
