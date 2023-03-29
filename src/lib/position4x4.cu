@@ -149,6 +149,7 @@ std::string Position4x4::format() const
     result += format_primitive_value(this->primitive_value()) + '\t';
     result += "num_spaces_remain: " +
               std::to_string(this->num_spaces_remain) + '\n';
+    result += "hash: " + std::bitset<32>(this->hash()).to_string() + '\n';
 
     for (int i = 0; i < 4; i++)
     {
@@ -166,6 +167,7 @@ std::string Position4x4::format_pretty() const
     result += format_primitive_value(this->primitive_value()) + '\t';
     result += "num_spaces_remain: " +
               std::to_string(this->num_spaces_remain) + '\n';
+    result += "hash: " + std::bitset<32>(this->hash()).to_string() + '\n';
 
     for (int i = 0; i < 4; i++)
     {
