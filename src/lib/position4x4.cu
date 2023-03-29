@@ -5,6 +5,17 @@
 #include "position4x4.h"
 #include "position4x4_masks.h"
 
+Player Position4x4::get_player() const
+{
+    switch (this->num_spaces_remain % 2)
+    {
+    case 0:
+        return Player::Order;
+    case 1:
+        return Player::Chaos;
+    }
+}
+
 uint32_t Position4x4::hash() const
 {
     uint32_t rows = *(uint32_t *)this->rows;
@@ -124,8 +135,8 @@ Position4x4 Position4x4::do_move(const Move &move) const
     // Copy
     Position4x4 result = *this;
 
-    // player
-    result.player = Player(1 - result.player);
+    // // player
+    // result.player = Player(1 - result.player);
 
     // rows
     char_set_piece(result.rows[move.x], move.y, move.piece);
@@ -153,16 +164,18 @@ Position4x4 Position4x4::do_move(const Move &move) const
 
 PrimitiveValue Position4x4::primitive_value() const
 {
+    Player player = this->get_player();
+
     if (this->has_4_in_a_row())
     {
-        switch (this->player)
+        switch (player)
         {
         case Player::Order:
             return PrimitiveValue::Win;
         case Player::Chaos:
             return PrimitiveValue::Lose;
         default:
-            std::cerr << "Invalid player type: " << this->player << std::endl;
+            std::cerr << "Invalid player type: " << player << std::endl;
             throw std::invalid_argument("Invalid player type");
         }
     }
@@ -170,14 +183,14 @@ PrimitiveValue Position4x4::primitive_value() const
     // If no space remain
     if (!this->num_spaces_remain)
     {
-        switch (this->player)
+        switch (player)
         {
         case Player::Order:
             return PrimitiveValue::Lose;
         case Player::Chaos:
             return PrimitiveValue::Win;
         default:
-            std::cerr << "Invalid player type: " << this->player << std::endl;
+            std::cerr << "Invalid player type: " << player << std::endl;
             throw std::invalid_argument("Invalid player type");
         }
     }
@@ -189,9 +202,11 @@ PrimitiveValue Position4x4::primitive_value() const
 
 std::string Position4x4::format() const
 {
+    Player player = this->get_player();
+
     std::string result = "";
 
-    result += format_player(this->player) + "\t";
+    result += format_player(player) + "\t";
     result += format_primitive_value(this->primitive_value()) + '\t';
     result += "num_spaces_remain: " +
               std::to_string(this->num_spaces_remain) + '\n';
@@ -207,9 +222,11 @@ std::string Position4x4::format() const
 
 std::string Position4x4::format_pretty() const
 {
+    Player player = this->get_player();
+
     std::string result = "";
 
-    result += format_player(this->player) + "\t";
+    result += format_player(player) + "\t";
     result += format_primitive_value(this->primitive_value()) + '\t';
     result += "num_spaces_remain: " +
               std::to_string(this->num_spaces_remain) + '\n';

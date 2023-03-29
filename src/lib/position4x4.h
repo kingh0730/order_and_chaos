@@ -9,7 +9,8 @@
 class Position4x4
 {
 private:
-    Player player;
+    /// @deprecated
+    // Player player;
 
     char rows[4];
     char cols[4];
@@ -22,7 +23,7 @@ private:
     int num_spaces_remain;
 
 public:
-    Player get_player() const { return player; }
+    Player get_player() const;
     int get_num_spaces_remain() const { return num_spaces_remain; }
 
 public:
@@ -31,7 +32,7 @@ public:
     }
 
     Position4x4(Player player)
-        : player(player),
+        : // player(player),
           rows{0, 0, 0, 0},
           cols{0, 0, 0, 0},
           // pos_diag(0),
@@ -41,13 +42,13 @@ public:
     }
 
     Position4x4(
-        Player player,
+        // Player player,
         char rows[4],
         char cols[4],
         // char pos_diag,
         // char neg_diag,
         int num_spaces_remain)
-        : player(player),
+        : // player(player),
           rows{*rows},
           cols{*cols},
           // pos_diag(pos_diag),
