@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "position4x4.h"
-#include "move.h"
+#include "solver.h"
 
 int main()
 {
@@ -9,19 +9,8 @@ int main()
               << std::endl;
 
     Position4x4 p = Position4x4();
-    std::cout << p.format();
+    Solver solver = Solver();
+    GameResult gr = solver.solve(p);
 
-    Move m = Move(Move::Piece::X, 0, 0);
-    std::cout << m.format() << '\n';
-
-    // Generate moves
-    auto moves = p.generate_moves();
-    auto moves_size = moves.size();
-
-    std::cout << moves_size << '\n';
-
-    for (const Move &m : moves)
-    {
-        std::cout << m.format() << '\n';
-    }
+    std::cout << format_game_result(gr) << '\n';
 }
