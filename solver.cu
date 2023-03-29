@@ -1,3 +1,4 @@
+#include <iostream>
 #include <algorithm>
 
 #include "solver.h"
@@ -16,6 +17,14 @@ Solver::solve(const Position4x4 &position)
 {
     auto pv = position.primitive_value();
 
+    // std::cout << position.format() << std::endl;
+    // TODO delete this shortcut
+    if (position.get_num_spaces_remain() <= 10)
+    {
+        return GameResult::GameLose;
+    }
+
+    // If not primitive
     if (pv != PrimitiveValue::NotPrimitive)
     {
         return to_game_result(pv);
