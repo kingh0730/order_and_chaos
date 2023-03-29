@@ -6,14 +6,18 @@
       "label": "Build",
       "command": "nvcc.exe",
       "args": [
-        "main.cu",
-        "position4x4.cu",
-        "position4x4_masks.cu",
-        "player.cu",
-        "move.cu",
-        "primitive_value.cu",
-        "recursive_value.cu",
-        "solver.cu"
+        "./src/main.cu",
+        "./src/position4x4.cu",
+        "./src/position4x4_masks.cu",
+        "./src/player.cu",
+        "./src/move.cu",
+        "./src/primitive_value.cu",
+        "./src/recursive_value.cu",
+        "./src/solver.cu",
+        "-I",
+        "./src",
+        "-o",
+        "./build/main"
       ],
       "group": {
         "kind": "build",
