@@ -24,6 +24,7 @@ Solver::solve(const Position4x4 &position)
     // children
     std::vector<Move> moves = position.generate_moves();
     std::vector<GameResult> grs = std::vector<GameResult>();
+    grs.resize(moves.size());
 
     std::transform(
         moves.begin(), moves.end(), grs.begin(),
