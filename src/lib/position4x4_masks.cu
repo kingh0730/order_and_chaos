@@ -36,3 +36,10 @@ void char_set_piece(char &c, size_t i, Move::Piece piece)
         throw std::invalid_argument("Invalid move");
     }
 }
+
+std::array<char, 4> flip_along_x(const std::array<char, 4> &chars)
+{
+    std::array<char, 4> result = {chars[3], chars[2], chars[1], chars[0]};
+
+    return result;
+}

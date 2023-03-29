@@ -1,5 +1,7 @@
 #pragma once
 
+#include <array>
+
 #include "move.h"
 
 #define ALL_OOOO (char)0b10101010
@@ -52,3 +54,5 @@ const char SET_X_MASKS[4] = {
 bool char_has_4_in_a_row(const char &c);
 
 void char_set_piece(char &c, size_t i, Move::Piece piece);
+
+std::array<char, 4> flip_along_x(const std::array<char, 4> &chars);
