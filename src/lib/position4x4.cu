@@ -203,7 +203,7 @@ PrimitiveValue Position4x4::primitive_value() const
 
     // If no space remain
     int num_spaces_remain = this->get_num_spaces_remain();
-    if (num_spaces_remain)
+    if (!num_spaces_remain)
     {
         switch (player)
         {
