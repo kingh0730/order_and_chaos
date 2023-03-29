@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cassert>
 
-#define MAIN_TEST_PRINT
-
 #include "position4x4.h"
 #include "move.h"
 #include "solver.h"
@@ -59,7 +57,7 @@ int main()
     auto moves_size = moves.size();
 
     assert(moves_size == 32);
-    std::cout << moves_size << '\n';
+    std::cout << "num_moves: " << moves_size << "\n\n==================\n\n";
 
     // for (const Move &m : moves)
     // {
