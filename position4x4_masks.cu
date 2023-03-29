@@ -18,8 +18,8 @@ bool char_has_4_in_a_row(const char &c)
 
 void char_set_piece(char &c, size_t i, Move::Piece piece)
 {
-    // TODO This line is perhaps not necessary.
-    c &= CLEAR_MASKS[i];
+    // FIXME This line is perhaps not necessary.
+    // c &= CLEAR_MASKS[i];
 
     switch (piece)
     {

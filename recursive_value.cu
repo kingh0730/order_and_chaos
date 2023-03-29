@@ -37,7 +37,7 @@ GameResult game_result_recur_step(const std::vector<GameResult> &children)
         return GameResult::GameWin;
     }
 
-    // FIX Tie does not appear in order_and_chaos
+    // FIXME Tie does not appear in order_and_chaos
 
     return GameResult::GameLose;
 }
