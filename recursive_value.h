@@ -14,11 +14,14 @@ enum GameResult
 };
 
 GameResult to_game_result(const PrimitiveValue &pv);
+
+// Recursive step
 GameResult game_result_recur_step(const std::vector<GameResult> &children);
 
+// Formatting
 std::string format_game_result(const GameResult &gr);
 
-// TODO
+// TODO Remoteness
 class GameResultWithRmt
 {
 private:
