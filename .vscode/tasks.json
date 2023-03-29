@@ -23,7 +23,31 @@
         "kind": "build",
         "isDefault": true
       },
-      "detail": "nvcc"
+      "detail": "nvcc main.cu"
+    },
+    {
+      "type": "shell",
+      "label": "Test",
+      "command": "nvcc.exe",
+      "args": [
+        "./src/main_test.cu",
+        "./src/position4x4.cu",
+        "./src/position4x4_masks.cu",
+        "./src/player.cu",
+        "./src/move.cu",
+        "./src/primitive_value.cu",
+        "./src/recursive_value.cu",
+        "./src/solver.cu",
+        "-I",
+        "./src",
+        "-o",
+        "./build/main_test"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "detail": "nvcc main_test.cu"
     }
   ]
 }
