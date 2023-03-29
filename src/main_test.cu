@@ -30,15 +30,12 @@ int main()
         (char)0b00000000,
         (char)0b00000000};
 
-    p = Position4x4(Player::Order, all_4, empty, 12);
+    p = Position4x4(all_4, empty, 12);
     std::cout << p.format();
     std::cout << p.format_pretty();
     assert(p.primitive_value() == PrimitiveValue::Win);
 
-    p = Position4x4(Player::Chaos, empty, all_4, 12);
-    assert(p.primitive_value() == PrimitiveValue::Lose);
-
-    p = Position4x4(Player::Order, empty, empty, 0);
+    p = Position4x4(empty, empty, 0);
     assert(p.primitive_value() == PrimitiveValue::Lose);
 
     p = Position4x4();
