@@ -5,26 +5,26 @@
 #include "position4x4.h"
 #include "position4x4_masks.h"
 
-bool Position4x4::operator<(const Position4x4 &rhs) const
+int32_t Position4x4::hash() const
 {
-    int32_t l_rows = *(int32_t *)this->rows;
-    int32_t r_rows = *(int32_t *)rhs.rows;
-
-    int32_t l_rows_flipped = *(int32_t *)flip_horizontal(this->rows).data();
-    int32_t r_rows_flipped = *(int32_t *)flip_horizontal(rhs.rows).data();
-
-    int32_t l_cols = *(int32_t *)this->cols;
-    int32_t r_cols = *(int32_t *)rhs.cols;
-
-    int32_t l_cols_flipped = *(int32_t *)flip_horizontal(this->cols).data();
-    int32_t r_cols_flipped = *(int32_t *)flip_horizontal(rhs.cols).data();
+    int32_t rows = *(int32_t *)this->rows;
+    int32_t cols = *(int32_t *)this->cols;
+    int32_t rows_flipped = *(int32_t *)flip_horizontal(this->rows).data();
+    int32_t cols_flipped = *(int32_t *)flip_horizontal(this->cols).data();
 
     // Flip OX
+    int32_t rows_ox = *(int32_t *)flip_ox((const char(&)[4])rows).data();
 
-    return std::max({l_rows, l_cols,
-                     l_rows_flipped, l_cols_flipped}) <
-           std::max({r_rows, r_cols,
-                     r_rows_flipped, r_cols_flipped});
+    return std::max({rows,
+                     cols,
+                     rows_flipped,
+                     cols_flipped,
+                     rows_ox});
+}
+
+bool Position4x4::operator<(const Position4x4 &rhs) const
+{
+    return this->hash() < rhs.hash();
 }
 
 bool Position4x4::has_4_in_a_row() const
