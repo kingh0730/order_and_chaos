@@ -31,7 +31,7 @@ Solver::solve_one_child(const Position4x4 &position, const Move &move)
 }
 
 GameResult
-Solver::solve(const Position4x4 &position)
+Solver::solve_not_memoized(const Position4x4 &position)
 {
     // FIXME delete shortcut and print
     // Order has to win in 6 steps or less
@@ -60,4 +60,12 @@ Solver::solve(const Position4x4 &position)
 
     // recursive step
     return game_result_recur_step(grs);
+}
+
+GameResult
+Solver::solve(const Position4x4 &position)
+{
+    // TODO
+
+    return this->solve_not_memoized(position);
 }
