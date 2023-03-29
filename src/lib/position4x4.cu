@@ -21,6 +21,7 @@ uint32_t Position4x4::hash() const
     uint32_t cols_flip_hor_ox = *(uint32_t *)flip_ox(
                                      (const char(&)[4])cols_flip_hor)
                                      .data();
+
     return std::max({
         rows,
         cols,
