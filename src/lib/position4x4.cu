@@ -5,6 +5,14 @@
 #include "position4x4.h"
 #include "position4x4_masks.h"
 
+bool Position4x4::operator<(const Position4x4 &rhs) const
+{
+    int32_t l = *(int32_t *)this->rows;
+    int32_t r = *(int32_t *)rhs.rows;
+
+    return l < r;
+}
+
 bool Position4x4::has_4_in_a_row() const
 {
     for (int i = 0; i < 4; i++)

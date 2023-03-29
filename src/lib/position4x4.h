@@ -55,6 +55,9 @@ public:
     Position4x4(const Position4x4 &other) = default;
     Position4x4 &operator=(const Position4x4 &other) = default;
 
+    // As map key
+    bool operator<(const Position4x4 &rhs) const;
+
     // Moves
     Position4x4 do_move(const Move &move) const;
     std::vector<Move> generate_moves() const;
