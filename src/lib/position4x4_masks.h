@@ -150,4 +150,22 @@ std::array<unsigned char, 4> flip_hor_ver(const unsigned char (&chars)[4]);
 #define PIECE_32_MASK (uint32_t)0b00110000000000000000000000000000
 #define PIECE_33_MASK (uint32_t)0b11000000000000000000000000000000
 
+const uint32_t INT_TAKEN_MASKS[16] = {
+    TAKEN_00_MASK,
+    TAKEN_01_MASK,
+    TAKEN_02_MASK,
+    TAKEN_03_MASK,
+    TAKEN_10_MASK,
+    TAKEN_11_MASK,
+    TAKEN_12_MASK,
+    TAKEN_13_MASK,
+    TAKEN_20_MASK,
+    TAKEN_21_MASK,
+    TAKEN_22_MASK,
+    TAKEN_23_MASK,
+    TAKEN_30_MASK,
+    TAKEN_31_MASK,
+    TAKEN_32_MASK,
+    TAKEN_33_MASK};
+
 bool int_has_4_in_a_row(const uint32_t &chars);

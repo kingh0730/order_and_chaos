@@ -5,9 +5,21 @@
 #include "position4x4.h"
 #include "position4x4_masks.h"
 
+int Position4x4::get_num_spaces_remain() const
+{
+    int count = 0;
+    for (int i = 0; i < 16; i++)
+    {
+        if (((const uint32_t)this->rows) & INT_TAKEN_MASKS[i])
+        {
+            count += 1;
+        }
+    }
+}
+
 Player Position4x4::get_player() const
 {
-    int parity = this->num_spaces_remain % 2;
+    int parity = this->get_num_spaces_remain() % 2;
 
     switch (parity)
     {
@@ -161,8 +173,8 @@ Position4x4 Position4x4::do_move(const Move &move) const
     //     char_set_piece(result.neg_diag, move.x, move.piece);
     // }
 
-    // num_spaces_remain
-    result.num_spaces_remain -= 1;
+    // // num_spaces_remain
+    // result.num_spaces_remain -= 1;
 
     return result;
 }
@@ -186,7 +198,8 @@ PrimitiveValue Position4x4::primitive_value() const
     }
 
     // If no space remain
-    if (!this->num_spaces_remain)
+    int num_spaces_remain = this->get_num_spaces_remain();
+    if (num_spaces_remain)
     {
         switch (player)
         {
@@ -208,13 +221,13 @@ PrimitiveValue Position4x4::primitive_value() const
 std::string Position4x4::format() const
 {
     Player player = this->get_player();
+    int num_spaces_remain = this->get_num_spaces_remain();
 
     std::string result = "";
 
     result += format_player(player) + "\t";
     result += format_primitive_value(this->primitive_value()) + '\t';
-    result += "num_spaces_remain: " +
-              std::to_string(this->num_spaces_remain) + '\n';
+    result += "num_spaces_remain: " + std::to_string(num_spaces_remain) + '\n';
     result += "hash: " + std::bitset<32>(this->hash()).to_string() + '\n';
 
     for (int i = 0; i < 4; i++)
@@ -228,13 +241,13 @@ std::string Position4x4::format() const
 std::string Position4x4::format_pretty() const
 {
     Player player = this->get_player();
+    int num_spaces_remain = this->get_num_spaces_remain();
 
     std::string result = "";
 
     result += format_player(player) + "\t";
     result += format_primitive_value(this->primitive_value()) + '\t';
-    result += "num_spaces_remain: " +
-              std::to_string(this->num_spaces_remain) + '\n';
+    result += "num_spaces_remain: " + std::to_string(num_spaces_remain) + '\n';
     result += "hash: " + std::bitset<32>(this->hash()).to_string() + '\n';
 
     result += "    ---------\n";
