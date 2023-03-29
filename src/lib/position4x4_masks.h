@@ -27,7 +27,10 @@
 #define SET_X_2 (char)0b00110000
 #define SET_X_3 (char)0b11000000
 
-#define FLIP_OX (char)0b01010101
+#define FL_OX_0 (char)0b00000001
+#define FL_OX_1 (char)0b00000100
+#define FL_OX_2 (char)0b00010000
+#define FL_OX_3 (char)0b01000000
 
 const char TAKEN_MASKS[4] = {
     (char)TAKEN_0,
@@ -52,6 +55,12 @@ const char SET_X_MASKS[4] = {
     (char)SET_X_1,
     (char)SET_X_2,
     (char)SET_X_3};
+
+const char FL_OX_MASKS[4] = {
+    (char)FL_OX_0,
+    (char)FL_OX_1,
+    (char)FL_OX_2,
+    (char)FL_OX_3};
 
 bool char_has_4_in_a_row(const char &c);
 
