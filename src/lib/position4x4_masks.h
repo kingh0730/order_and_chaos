@@ -71,4 +71,4 @@ unsigned char char_flip_vertical(unsigned char c);
 
 std::array<char, 4> flip_ox(const char (&chars)[4]);
 std::array<char, 4> flip_horizontal(const char (&chars)[4]);
-std::array<char, 4> flip_vertical(const char (&chars)[4]);
+std::array<unsigned char, 4> flip_vertical(const unsigned char (&chars)[4]);

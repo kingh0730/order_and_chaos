@@ -68,9 +68,9 @@ std::array<char, 4> flip_horizontal(const char (&chars)[4])
     return result;
 }
 
-std::array<char, 4> flip_vertical(const char (&chars)[4])
+std::array<unsigned char, 4> flip_vertical(const unsigned char (&chars)[4])
 {
-    std::array<char, 4> result = {
+    std::array<unsigned char, 4> result = {
         char_flip_vertical(chars[0]),
         char_flip_vertical(chars[1]),
         char_flip_vertical(chars[2]),
