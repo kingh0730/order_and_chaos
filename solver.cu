@@ -17,11 +17,15 @@ Solver::solve(const Position4x4 &position)
 {
     auto pv = position.primitive_value();
 
-    // std::cout << position.format_pretty() << std::endl;
-    // TODO delete this shortcut
+    // TODO delete shortcut and print
+    // Order has to win in 6 steps or less
     if (position.get_num_spaces_remain() <= 10)
     {
         return GameResult::GameLose;
+    }
+    if (position.primitive_value() != PrimitiveValue::NotPrimitive)
+    {
+        std::cout << position.format_pretty() << std::endl;
     }
 
     // If not primitive
