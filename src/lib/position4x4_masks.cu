@@ -49,6 +49,14 @@ char char_flip_ox(char c)
     return c;
 }
 
+unsigned char char_flip_vertical(unsigned char c)
+{
+    return c << 6 |
+           (c & (unsigned char)0b00001100) << 2 |
+           (c & (unsigned char)0b00110000) >> 2 |
+           (c & (unsigned char)0b11000000) >> 6;
+}
+
 std::array<char, 4> flip_horizontal(const char (&chars)[4])
 {
     std::array<char, 4> result = {chars[3], chars[2], chars[1], chars[0]};

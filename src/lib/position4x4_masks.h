@@ -67,6 +67,7 @@ bool char_has_4_in_a_row(const char &c);
 void char_set_piece(char &c, size_t i, Move::Piece piece);
 
 char char_flip_ox(char c);
+unsigned char char_flip_vertical(unsigned char c);
 
 std::array<char, 4> flip_ox(const char (&chars)[4]);
 std::array<char, 4> flip_horizontal(const char (&chars)[4]);
