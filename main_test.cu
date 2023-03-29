@@ -38,6 +38,8 @@ int main()
     p = Position4x4(Player::Order, empty, empty, 0, 0, 0);
     assert(p.primitive_value() == PrimitiveValue::Lose);
 
+    p = Position4x4();
+
     // Moves
     Move m = Move(Move::Piece::X, 0, 0);
     std::cout << m.format() << '\n';
