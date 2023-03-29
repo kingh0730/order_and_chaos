@@ -11,7 +11,8 @@ int Position4x4::get_num_spaces_remain() const
     for (int i = 0; i < 16; i++)
     {
         // If not taken
-        if (!((const uint32_t &)this->rows) & INT_TAKEN_MASKS[i])
+        bool taken = ((const uint32_t &)this->rows) & INT_TAKEN_MASKS[i];
+        if (!taken)
         {
             count += 1;
         }
