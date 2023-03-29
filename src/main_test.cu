@@ -34,6 +34,8 @@ int main()
     std::cout << p.format();
     std::cout << p.format_pretty();
     assert(p.primitive_value() == PrimitiveValue::Win);
+    assert(p.get_num_spaces_remain() == 12);
+    assert(p.get_player() == Player::Order);
 
     p = Position4x4();
 
