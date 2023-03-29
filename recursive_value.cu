@@ -41,3 +41,28 @@ GameResult game_result_recur_step(const std::vector<GameResult> &children)
 
     return GameResult::GameLose;
 }
+
+std::string format_game_result(const GameResult &gr)
+{
+    switch (gr)
+    {
+    case GameResult::Undecided:
+        return "GameResult::Undecided";
+
+    case GameResult::GameWin:
+        return "GameResult::GameWin";
+
+    case GameResult::GameLose:
+        return "GameResult::GameLose";
+
+    case GameResult::GameTie:
+        return "GameResult::GameTie";
+
+    case GameResult::GameDraw:
+        return "GameResult::GameDraw";
+
+    default:
+        std::cerr << "GameResult::Unknown(" + std::to_string(gr) + ")";
+        throw std::invalid_argument("unknown GameResult type");
+    }
+}
