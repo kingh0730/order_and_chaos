@@ -78,28 +78,25 @@ Solver::solve(const Position4x4 &position)
     return gr;
 }
 
+// TODO memoized states
 GameResult Solver::memoized_states_to_game_result(
     const Position4x4 &cur_position,
     const MemoizedState1 &ms1,
     const MemoizedState2 &ms2)
 {
-    // TODO
-
     return GameResult::Undecided;
 }
 
+// TODO memoized states
 Solver::MemoizedState1 Solver::game_result_to_memoized_state1(
     const Position4x4 &cur_position, const GameResult &gr)
 {
-    // TODO
-
     return MemoizedState1::MemoizedState1_0;
 }
 
+// TODO memoized states
 Solver::MemoizedState2 Solver::game_result_to_memoized_state2(
     const Position4x4 &cur_position, const GameResult &gr)
 {
-    // TODO
-
     return MemoizedState2::MemoizedState2_0;
 }
