@@ -17,6 +17,12 @@ uint32_t Position4x4::hash() const
     uint32_t cols_flip_ver = *(uint32_t *)flip_vertical(
                                   (const unsigned char(&)[4])this->cols)
                                   .data();
+    uint32_t rows_flip_ver_hor = *(uint32_t *)flip_horizontal(
+                                      (const char(&)[4])rows_flip_ver)
+                                      .data();
+    uint32_t cols_flip_ver_hor = *(uint32_t *)flip_horizontal(
+                                      (const char(&)[4])cols_flip_ver)
+                                      .data();
 
     // Flip OX
     uint32_t rows_ox = *(uint32_t *)flip_ox((const char(&)[4])rows).data();
@@ -27,13 +33,18 @@ uint32_t Position4x4::hash() const
     uint32_t cols_flip_hor_ox = *(uint32_t *)flip_ox(
                                      (const char(&)[4])cols_flip_hor)
                                      .data();
-
     uint32_t rows_flip_ver_ox = *(uint32_t *)flip_ox(
                                      (const char(&)[4])rows_flip_ver)
                                      .data();
     uint32_t cols_flip_ver_ox = *(uint32_t *)flip_ox(
                                      (const char(&)[4])cols_flip_ver)
                                      .data();
+    uint32_t rows_flip_ver_hor_ox = *(uint32_t *)flip_ox(
+                                         (const char(&)[4])rows_flip_ver_hor)
+                                         .data();
+    uint32_t cols_flip_ver_hor_ox = *(uint32_t *)flip_ox(
+                                         (const char(&)[4])cols_flip_ver_hor)
+                                         .data();
 
     return std::max({
         rows,
@@ -42,12 +53,16 @@ uint32_t Position4x4::hash() const
         cols_flip_hor,
         rows_flip_ver,
         cols_flip_ver,
+        rows_flip_ver_hor,
+        cols_flip_ver_hor,
         rows_ox,
         cols_ox,
         rows_flip_hor_ox,
         cols_flip_hor_ox,
         rows_flip_ver_ox,
         cols_flip_ver_ox,
+        rows_flip_ver_hor_ox,
+        cols_flip_ver_hor_ox,
     });
 }
 
