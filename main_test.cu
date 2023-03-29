@@ -1,3 +1,5 @@
+#define MAIN_TEST_PRINT
+
 #include <iostream>
 #include <cassert>
 

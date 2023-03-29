@@ -41,10 +41,12 @@ Solver::solve(const Position4x4 &position)
     {
         return GameResult::GameLose;
     }
+#ifdef MAIN_TEST_PRINT
     if (position.primitive_value() != PrimitiveValue::NotPrimitive)
     {
         std::cout << position.format_pretty() << std::endl;
     }
+#endif
 
     // If not primitive
     if (pv != PrimitiveValue::NotPrimitive)
