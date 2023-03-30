@@ -5,7 +5,7 @@
 #include "position4x4_cuda.h"
 #include "position4x4_masks.h"
 
-GameResult has_4_to_game_result(bool has_4)
+GameResult has_4_to_game_result_0_spaces_remain(bool has_4)
 {
     switch (has_4)
     {
@@ -146,7 +146,7 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
         uint32_t ai = a[i];
 
         auto position = Position4x4(Player::Order, (const char(&)[4])(ai), 0);
-        auto game_result = has_4_to_game_result(b[i]);
+        auto game_result = has_4_to_game_result_0_spaces_remain(b[i]);
 
         result.insert(std::pair<Position4x4, GameResult>(
             position, game_result));
