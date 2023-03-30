@@ -25,6 +25,7 @@ class Solver
     };
 
 private:
+    // TODO This could be a pointer to avoid copying
     std::map<Position4x4, GameResult> memoized_game_results;
 
     std::map<Position4x4, MemoizedState1> memoized_states1;
@@ -51,6 +52,8 @@ private:
 
 public:
     Solver() : memoized_game_results(std::map<Position4x4, GameResult>()) {}
+    Solver(std::map<Position4x4, GameResult> &load)
+        : memoized_game_results(load) {}
 
     GameResult solve_not_memoized(const Position4x4 &position);
     GameResult solve(const Position4x4 &position);
