@@ -144,9 +144,9 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
             return GameResult::GameWin;
         case false:
             return GameResult::GameLose;
-        default:
-            throw std::runtime_error("impossible");
         }
+
+            throw std::runtime_error("impossible");
     };
 
 }
