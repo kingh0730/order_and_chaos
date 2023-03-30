@@ -4,34 +4,6 @@
 #include "position4x4_cuda.h"
 #include "position4x4_masks.h"
 
-__global__ bool cuda_int_has_4_in_a_row(const uint32_t &chars)
-{
-    uint32_t fir_row = (chars & FIR_ROW_MASK);
-    uint32_t sec_row = (chars & SEC_ROW_MASK);
-    uint32_t thr_row = (chars & THR_ROW_MASK);
-    uint32_t fou_row = (chars & FOU_ROW_MASK);
-
-    uint32_t fir_col = (chars & FIR_COL_MASK);
-    uint32_t sec_col = (chars & SEC_COL_MASK);
-    uint32_t thr_col = (chars & THR_COL_MASK);
-    uint32_t fou_col = (chars & FOU_COL_MASK);
-
-    uint32_t pos_dia = (chars & POS_DIA_MASK);
-    uint32_t neg_dia = (chars & NEG_DIA_MASK);
-
-    return (
-        fir_row == FIR_ROW_OOOO || fir_row == FIR_ROW_XXXX ||
-        sec_row == SEC_ROW_OOOO || sec_row == SEC_ROW_XXXX ||
-        thr_row == THR_ROW_OOOO || thr_row == THR_ROW_XXXX ||
-        fou_row == FOU_ROW_OOOO || fou_row == FOU_ROW_XXXX ||
-        fir_col == FIR_COL_OOOO || fir_col == FIR_COL_XXXX ||
-        sec_col == SEC_COL_OOOO || sec_col == SEC_COL_XXXX ||
-        thr_col == THR_COL_OOOO || thr_col == THR_COL_XXXX ||
-        fou_col == FOU_COL_OOOO || fou_col == FOU_COL_XXXX ||
-        pos_dia == POS_DIA_OOOO || pos_dia == POS_DIA_XXXX ||
-        neg_dia == NEG_DIA_OOOO || neg_dia == NEG_DIA_XXXX);
-}
-
 __global__ void cuda_have_4_in_a_row(int *a, bool *b, int N)
 {
     // Calculate global thread thread ID
@@ -40,11 +12,35 @@ __global__ void cuda_have_4_in_a_row(int *a, bool *b, int N)
     // Boundary check
     if (tid < N)
     {
-        b[tid] = cuda_int_has_4_in_a_row(a[tid]);
+        uint32_t chars = a[tid];
+
+        uint32_t fir_row = (chars & FIR_ROW_MASK);
+        uint32_t sec_row = (chars & SEC_ROW_MASK);
+        uint32_t thr_row = (chars & THR_ROW_MASK);
+        uint32_t fou_row = (chars & FOU_ROW_MASK);
+
+        uint32_t fir_col = (chars & FIR_COL_MASK);
+        uint32_t sec_col = (chars & SEC_COL_MASK);
+        uint32_t thr_col = (chars & THR_COL_MASK);
+        uint32_t fou_col = (chars & FOU_COL_MASK);
+
+        uint32_t pos_dia = (chars & POS_DIA_MASK);
+        uint32_t neg_dia = (chars & NEG_DIA_MASK);
+
+        b[tid] = (fir_row == FIR_ROW_OOOO || fir_row == FIR_ROW_XXXX ||
+                  sec_row == SEC_ROW_OOOO || sec_row == SEC_ROW_XXXX ||
+                  thr_row == THR_ROW_OOOO || thr_row == THR_ROW_XXXX ||
+                  fou_row == FOU_ROW_OOOO || fou_row == FOU_ROW_XXXX ||
+                  fir_col == FIR_COL_OOOO || fir_col == FIR_COL_XXXX ||
+                  sec_col == SEC_COL_OOOO || sec_col == SEC_COL_XXXX ||
+                  thr_col == THR_COL_OOOO || thr_col == THR_COL_XXXX ||
+                  fou_col == FOU_COL_OOOO || fou_col == FOU_COL_XXXX ||
+                  pos_dia == POS_DIA_OOOO || pos_dia == POS_DIA_XXXX ||
+                  neg_dia == NEG_DIA_OOOO || neg_dia == NEG_DIA_XXXX);
     }
 }
 
-void test_have_4_in_a_row()
+void test_cuda_have_4_in_a_row()
 {
     // Array size of 2^16 (65536 elements)
     const int N = 1 << 16;
