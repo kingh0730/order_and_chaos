@@ -80,4 +80,24 @@ void test_cuda_have_4_in_a_row()
     std::cout << "CUDA test completed successfully!\n";
 }
 
-std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain();
+std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
+{
+    // Array size of 2^16 (65536 elements)
+    const int N = 1 << 16;
+
+    // Declare unified memory pointers
+    int *a;
+    bool *b;
+
+    // Allocation memory for these pointers
+    cudaMallocManaged(&a, N * sizeof(int));
+    cudaMallocManaged(&b, N * sizeof(bool));
+
+    // Initialize vectors
+    for (int i = 0; i < N; i++)
+    {
+        a[i] = rand() % 100;
+    }
+
+    return std::map<Position4x4, GameResult>();
+}
