@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert>
+#include <bitset>
 
 #include "position4x4_cuda.h"
 #include "position4x4_masks.h"
@@ -155,8 +156,6 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
 
         result.insert(std::pair<Position4x4, GameResult>(
             position, game_result));
-
-        std::cout << result.size() << std::endl;
     }
 
     // Free unified memory (same as memory allocated with cudaMalloc)
