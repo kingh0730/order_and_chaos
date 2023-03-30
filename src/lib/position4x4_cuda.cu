@@ -129,10 +129,6 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
         assert(b[i] == int_has_4_in_a_row(a[i]));
     }
 
-    // Free unified memory (same as memory allocated with cudaMalloc)
-    cudaFree(a);
-    cudaFree(b);
-
     // Insert to map
     auto result = std::map<Position4x4, GameResult>();
 
@@ -147,7 +143,25 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
         }
 
         std::cout << "impossible" << std::endl;
-            throw std::runtime_error("impossible");
+        throw std::runtime_error("impossible");
     };
 
+    for (uint32_t i = 0; i < N; i++)
+    {
+        uint32_t ai = a[i];
+
+        auto position = Position4x4(Player::Order, (const char *)&ai, 0);
+        auto game_result = has_4_to_game_result(b[i]);
+
+        result.insert(std::pair<Position4x4, GameResult>(
+            position, game_result));
+
+        std::cout << result.size() << std::endl;
+    }
+
+    // Free unified memory (same as memory allocated with cudaMalloc)
+    cudaFree(a);
+    cudaFree(b);
+
+    return result;
 }

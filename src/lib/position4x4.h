@@ -27,7 +27,7 @@ public:
     {
     }
 
-    // NOTE only useful for hashing
+    // NOTE only use for hashing
     Position4x4(Player player, const char rows[4], int num_spaces_remain)
         : Position4x4(player, rows, rows, 0, 0, num_spaces_remain)
     {
