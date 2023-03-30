@@ -57,4 +57,6 @@ public:
 
     GameResult solve_not_memoized(const Position4x4 &position);
     GameResult solve(const Position4x4 &position);
+
+    std::string format() const;
 };

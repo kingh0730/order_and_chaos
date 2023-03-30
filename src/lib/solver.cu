@@ -78,6 +78,14 @@ Solver::solve(const Position4x4 &position)
     return gr;
 }
 
+std::string Solver::format() const
+{
+    size_t memoized_game_results_size = this->memoized_game_results.size();
+
+    return "memoized_game_results_size: " +
+           std::to_string(memoized_game_results_size);
+}
+
 // TODO memoized states
 GameResult Solver::memoized_states_to_game_result(
     const Position4x4 &cur_position,
