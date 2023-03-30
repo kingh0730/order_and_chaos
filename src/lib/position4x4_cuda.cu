@@ -5,6 +5,20 @@
 #include "position4x4_cuda.h"
 #include "position4x4_masks.h"
 
+GameResult has_4_to_game_result(bool has_4)
+{
+    switch (has_4)
+    {
+    case true:
+        return GameResult::GameWin;
+    case false:
+        return GameResult::GameLose;
+    }
+
+    std::cout << "impossible" << std::endl;
+    throw std::runtime_error("impossible");
+}
+
 __global__ void cuda_have_4_in_a_row(uint32_t *a, bool *b, int N)
 {
     // Calculate global thread thread ID
@@ -126,20 +140,6 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
 
     // Insert to map
     auto result = std::map<Position4x4, GameResult>();
-
-    auto has_4_to_game_result = [](bool has_4)
-    {
-        switch (has_4)
-        {
-        case true:
-            return GameResult::GameWin;
-        case false:
-            return GameResult::GameLose;
-        }
-
-        std::cout << "impossible" << std::endl;
-        throw std::runtime_error("impossible");
-    };
 
     for (uint32_t i = 0; i < N; i++)
     {
