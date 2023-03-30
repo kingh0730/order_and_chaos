@@ -12,8 +12,6 @@ const int BLOCK_SIZE = 1 << 10;
 inline int GRID_SIZE(int N) { return (N + BLOCK_SIZE - 1) / BLOCK_SIZE; }
 
 // Functions
-__global__ void cuda_have_4_in_a_row(int *a, bool *b, int N);
-
 std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain();
 
 void test_cuda_have_4_in_a_row();
