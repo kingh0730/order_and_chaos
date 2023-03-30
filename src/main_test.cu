@@ -64,7 +64,7 @@ int main()
     auto moves_size = moves.size();
 
     assert(moves_size == 32);
-    std::cout << "num_moves: " << moves_size << "\n\n==================\n\n";
+    std::cout << "num_moves: " << moves_size << "\n";
 
     // for (const Move &m : moves)
     // {
@@ -82,6 +82,8 @@ int main()
     Solver solver = Solver(sol_0_spaces_remain);
 
     std::cout << solver.format() << '\n';
+
+    std::cout << "\n==================\n\n";
 
     // Solve
     GameResult gr = solver.solve(p);
