@@ -59,14 +59,8 @@ void test_cuda_have_4_in_a_row()
         a[i] = rand() % 100;
     }
 
-    // Threads per CTA (1024 threads per CTA)
-    int BLOCK_SIZE = 1 << 10;
-
-    // CTAs per Grid
-    int GRID_SIZE = (N + BLOCK_SIZE - 1) / BLOCK_SIZE;
-
     // Call CUDA kernel
-    cuda_have_4_in_a_row<<<GRID_SIZE, BLOCK_SIZE>>>(a, b, N);
+    cuda_have_4_in_a_row<<<GRID_SIZE(N), BLOCK_SIZE>>>(a, b, N);
 
     // Wait for all previous operations before using values
     // We need this because we don't get the implicit synchronization of
@@ -85,3 +79,5 @@ void test_cuda_have_4_in_a_row()
 
     std::cout << "CUDA test completed successfully!\n";
 }
+
+std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain();
