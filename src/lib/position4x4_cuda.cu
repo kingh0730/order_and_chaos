@@ -83,5 +83,5 @@ void test_cuda_have_4_in_a_row()
     cudaFree(a);
     cudaFree(b);
 
-    std::cout << "COMPLETED SUCCESSFULLY!\n";
+    std::cout << "CUDA test completed successfully!\n";
 }
