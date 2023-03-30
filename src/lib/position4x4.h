@@ -51,8 +51,8 @@ public:
         char neg_diag,
         int num_spaces_remain)
         : player(player),
-          rows{*rows},
-          cols{*cols},
+          rows{rows[0], rows[1], rows[2], rows[3]},
+          cols{cols[0], cols[1], cols[2], cols[3]},
           pos_diag(pos_diag),
           neg_diag(neg_diag),
           num_spaces_remain(num_spaces_remain)
