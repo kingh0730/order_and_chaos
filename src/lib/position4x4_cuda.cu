@@ -133,5 +133,20 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
     cudaFree(a);
     cudaFree(b);
 
-    return std::map<Position4x4, GameResult>();
+    // Insert to map
+    auto result = std::map<Position4x4, GameResult>();
+
+    auto has_4_to_game_result = [](bool has_4)
+    {
+        switch (has_4)
+        {
+        case true:
+            return GameResult::GameWin;
+        case false:
+            return GameResult::GameLose;
+        default:
+            throw std::runtime_error("impossible");
+        }
+    };
+
 }

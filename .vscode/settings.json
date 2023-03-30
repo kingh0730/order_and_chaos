@@ -22,7 +22,8 @@
     "system_error": "cpp",
     "type_traits": "cpp",
     "unordered_map": "cpp",
-    "xhash": "cpp"
+    "xhash": "cpp",
+    "utility": "cpp"
   },
   "cSpell.words": [
     "cassert",
