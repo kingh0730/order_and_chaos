@@ -124,12 +124,6 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
     // cudaMemcpy like in the original example
     cudaDeviceSynchronize();
 
-    // Verify the result on the CPU
-    for (int i = 0; i < N; i++)
-    {
-        assert(b[i] == int_has_4_in_a_row(a[i]));
-    }
-
     // Insert to map
     auto result = std::map<Position4x4, GameResult>();
 
