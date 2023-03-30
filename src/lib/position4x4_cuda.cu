@@ -150,7 +150,7 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
     {
         uint32_t ai = a[i];
 
-        auto position = Position4x4(Player::Order, (const char *)&ai, 0);
+        auto position = Position4x4(Player::Order, (const char(&)[4])(ai), 0);
         auto game_result = has_4_to_game_result(b[i]);
 
         result.insert(std::pair<Position4x4, GameResult>(
