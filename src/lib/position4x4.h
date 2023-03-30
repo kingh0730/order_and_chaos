@@ -27,6 +27,12 @@ public:
     {
     }
 
+    // NOTE only useful for hashing
+    Position4x4(Player player, const char rows[4], int num_spaces_remain)
+        : Position4x4(player, rows, rows, 0, 0, num_spaces_remain)
+    {
+    }
+
     Position4x4(Player player)
         : player(player),
           rows{0, 0, 0, 0},
@@ -39,8 +45,8 @@ public:
 
     Position4x4(
         Player player,
-        char rows[4],
-        char cols[4],
+        const char rows[4],
+        const char cols[4],
         char pos_diag,
         char neg_diag,
         int num_spaces_remain)
