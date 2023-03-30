@@ -76,8 +76,14 @@ int main()
     //     std::cout << after.format_pretty() << '\n';
     // }
 
+    // Prepare solver
+    std::map<Position4x4, GameResult> sol_0_spaces_remain =
+        cuda_solve_0_spaces_remain();
+    Solver solver = Solver(sol_0_spaces_remain);
+
+    std::cout << solver.format() << '\n';
+
     // Solve
-    Solver solver = Solver();
     GameResult gr = solver.solve(p);
 
     std::cout << format_game_result(gr) << '\n';
