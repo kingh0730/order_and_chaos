@@ -69,6 +69,7 @@ void test_cuda_have_4_in_a_row()
     // Declare unified memory pointers
     uint32_t *a;
     bool *b;
+    bool c[N];
 
     // Allocation memory for these pointers
     cudaMallocManaged(&a, N * sizeof(uint32_t));
@@ -106,7 +107,10 @@ void test_cuda_have_4_in_a_row()
     // --------------------- CPU ---------------------
     auto t1 = high_resolution_clock::now();
 
-    // TODO
+    for (int i = 0; i < N; i++)
+    {
+        c[i] = int_has_4_in_a_row(a[i]);
+    }
 
     auto t2 = high_resolution_clock::now();
 
@@ -124,7 +128,7 @@ void test_cuda_have_4_in_a_row()
     //  Verify the result on the CPU
     for (int i = 0; i < N; i++)
     {
-        assert(b[i] == int_has_4_in_a_row(a[i]));
+        assert(b[i] == c[i]);
     }
 
     // Free unified memory (same as memory allocated with cudaMalloc)
