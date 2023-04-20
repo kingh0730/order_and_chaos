@@ -1,9 +1,15 @@
+#include <chrono>
 #include <iostream>
 #include <cassert>
 #include <bitset>
 
 #include "position4x4_cuda.h"
 #include "position4x4_masks.h"
+
+using std::chrono::duration;
+using std::chrono::duration_cast;
+using std::chrono::high_resolution_clock;
+using std::chrono::milliseconds;
 
 GameResult has_4_to_game_result_0_spaces_remain(bool has_4)
 {
@@ -74,6 +80,9 @@ void test_cuda_have_4_in_a_row()
         a[i] = rand() % 100;
     }
 
+    // --------------------- CUDA ---------------------
+    auto t1 = high_resolution_clock::now();
+
     // Call CUDA kernel
     cuda_have_4_in_a_row<<<GRID_SIZE(N), BLOCK_SIZE>>>(a, b, N);
 
@@ -82,7 +91,37 @@ void test_cuda_have_4_in_a_row()
     // cudaMemcpy like in the original example
     cudaDeviceSynchronize();
 
-    // Verify the result on the CPU
+    auto t2 = high_resolution_clock::now();
+
+    /* Getting number of milliseconds as an integer. */
+    auto ms_int = duration_cast<milliseconds>(t2 - t1);
+
+    /* Getting number of milliseconds as a double. */
+    duration<double, std::milli> ms_double = t2 - t1;
+
+    std::cout << ms_int.count() << "ms\n";
+    std::cout << ms_double.count() << "ms\n";
+    std::cout << std::endl;
+
+    // --------------------- CPU ---------------------
+    auto t1 = high_resolution_clock::now();
+
+    // TODO
+
+    auto t2 = high_resolution_clock::now();
+
+    /* Getting number of milliseconds as an integer. */
+    auto ms_int = duration_cast<milliseconds>(t2 - t1);
+
+    /* Getting number of milliseconds as a double. */
+    duration<double, std::milli> ms_double = t2 - t1;
+
+    std::cout << ms_int.count() << "ms\n";
+    std::cout << ms_double.count() << "ms\n";
+    std::cout << std::endl;
+
+    // --------------------- CUDA == CPU ---------------------
+    //  Verify the result on the CPU
     for (int i = 0; i < N; i++)
     {
         assert(b[i] == int_has_4_in_a_row(a[i]));
