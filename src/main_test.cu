@@ -14,7 +14,7 @@ int main()
     // CUDA test
 
     // Array size of 2^16 (65536 elements)
-    for (int i = 16; i < 30; i++)
+    for (int i = 16; i < 31; i++)
     {
         int N = 1 << i;
         std::cout << "i: " << i << '\n';
