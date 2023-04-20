@@ -5,8 +5,8 @@
 #include "position4x4.h"
 #include "recursive_value.h"
 
-// Threads per CTA (1024 threads per CTA)
-const int DEFAULT_BLOCK_SIZE = 1 << 10;
+// Threads per CTA (2048 threads per CTA)
+const int DEFAULT_BLOCK_SIZE = 1 << 11;
 
 // CTAs per Grid
 inline int GRID_SIZE(int N, int BLOCK_SIZE) { return (N + BLOCK_SIZE - 1) / BLOCK_SIZE; }
