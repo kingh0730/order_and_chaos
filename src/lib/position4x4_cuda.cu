@@ -61,15 +61,12 @@ __global__ void cuda_have_4_in_a_row(uint32_t *a, bool *b, int N)
     }
 }
 
-void test_cuda_have_4_in_a_row()
+void test_cuda_have_4_in_a_row(const int N)
 {
-    // Array size of 2^16 (65536 elements)
-    const int N = 1 << 16;
-
     // Declare unified memory pointers
     uint32_t *a;
     bool *b;
-    bool c[N];
+    bool *c = (bool *)malloc(N * sizeof(bool));
 
     // Allocation memory for these pointers
     cudaMallocManaged(&a, N * sizeof(uint32_t));
@@ -136,6 +133,7 @@ void test_cuda_have_4_in_a_row()
     // Free unified memory (same as memory allocated with cudaMalloc)
     cudaFree(a);
     cudaFree(b);
+    free(c);
 
     std::cout << "CUDA test completed successfully!\n";
 }
