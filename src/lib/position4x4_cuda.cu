@@ -100,6 +100,7 @@ void test_cuda_have_4_in_a_row()
     /* Getting number of milliseconds as a double. */
     duration<double, std::milli> ms_double = t2 - t1;
 
+    std::cout << "CUDA: " << '\n';
     std::cout << ms_int.count() << "ms\n";
     std::cout << ms_double.count() << "ms\n";
     std::cout << std::endl;
@@ -120,6 +121,7 @@ void test_cuda_have_4_in_a_row()
     /* Getting number of milliseconds as a double. */
     duration<double, std::milli> ms_double_2 = t4 - t3;
 
+    std::cout << "CPU: " << '\n';
     std::cout << ms_int_2.count() << "ms\n";
     std::cout << ms_double_2.count() << "ms\n";
     std::cout << std::endl;
