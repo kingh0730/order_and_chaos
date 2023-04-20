@@ -13,6 +13,9 @@ int main()
 
     // CUDA test
     test_cuda_have_4_in_a_row();
+    return 0;
+
+    // --------------------------------------------
 
     // GameResult
     std::cout << "sizeof(GameResult): " << sizeof(GameResult) << '\n';
