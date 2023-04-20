@@ -17,6 +17,7 @@ int main()
     for (int i = 16; i < 30; i++)
     {
         int N = 1 << i;
+        std::cout << "i: " << i << '\n';
         std::cout << "N: " << N << '\n';
         test_cuda_have_4_in_a_row(N, DEFAULT_BLOCK_SIZE);
     }
