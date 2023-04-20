@@ -14,4 +14,4 @@ inline int GRID_SIZE(int N) { return (N + BLOCK_SIZE - 1) / BLOCK_SIZE; }
 // Functions
 std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain();
 
-void test_cuda_have_4_in_a_row();
+void test_cuda_have_4_in_a_row(const int N);
