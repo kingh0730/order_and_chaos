@@ -105,23 +105,23 @@ void test_cuda_have_4_in_a_row()
     std::cout << std::endl;
 
     // --------------------- CPU ---------------------
-    auto t1 = high_resolution_clock::now();
+    auto t3 = high_resolution_clock::now();
 
     for (int i = 0; i < N; i++)
     {
         c[i] = int_has_4_in_a_row(a[i]);
     }
 
-    auto t2 = high_resolution_clock::now();
+    auto t4 = high_resolution_clock::now();
 
     /* Getting number of milliseconds as an integer. */
-    auto ms_int = duration_cast<milliseconds>(t2 - t1);
+    auto ms_int_2 = duration_cast<milliseconds>(t4 - t3);
 
     /* Getting number of milliseconds as a double. */
-    duration<double, std::milli> ms_double = t2 - t1;
+    duration<double, std::milli> ms_double_2 = t4 - t3;
 
-    std::cout << ms_int.count() << "ms\n";
-    std::cout << ms_double.count() << "ms\n";
+    std::cout << ms_int_2.count() << "ms\n";
+    std::cout << ms_double_2.count() << "ms\n";
     std::cout << std::endl;
 
     // --------------------- CUDA == CPU ---------------------
