@@ -13,7 +13,7 @@ int main()
 
     // CUDA test
 
-    // Array size of 2^16 (65536 elements)
+    // // Array size of 2^16 (65536 elements)
     // for (int i = 16; i < 31; i++)
     // {
     //     int N = 1 << i;
