@@ -13,22 +13,22 @@ int main()
 
     // CUDA test
 
-    // // Array size of 2^16 (65536 elements)
-    // for (int i = 16; i < 31; i++)
-    // {
-    //     int N = 1 << i;
-    //     std::cout << "i: " << i << '\n';
-    //     std::cout << "N: " << N << '\n';
-    //     test_cuda_have_4_in_a_row(N, DEFAULT_BLOCK_SIZE);
-    // }
-
-    for (int j = 0; j < 31; j++)
+    // Array size of 2^16 (65536 elements)
+    for (int i = 16; i < 31; i++)
     {
-        int BLOCK_SIZE = 1 << j;
-        std::cout << "j: " << j << '\n';
-        std::cout << "BLOCK_SIZE: " << BLOCK_SIZE << '\n';
-        test_cuda_have_4_in_a_row(1 << 28, BLOCK_SIZE);
+        int N = 1 << i;
+        std::cout << "i: " << i << '\n';
+        std::cout << "N: " << N << '\n';
+        test_cuda_have_4_in_a_row(N, DEFAULT_BLOCK_SIZE);
     }
+
+    // for (int j = 0; j < 31; j++)
+    // {
+    //     int BLOCK_SIZE = 1 << j;
+    //     std::cout << "j: " << j << '\n';
+    //     std::cout << "BLOCK_SIZE: " << BLOCK_SIZE << '\n';
+    //     test_cuda_have_4_in_a_row(1 << 28, BLOCK_SIZE);
+    // }
 
     return 0;
 
