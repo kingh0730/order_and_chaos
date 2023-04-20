@@ -14,9 +14,17 @@ int main()
     // CUDA test
 
     // Array size of 2^16 (65536 elements)
-    const int N = 1 << 16;
+    for (int i = 0; i < 16; i++)
+    {
+        int N = 1 << i;
+        test_cuda_have_4_in_a_row(N, DEFAULT_BLOCK_SIZE);
+    }
 
-    test_cuda_have_4_in_a_row(N);
+    for (int j = 0; j < 16; j++)
+    {
+        int BLOCK_SIZE = 1 << j;
+        test_cuda_have_4_in_a_row(1 << 16, BLOCK_SIZE);
+    }
 
     return 0;
 

@@ -61,7 +61,7 @@ __global__ void cuda_have_4_in_a_row(uint32_t *a, bool *b, int N)
     }
 }
 
-void test_cuda_have_4_in_a_row(const int N)
+void test_cuda_have_4_in_a_row(const int N, const int BLOCK_SIZE)
 {
     // Declare unified memory pointers
     uint32_t *a;
@@ -82,7 +82,7 @@ void test_cuda_have_4_in_a_row(const int N)
     auto t1 = high_resolution_clock::now();
 
     // Call CUDA kernel
-    cuda_have_4_in_a_row<<<GRID_SIZE(N), BLOCK_SIZE>>>(a, b, N);
+    cuda_have_4_in_a_row<<<GRID_SIZE(N, BLOCK_SIZE), BLOCK_SIZE>>>(a, b, N);
 
     // Wait for all previous operations before using values
     // We need this because we don't get the implicit synchronization of
@@ -174,7 +174,7 @@ std::map<Position4x4, GameResult> cuda_solve_0_spaces_remain()
     }
 
     // Call CUDA kernel
-    cuda_have_4_in_a_row<<<GRID_SIZE(N), BLOCK_SIZE>>>(a, b, N);
+    cuda_have_4_in_a_row<<<GRID_SIZE(N, DEFAULT_BLOCK_SIZE), DEFAULT_BLOCK_SIZE>>>(a, b, N);
 
     // Wait for all previous operations before using values
     // We need this because we don't get the implicit synchronization of
