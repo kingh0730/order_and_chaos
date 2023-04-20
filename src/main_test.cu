@@ -12,7 +12,12 @@ int main()
               << std::endl;
 
     // CUDA test
-    test_cuda_have_4_in_a_row();
+
+    // Array size of 2^16 (65536 elements)
+    const int N = 1 << 16;
+
+    test_cuda_have_4_in_a_row(N);
+
     return 0;
 
     // --------------------------------------------
