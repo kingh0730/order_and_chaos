@@ -22,11 +22,11 @@ int main()
         test_cuda_have_4_in_a_row(N, DEFAULT_BLOCK_SIZE);
     }
 
-    // for (int j = 0; j < 16; j++)
-    // {
-    //     int BLOCK_SIZE = 1 << j;
-    //     test_cuda_have_4_in_a_row(1 << 16, BLOCK_SIZE);
-    // }
+    for (int j = 0; j < 31; j++)
+    {
+        int BLOCK_SIZE = 1 << j;
+        test_cuda_have_4_in_a_row(1 << 28, BLOCK_SIZE);
+    }
 
     return 0;
 
