@@ -4,16 +4,16 @@
 
 class Player {
 public:
-  enum _PlayerType {
+  enum PlayerType {
     O = 0,
     X = 1,
   };
 
 private:
-  _PlayerType player;
+  PlayerType player;
 
 public:
-  Player(_PlayerType player) : player(player) {}
+  Player(PlayerType player) : player(player) {}
 
   Player next_player() const;
 
