@@ -7,8 +7,6 @@
       "command": "nvcc.exe",
       "args": [
         "./src/main.cpp",
-        "-I",
-        "./src/lib/",
         "-o",
         "./build/main"
       ],
@@ -24,8 +22,6 @@
       "command": "nvcc.exe",
       "args": [
         "./src/main_test.cu",
-        "-I",
-        "./src/lib/",
         "-o",
         "./build/main_test",
         "-D",
