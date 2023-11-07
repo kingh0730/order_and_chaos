@@ -5,7 +5,7 @@
 class RecursiveValue {
 public:
   enum _RecursiveValueType {
-    Undecided = 0,
+    Undetermined = 0,
     Win = 1,
     Lose = 2,
     Tie = 3,
