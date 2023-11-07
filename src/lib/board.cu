@@ -16,7 +16,7 @@ std::string Board::format(const _PieceType &piece) {
   case Board::O:
     return "O";
   case Board::E:
-    return " ";
+    return "_";
   default:
     std::cerr << "Board::Unknown(" + std::to_string(piece) + ")";
     throw std::invalid_argument("unknown Board piece type");
