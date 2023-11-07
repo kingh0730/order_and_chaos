@@ -23,6 +23,7 @@ int main() {
 
   const Position position1 = Position(p1, b1);
   std::cout << position1.format() << std::endl;
+  std::cout << position1.primitive_value().format() << std::endl;
 
   return 0;
 }
