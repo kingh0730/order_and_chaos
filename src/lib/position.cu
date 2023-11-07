@@ -3,5 +3,5 @@
 std::string Position::format() const {
   auto player_str = player.format();
   auto board_str = board.format();
-  return player_str + board_str;
+  return player_str + '\n' + board_str;
 }
