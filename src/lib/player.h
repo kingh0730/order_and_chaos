@@ -14,6 +14,7 @@ private:
 
 public:
   Player(PlayerType player_type) : player_type(player_type) {}
+  PlayerType get_player_type() const { return player_type; }
 
   PlayerType next_player_type() const;
 
