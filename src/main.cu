@@ -12,7 +12,13 @@ int main() {
   const PrimitiveValue pv1 = PrimitiveValue::Win;
   std::cout << pv1.format() << std::endl;
 
-  const Board b1 = Board();
+  // Use this constructor Board(_PieceType board[TTT_N][TTT_N]);
+  auto board1 =
+      new Board::_PieceType[TTT_N][TTT_N]{{Board::X, Board::O, Board::X},
+                                          {Board::O, Board::X, Board::O},
+                                          {Board::X, Board::O, Board::X}};
+
+  const Board b1 = Board(board1);
   std::cout << b1.format() << std::endl;
 
   return 0;
