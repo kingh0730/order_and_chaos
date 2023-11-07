@@ -3,7 +3,7 @@
 
 #include "player.h"
 
-std::string format_player(const Player &player) {
+std::string Player::format() const {
   switch (player) {
   case Player::O:
     return "Player::O";
