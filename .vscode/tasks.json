@@ -6,7 +6,7 @@
       "label": "Build",
       "command": "nvcc.exe",
       "args": [
-        "./src/main.cu",
+        "./src/main.cpp",
         "-I",
         "./src/lib/",
         "-o",
@@ -16,7 +16,7 @@
         "kind": "build",
         "isDefault": true
       },
-      "detail": "nvcc main.cu"
+      "detail": "nvcc main.cpp"
     },
     {
       "type": "shell",
