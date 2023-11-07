@@ -69,6 +69,17 @@ bool Board::is_win_for(PieceType piece) const {
   return false;
 }
 
+bool Board::is_full() const {
+  for (int i = 0; i < TTT_N; i++) {
+    for (int j = 0; j < TTT_N; j++) {
+      if (board[i][j] == Board::E) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 std::string Board::format(const PieceType &piece) {
   switch (piece) {
   case Board::X:
