@@ -8,7 +8,7 @@ public:
   enum _PieceType {
     O = 0,
     X = 1,
-    Empty = 2,
+    E = 2,
   };
 
 private:

@@ -13,10 +13,11 @@ int main() {
   std::cout << pv1.format() << std::endl;
 
   // Use this constructor Board(_PieceType board[TTT_N][TTT_N]);
-  auto board1 =
-      new Board::_PieceType[TTT_N][TTT_N]{{Board::X, Board::O, Board::X},
-                                          {Board::O, Board::X, Board::O},
-                                          {Board::X, Board::O, Board::X}};
+  auto board1 = new Board::_PieceType[TTT_N][TTT_N]{
+      {Board::X, Board::O, Board::E},
+      {Board::O, Board::E, Board::O},
+      {Board::E, Board::O, Board::X},
+  };
 
   const Board b1 = Board(board1);
   std::cout << b1.format() << std::endl;

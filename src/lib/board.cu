@@ -15,7 +15,7 @@ std::string Board::format(const _PieceType &piece) {
     return "X";
   case Board::O:
     return "O";
-  case Board::Empty:
+  case Board::E:
     return " ";
   default:
     std::cerr << "Board::Unknown(" + std::to_string(piece) + ")";
