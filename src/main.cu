@@ -6,11 +6,11 @@
 int main() {
   std::cout << "Hello, World!" << std::endl;
 
-  const Player p1 = Player(Player::PlayerType::X);
+  const Player p1 = Player::X;
   std::cout << p1.format() << std::endl;
 
   const PrimitiveValue pv1 = PrimitiveValue::Win;
-  std::cout << format_primitive_value(pv1) << std::endl;
+  std::cout << pv1.format() << std::endl;
 
   const Board b1 = Board();
   std::cout << b1.format() << std::endl;

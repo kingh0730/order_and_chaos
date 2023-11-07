@@ -3,7 +3,7 @@
 
 #include "primitive_value.h"
 
-std::string format_primitive_value(const PrimitiveValue &pv) {
+std::string PrimitiveValue::format() const {
   switch (pv) {
   case PrimitiveValue::NotPrimitive:
     return "PrimitiveValue::NotPrimitive";

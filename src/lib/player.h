@@ -4,15 +4,15 @@
 
 class Player {
 public:
-  enum PlayerType {
+  enum _PlayerType {
     O = 0,
     X = 1,
   };
 
 private:
-  PlayerType player;
+  _PlayerType player;
 
 public:
-  Player(PlayerType player) : player(player) {}
+  Player(_PlayerType player) : player(player) {}
   std::string format() const;
 };
