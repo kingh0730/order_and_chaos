@@ -3,8 +3,8 @@
 
 #include "player.h"
 
-Player Player::next_player() const {
-  switch (player) {
+Player::PlayerType Player::next_player_type() const {
+  switch (player_type) {
   case Player::O:
     return Player::X;
 
@@ -12,13 +12,13 @@ Player Player::next_player() const {
     return Player::O;
 
   default:
-    std::cerr << "Player::Unknown(" + std::to_string(player) + ")";
+    std::cerr << "Player::Unknown(" + std::to_string(player_type) + ")";
     throw std::invalid_argument("unknown player type");
   }
 }
 
 std::string Player::format() const {
-  switch (player) {
+  switch (player_type) {
   case Player::O:
     return "Player::O";
 
@@ -26,7 +26,7 @@ std::string Player::format() const {
     return "Player::X";
 
   default:
-    std::cerr << "Player::Unknown(" + std::to_string(player) + ")";
+    std::cerr << "Player::Unknown(" + std::to_string(player_type) + ")";
     throw std::invalid_argument("unknown player type");
   }
 }

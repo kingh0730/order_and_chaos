@@ -15,7 +15,7 @@ private:
 public:
   Player(PlayerType player_type) : player_type(player_type) {}
 
-  Player next_player() const;
+  PlayerType next_player_type() const;
 
   std::string format() const;
 };
