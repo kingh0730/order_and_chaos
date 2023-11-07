@@ -9,6 +9,7 @@
         "./src/main.cu",
         "./src/lib/board.cu",
         "./src/lib/player.cu",
+        "./src/lib/position.cu",
         "./src/lib/primitive_value.cu",
         "-o",
         "./build/main"

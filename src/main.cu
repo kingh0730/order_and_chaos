@@ -1,5 +1,6 @@
 #include "lib/board.h"
 #include "lib/player.h"
+#include "lib/position.h"
 #include "lib/primitive_value.h"
 #include <iostream>
 
@@ -17,9 +18,11 @@ int main() {
       {Board::O, Board::E, Board::O},
       {Board::E, Board::O, Board::X},
   };
-
   const Board b1 = Board(board1);
   std::cout << b1.format() << std::endl;
+
+  const Position position1 = Position(p1, b1);
+  std::cout << position1.format() << std::endl;
 
   return 0;
 }
