@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "_player.h"
+#include "player.h"
 
 std::string format_player(const Player &player) {
   switch (player) {

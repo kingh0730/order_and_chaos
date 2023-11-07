@@ -1,5 +1,5 @@
-#include "_player.h"
-#include "_primitive_value.h"
+#include "lib/player.h"
+#include "lib/primitive_value.h"
 #include <iostream>
 
 #define N 3

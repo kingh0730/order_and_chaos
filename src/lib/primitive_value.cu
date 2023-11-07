@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "_primitive_value.h"
+#include "primitive_value.h"
 
 std::string format_primitive_value(const PrimitiveValue &pv) {
   switch (pv) {
