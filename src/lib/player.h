@@ -10,10 +10,10 @@ public:
   };
 
 private:
-  PlayerType player;
+  PlayerType player_type;
 
 public:
-  Player(PlayerType player) : player(player) {}
+  Player(PlayerType player_type) : player_type(player_type) {}
 
   Player next_player() const;
 
