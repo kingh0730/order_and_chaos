@@ -13,7 +13,7 @@ int main() {
   const PrimitiveValue pv1 = PrimitiveValue::Win;
   std::cout << pv1.format() << std::endl;
 
-  auto board1 = new Board::_PieceType[TTT_N][TTT_N]{
+  auto board1 = new Board::PieceType[TTT_N][TTT_N]{
       {Board::X, Board::O, Board::E},
       {Board::O, Board::E, Board::O},
       {Board::E, Board::O, Board::X},

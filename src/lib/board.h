@@ -5,20 +5,21 @@
 
 class Board {
 public:
-  enum _PieceType {
+  enum PieceType {
     O = 0,
     X = 1,
     E = 2,
   };
 
 private:
-  _PieceType board[TTT_N][TTT_N];
+  PieceType board[TTT_N][TTT_N];
 
 public:
-  Board(_PieceType board[TTT_N][TTT_N]);
+  Board(PieceType board[TTT_N][TTT_N]);
 
-  bool is_win_for(_PieceType piece) const;
+  bool is_win_for(PieceType piece) const;
+  bool is_full() const;
 
-  static std::string format(const _PieceType &piece);
+  static std::string format(const PieceType &piece);
   std::string format() const;
 };

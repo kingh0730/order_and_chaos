@@ -1,7 +1,7 @@
 #include "board.h"
 #include <iostream>
 
-Board::Board(_PieceType b[TTT_N][TTT_N]) {
+Board::Board(PieceType b[TTT_N][TTT_N]) {
   for (int i = 0; i < TTT_N; i++) {
     for (int j = 0; j < TTT_N; j++) {
       board[i][j] = b[i][j];
@@ -9,7 +9,7 @@ Board::Board(_PieceType b[TTT_N][TTT_N]) {
   }
 }
 
-bool Board::is_win_for(_PieceType piece) const {
+bool Board::is_win_for(PieceType piece) const {
   if (piece == Board::E) {
     throw std::invalid_argument("Board::is_win_for: piece cannot be empty");
   }
@@ -69,7 +69,7 @@ bool Board::is_win_for(_PieceType piece) const {
   return false;
 }
 
-std::string Board::format(const _PieceType &piece) {
+std::string Board::format(const PieceType &piece) {
   switch (piece) {
   case Board::X:
     return "X";
