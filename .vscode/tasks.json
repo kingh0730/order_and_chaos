@@ -7,8 +7,8 @@
       "command": "nvcc.exe",
       "args": [
         "./src/main.cu",
-        "./src/_player.cu",
-        "./src/_primitive_value.cu",
+        "./src/lib/player.cu",
+        "./src/lib/primitive_value.cu",
         "-o",
         "./build/main"
       ],
