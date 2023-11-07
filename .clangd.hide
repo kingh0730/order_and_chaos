@@ -1,2 +1,4 @@
 Diagnostics:
-  Suppress: '*'
+  Suppress:
+    - unknown_typename
+    - undeclared_var_use

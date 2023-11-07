@@ -1,4 +1,4 @@
-#include "_lib.cpp"
+#include "_lib.cu"
 #include <iostream>
 
 #define N 3
