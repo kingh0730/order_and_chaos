@@ -5,7 +5,7 @@
 #include <iostream>
 
 int main() {
-  std::cout << "Hello, World!" << std::endl;
+  std::cout << "Hello, world!" << std::endl;
 
   const Player p1 = Player::X;
   std::cout << p1.format() << std::endl;
