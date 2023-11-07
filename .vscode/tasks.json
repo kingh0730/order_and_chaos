@@ -12,7 +12,7 @@
         "./src/lib/position.cu",
         "./src/lib/primitive_value.cu",
         "-o",
-        "./build/main"
+        "./build/main",
       ],
       "group": {
         "kind": "build",
@@ -29,7 +29,7 @@
         "-o",
         "./build/main_test",
         "-D",
-        "MAIN_TEST_PRINT"
+        "TTT_N=3",
       ],
       "group": {
         "kind": "build",
