@@ -14,5 +14,8 @@ private:
 
 public:
   Player(_PlayerType player) : player(player) {}
+
+  Player next_player() const;
+
   std::string format() const;
 };
