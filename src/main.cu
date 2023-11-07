@@ -1,8 +1,7 @@
+#include "lib/board.h"
 #include "lib/player.h"
 #include "lib/primitive_value.h"
 #include <iostream>
-
-#define N 3
 
 int main() {
   std::cout << "Hello, World!" << std::endl;
@@ -12,6 +11,9 @@ int main() {
 
   const PrimitiveValue pv1 = PrimitiveValue::Win;
   std::cout << format_primitive_value(pv1) << std::endl;
+
+  const Board b1 = Board();
+  std::cout << b1.format() << std::endl;
 
   return 0;
 }
