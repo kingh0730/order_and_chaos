@@ -6,6 +6,7 @@ Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
 
   num_positions = Position::num_positions(num_empty_spaces);
   position_hash_to_rv = new RecursiveValue[num_positions];
+  solved = false;
 }
 
 std::string Tier::format() const {

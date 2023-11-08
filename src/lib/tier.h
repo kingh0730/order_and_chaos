@@ -9,6 +9,7 @@ private:
   unsigned long long num_positions;
   Tier *next_tier;
   RecursiveValue *position_hash_to_rv;
+  bool solved;
 
 public:
   Tier(unsigned int num_empty_spaces, Tier *next_tier);
@@ -29,6 +30,7 @@ public:
   };
 
   SolveResult solve(SolveBy solve_by);
+  bool is_solved() const { return solved; }
 
   std::string format() const;
 };
