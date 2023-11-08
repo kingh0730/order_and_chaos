@@ -191,4 +191,21 @@ void test_boards() {
   std::cout << Board::board_with_max_id(7).format() << std::endl;
   std::cout << Board::board_with_max_id(8).format() << std::endl;
   std::cout << Board::board_with_max_id(9).format() << std::endl;
+
+  // construct by id
+  Board b5 = Board(3, 5409);
+  // std::cout << b5.format() << std::endl;
+  assert(b5.format() == b1.format());
+
+  Board b6 = Board(1, 426);
+  // std::cout << b6.format() << std::endl;
+  assert(b6.format() == b2.format());
+
+  Board b7 = Board(1, 65605);
+  // std::cout << b7.format() << std::endl;
+  assert(b7.format() == b3.format());
+
+  Board b8 = Board(1, 8357);
+  // std::cout << b8.format() << std::endl;
+  assert(b8.format() == b4.format());
 }
