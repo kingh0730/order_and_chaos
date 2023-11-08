@@ -57,5 +57,8 @@ int main() {
                              }))
              .primitive_value() == PrimitiveValue::Tie);
 
+  // Tier
+  Tier tier1 = Tier(0, nullptr);
+
   return 0;
 }

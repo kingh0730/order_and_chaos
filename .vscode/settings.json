@@ -37,6 +37,7 @@
     "iostream",
     "Malloc",
     "Memcpy",
-    "milli"
+    "milli",
+    "nullptr"
   ]
 }
