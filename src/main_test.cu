@@ -26,11 +26,17 @@ int main() {
 }
 
 void test_tiers() {
-  // Tier
   Tier tier0 = Tier(0, nullptr);
-
   tier0.solve(Tier::SolveBy::CPU);
   std::cout << tier0.format() << std::endl;
+
+  Tier tier1 = Tier(1, &tier0);
+  tier1.solve(Tier::SolveBy::CPU);
+  std::cout << tier1.format() << std::endl;
+
+  Tier tier2 = Tier(2, &tier1);
+  tier2.solve(Tier::SolveBy::CPU);
+  std::cout << tier2.format() << std::endl;
 }
 
 void test_utils() {
