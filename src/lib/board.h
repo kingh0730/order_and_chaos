@@ -17,10 +17,6 @@ private:
   unsigned int num_empty_spaces;
   PieceType board[TTT_N][TTT_N];
 
-private:
-  static std::vector<std::map<unsigned long long, unsigned long long>>
-      id_raw_to_id_for_empty_spaces;
-
 public:
   Board(PieceType board[TTT_N][TTT_N]);
 

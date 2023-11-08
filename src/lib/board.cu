@@ -91,11 +91,9 @@ unsigned long long Board::id_raw_for_empty_spaces() const {
 }
 
 unsigned long long Board::id() const {
-  auto id_for_empty_spaces =
-      id_raw_to_id_for_empty_spaces[num_empty_spaces]
-                                   [id_raw_for_empty_spaces()];
-
-  return id_for_empty_spaces;
+  auto id = id_raw_for_empty_spaces();
+  // FIXME
+  return id;
 }
 
 unsigned long long Board::num_boards(unsigned int num_empty_spaces) {
