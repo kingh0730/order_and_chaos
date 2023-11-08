@@ -12,9 +12,10 @@ void test_utils();
 void test_boards();
 
 int main() {
-  std::cout << "Hello, world!" << std::endl;
-
+  std::cout << "== Test utils ==" << std::endl;
   test_utils();
+
+  std::cout << "== Test boards ==" << std::endl;
   test_boards();
 
   // Tier
