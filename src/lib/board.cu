@@ -104,9 +104,12 @@ unsigned long long Board::id_raw_for_occupied_spaces() const {
 }
 
 unsigned long long Board::id() const {
-  auto id = id_raw_for_empty_spaces();
-  id = id_raw_for_occupied_spaces();
-  // FIXME
+  unsigned int num_occupied = TTT_N * TTT_N - num_empty_spaces;
+  unsigned long long num_pick_occupied_spaces =
+      1 << num_occupied; // 2^num_occupied
+
+  auto id = id_raw_for_empty_spaces() * num_pick_occupied_spaces +
+            id_raw_for_occupied_spaces();
   return id;
 }
 
