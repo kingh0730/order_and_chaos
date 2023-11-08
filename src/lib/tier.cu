@@ -1,6 +1,11 @@
 #include "tier.h"
 #include <sstream>
 
+Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
+    : num_empty_spaces(num_empty_spaces), next_tier(next_tier) {
+  position_hash_to_rv = (RecursiveValue *)malloc(0); // FIXME
+}
+
 std::string Tier::format() const {
   std::stringstream ss;
   ss << "Tier:\n";
@@ -14,10 +19,17 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
       next_tier ? next_tier->position_hash_to_rv : nullptr;
 
   switch (solve_by) {
+
   case SolveBy::CPU:
     solve_by_cpu(position_hash_to_rv, child_position_hash_to_rv);
     break;
+
   case SolveBy::GPU:
+    int *d_position_hash_to_rv, *d_child_position_hash_to_rv;
+    cudaMalloc(&d_a, bytes);
+    cudaMalloc(&d_c, bytes);
+    cudaMemcpy(d_a, a.data(), bytes, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, b.data(), bytes, cudaMemcpyHostToDevice);
     // solve_by_gpu(position_hash_to_rv, next_tier->position_hash_to_rv);
     break;
   }
