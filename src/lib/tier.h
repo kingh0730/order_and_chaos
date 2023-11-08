@@ -2,7 +2,6 @@
 
 #include "position.h"
 #include "recursive_value.h"
-#include <map>
 
 class Tier {
 private:
