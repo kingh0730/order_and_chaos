@@ -78,10 +78,22 @@ bool Board::is_win_for(PieceType piece) const {
 
 bool Board::is_full() const { return num_empty_spaces == 0; }
 
+unsigned long long Board::id_raw_for_empty_spaces() const {
+  unsigned long long result = 0;
+  for (int i = 0; i < TTT_N; i++) {
+    for (int j = 0; j < TTT_N; j++) {
+      if (board[i][j] == Board::E) {
+        result += 1 << (i * TTT_N + j);
+      }
+    }
+  }
+  return result;
+}
+
 unsigned long long Board::id() const {
   auto id_for_empty_spaces =
-      id_str_to_id_for_empty_spaces[num_empty_spaces]
-                                   [id_str_for_empty_spaces()];
+      id_raw_to_id_for_empty_spaces[num_empty_spaces]
+                                   [id_raw_for_empty_spaces()];
 
   return id_for_empty_spaces;
 }
@@ -124,5 +136,9 @@ std::string Board::format() const {
     }
     result += "\n";
   }
+
+  result += "num_empty_spaces: " + std::to_string(num_empty_spaces) + "\n";
+  result += "id: " + std::to_string(id()) + "\n";
+
   return result;
 }
