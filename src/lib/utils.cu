@@ -7,3 +7,7 @@ unsigned long long factorial(unsigned int n) {
   }
   return result;
 }
+
+unsigned long long combination(unsigned int n, unsigned int k) {
+  return factorial(n) / (factorial(k) * factorial(n - k));
+}
