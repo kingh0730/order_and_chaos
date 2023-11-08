@@ -3,9 +3,15 @@
 #include <iostream>
 
 Board::Board(PieceType b[TTT_N][TTT_N]) {
+  num_empty_spaces = 0;
+
   for (int i = 0; i < TTT_N; i++) {
     for (int j = 0; j < TTT_N; j++) {
       board[i][j] = b[i][j];
+
+      if (b[i][j] == Board::E) {
+        num_empty_spaces++;
+      }
     }
   }
 }
@@ -70,15 +76,14 @@ bool Board::is_win_for(PieceType piece) const {
   return false;
 }
 
-bool Board::is_full() const {
-  for (int i = 0; i < TTT_N; i++) {
-    for (int j = 0; j < TTT_N; j++) {
-      if (board[i][j] == Board::E) {
-        return false;
-      }
-    }
-  }
-  return true;
+bool Board::is_full() const { return num_empty_spaces == 0; }
+
+unsigned long long Board::id() const {
+  auto id_for_empty_spaces =
+      id_str_to_id_for_empty_spaces[num_empty_spaces]
+                                   [id_str_for_empty_spaces()];
+
+  return id_for_empty_spaces;
 }
 
 unsigned long long Board::num_boards(unsigned int num_empty_spaces) {
