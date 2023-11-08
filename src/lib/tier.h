@@ -6,6 +6,7 @@
 class Tier {
 private:
   unsigned int num_empty_spaces;
+  unsigned long long num_positions;
   Tier *next_tier;
   RecursiveValue *position_hash_to_rv;
 
