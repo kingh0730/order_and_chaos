@@ -30,7 +30,7 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
   switch (solve_by) {
 
   case SolveBy::CPU:
-    solve_by_cpu(position_hash_to_rv, child_position_hash_to_rv);
+    solve_by_cpu(position_hash_to_rv, child_position_hash_to_rv, num_positions);
     break;
 
   case SolveBy::GPU:
@@ -48,7 +48,7 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
                child_position_hash_to_rv_size, cudaMemcpyHostToDevice);
 
     solve_by_gpu<<<GRID_SIZE(num_positions, BLOCK_SIZE), BLOCK_SIZE>>>(
-        d_position_hash_to_rv, d_child_position_hash_to_rv);
+        d_position_hash_to_rv, d_child_position_hash_to_rv, num_positions);
 
     cudaMemcpy(position_hash_to_rv, d_position_hash_to_rv,
                position_hash_to_rv_size, cudaMemcpyDeviceToHost);
@@ -63,13 +63,17 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
 }
 
 void solve_by_cpu(RecursiveValue *position_hash_to_rv,
-                  RecursiveValue *child_position_hash_to_rv) {
-  position_hash_to_rv[0] = RecursiveValue::Tie;
+                  RecursiveValue *child_position_hash_to_rv,
+                  unsigned long long num_positions) {
+  for (unsigned long long i = 0; i < num_positions; i++) {
+    position_hash_to_rv[i] = RecursiveValue::Tie;
+  }
 }
 
 __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
-                             RecursiveValue *child_position_hash_to_rv) {
-  int tid = (blockDim.x * blockIdx.x) + threadIdx.x;
+                             RecursiveValue *child_position_hash_to_rv,
+                             unsigned long long num_positions) {
+  unsigned long long tid = (blockDim.x * blockIdx.x) + threadIdx.x;
 
-  // position_hash_to_rv[0] = RecursiveValue::Tie;
+  // position_hash_to_rv[tid] = RecursiveValue::Tie;
 }
