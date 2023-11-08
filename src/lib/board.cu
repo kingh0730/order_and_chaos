@@ -123,6 +123,23 @@ unsigned long long Board::id() const {
   return id;
 }
 
+unsigned long long Board::max_id(unsigned int num_empty_spaces) {
+
+  Board b_max = Board();
+
+  unsigned int num_occupied = TTT_N * TTT_N - num_empty_spaces;
+
+  for (int i = 0; i < num_occupied; i++) {
+    b_max.board[i / TTT_N][i % TTT_N] = Board::X;
+  }
+
+  for (int i = num_occupied; i < TTT_N * TTT_N; i++) {
+    b_max.board[i / TTT_N][i % TTT_N] = Board::E;
+  }
+
+  return b_max.id();
+}
+
 unsigned long long Board::num_boards(unsigned int num_empty_spaces) {
   if (num_empty_spaces > TTT_N * TTT_N) {
     throw std::invalid_argument("Board::num_boards: num_empty_spaces cannot be "

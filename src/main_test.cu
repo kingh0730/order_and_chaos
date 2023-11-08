@@ -183,4 +183,8 @@ void test_boards() {
   // number of boards
   assert(Board::num_boards(0) == 512);
   assert(Board::num_boards(1) == 2304);
+
+  // max_id
+  assert(Board::max_id(0) == 511);
+  assert(Board::max_id(1) == 511);
 }
