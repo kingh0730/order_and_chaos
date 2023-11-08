@@ -140,6 +140,14 @@ void test_boards() {
   const Board b3 = Board(board3);
   std::cout << b3.format() << std::endl;
 
+  auto board4 = new Board::PieceType[TTT_N][TTT_N]{
+      {Board::X, Board::O, Board::X},
+      {Board::O, Board::O, Board::E},
+      {Board::X, Board::O, Board::X},
+  };
+  const Board b4 = Board(board4);
+  std::cout << b4.format() << std::endl;
+
   const Position position1 = Position(p1, b1);
   std::cout << position1.format() << std::endl;
   std::cout << position1.primitive_value().format() << std::endl;
