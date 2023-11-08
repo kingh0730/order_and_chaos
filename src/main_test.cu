@@ -13,13 +13,13 @@ void test_boards();
 void test_tiers();
 
 int main() {
-  std::cout << "== Test utils ==" << std::endl;
+  std::cout << "== Test utils ==\n" << std::endl;
   test_utils();
 
-  std::cout << "== Test boards ==" << std::endl;
+  std::cout << "== Test boards ==\n" << std::endl;
   test_boards();
 
-  std::cout << "== Test tiers ==" << std::endl;
+  std::cout << "== Test tiers ==\n" << std::endl;
   test_tiers();
 
   return 0;
