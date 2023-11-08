@@ -10,6 +10,7 @@
 
 void test_utils();
 void test_boards();
+void test_tiers();
 
 int main() {
   std::cout << "== Test utils ==" << std::endl;
@@ -18,13 +19,18 @@ int main() {
   std::cout << "== Test boards ==" << std::endl;
   test_boards();
 
+  std::cout << "== Test tiers ==" << std::endl;
+  test_tiers();
+
+  return 0;
+}
+
+void test_tiers() {
   // Tier
   Tier tier0 = Tier(0, nullptr);
 
   tier0.solve(Tier::SolveBy::CPU);
   std::cout << tier0.format() << std::endl;
-
-  return 0;
 }
 
 void test_utils() {
@@ -116,4 +122,8 @@ void test_boards() {
                                  {Board::X, Board::O, Board::O},
                              }))
              .primitive_value() == PrimitiveValue::Tie);
+
+  // number of boards
+  assert(Board::num_boards(0) == 512);
+  assert(Board::num_boards(1) == 2304);
 }
