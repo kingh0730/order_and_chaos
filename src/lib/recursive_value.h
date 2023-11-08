@@ -17,6 +17,7 @@ private:
 
 public:
   RecursiveValue(_RecursiveValueType rv) : rv(rv) {}
+  RecursiveValue() : RecursiveValue(Undetermined) {}
 
   bool operator==(const RecursiveValue &other) const { return rv == other.rv; }
 
