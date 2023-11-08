@@ -185,6 +185,15 @@ void test_boards() {
   assert(Board::num_boards(1) == 2304);
 
   // max_id
-  assert(Board::max_id(0) == 511);
-  assert(Board::max_id(1) == 511);
+  std::cout << Board::board_with_max_id(0).format() << std::endl;
+  std::cout << Board::board_with_max_id(1).format() << std::endl;
+  std::cout << Board::board_with_max_id(2).format() << std::endl;
+  std::cout << Board::board_with_max_id(7).format() << std::endl;
+  std::cout << Board::board_with_max_id(8).format() << std::endl;
+  std::cout << Board::board_with_max_id(9).format() << std::endl;
+
+  assert(Board::max_id(3) == 511);
+  assert(Board::max_id(4) == 511);
+  assert(Board::max_id(5) == 511);
+  assert(Board::max_id(6) == 511);
 }
