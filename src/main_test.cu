@@ -124,6 +124,22 @@ void test_boards() {
   const Board b1 = Board(board1);
   std::cout << b1.format() << std::endl;
 
+  auto board2 = new Board::PieceType[TTT_N][TTT_N]{
+      {Board::E, Board::O, Board::X},
+      {Board::O, Board::X, Board::O},
+      {Board::X, Board::O, Board::X},
+  };
+  const Board b2 = Board(board2);
+  std::cout << b2.format() << std::endl;
+
+  auto board3 = new Board::PieceType[TTT_N][TTT_N]{
+      {Board::X, Board::O, Board::X},
+      {Board::O, Board::O, Board::O},
+      {Board::X, Board::O, Board::E},
+  };
+  const Board b3 = Board(board3);
+  std::cout << b3.format() << std::endl;
+
   const Position position1 = Position(p1, b1);
   std::cout << position1.format() << std::endl;
   std::cout << position1.primitive_value().format() << std::endl;
