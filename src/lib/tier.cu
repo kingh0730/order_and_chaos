@@ -4,7 +4,7 @@
 Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
     : num_empty_spaces(num_empty_spaces), next_tier(next_tier) {
 
-  // ! Use max_id instead of num_positions
+  // ! Use max_id >= num_positions
   num_positions = Position::max_id(num_empty_spaces);
 
   position_hash_to_rv = new RecursiveValue[num_positions];
@@ -69,5 +69,7 @@ void solve_by_cpu(RecursiveValue *position_hash_to_rv,
 
 __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
                              RecursiveValue *child_position_hash_to_rv) {
+  int tid = (blockDim.x * blockIdx.x) + threadIdx.x;
+
   // position_hash_to_rv[0] = RecursiveValue::Tie;
 }

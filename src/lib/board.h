@@ -19,6 +19,7 @@ private:
 
 public:
   Board(PieceType board[TTT_N][TTT_N]);
+  Board(unsigned int num_empty_spaces, unsigned long long id);
   Board();
 
   bool is_win_for(PieceType piece) const;

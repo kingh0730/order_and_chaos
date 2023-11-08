@@ -16,6 +16,33 @@ Board::Board(PieceType b[TTT_N][TTT_N]) {
   }
 }
 
+Board::Board(unsigned int num_empty_spaces, unsigned long long id)
+    : num_empty_spaces(num_empty_spaces) {
+
+  unsigned int num_occupied = TTT_N * TTT_N - num_empty_spaces;
+  unsigned long long num_pick_occupied_spaces =
+      1 << num_occupied; // 2^num_occupied
+
+  auto id_raw_for_empty_spaces = id / num_pick_occupied_spaces;
+  auto id_raw_for_occupied_spaces = id % num_pick_occupied_spaces;
+
+  unsigned int num_occupied_seen = 0;
+  for (int i = 0; i < TTT_N; i++) {
+    for (int j = 0; j < TTT_N; j++) {
+      // Take the (i * TTT_N + j) bit of id_raw_for_empty_spaces
+      // and set board[i][j] to Board::E if it is 1
+      if ((id_raw_for_empty_spaces >> (i * TTT_N + j)) & 1) {
+        board[i][j] = Board::E;
+      } else {
+        // Take the num_occupied_seen bit of id_raw_for_occupied_spaces
+        // and set board[i][j] to that bit
+        auto bit = (id_raw_for_occupied_spaces >> num_occupied_seen++) & 1;
+        board[i][j] = Board::PieceType(bit);
+      }
+    }
+  }
+}
+
 Board::Board() {
   num_empty_spaces = TTT_N * TTT_N;
 
