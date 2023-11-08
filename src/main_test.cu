@@ -58,7 +58,10 @@ int main() {
              .primitive_value() == PrimitiveValue::Tie);
 
   // Tier
-  Tier tier1 = Tier(0, nullptr);
+  Tier tier0 = Tier(0, nullptr);
+
+  tier0.solve(Tier::SolveBy::CPU);
+  std::cout << tier0.format() << std::endl;
 
   return 0;
 }

@@ -38,6 +38,8 @@
     "Malloc",
     "Memcpy",
     "milli",
-    "nullptr"
+    "nullptr",
+    "sstream",
+    "stringstream"
   ]
 }

@@ -31,6 +31,8 @@ public:
   };
 
   SolveResult solve(SolveBy solve_by);
+
+  std::string format() const;
 };
 
 void solve_by_cpu(RecursiveValue *position_hash_to_rv,

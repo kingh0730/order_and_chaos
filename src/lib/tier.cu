@@ -1,4 +1,12 @@
 #include "tier.h"
+#include <sstream>
+
+std::string Tier::format() const {
+  std::stringstream ss;
+  ss << "Tier:\n";
+  ss << "  num_empty_spaces: " << num_empty_spaces << "\n";
+  return ss.str();
+}
 
 Tier::SolveResult Tier::solve(SolveBy solve_by) {
   switch (solve_by) {
