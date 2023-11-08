@@ -1,6 +1,10 @@
 #include "position.h"
 #include <iostream>
 
+unsigned long long Position::num_positions(unsigned int num_empty_spaces) {
+  return Board::num_boards(num_empty_spaces);
+}
+
 Player::PlayerType Position::piece_to_player(Board::PieceType piece) {
   switch (piece) {
   case Board::X:

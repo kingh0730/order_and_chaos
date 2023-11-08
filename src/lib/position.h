@@ -13,6 +13,8 @@ private:
 public:
   Position(Player player, Board board) : player(player), board(board) {}
 
+  static unsigned long long num_positions(unsigned int num_empty_spaces);
+
   static Board::PieceType player_to_piece(Player::PlayerType player);
   static Player::PlayerType piece_to_player(Board::PieceType piece);
 
