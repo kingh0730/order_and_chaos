@@ -90,8 +90,22 @@ unsigned long long Board::id_raw_for_empty_spaces() const {
   return result;
 }
 
+unsigned long long Board::id_raw_for_occupied_spaces() const {
+  unsigned long long result = 0;
+  unsigned int num_occupied_seen = 0;
+  for (int i = 0; i < TTT_N; i++) {
+    for (int j = 0; j < TTT_N; j++) {
+      if (board[i][j] != Board::E) {
+        result += board[i][j] << num_occupied_seen++;
+      }
+    }
+  }
+  return result;
+}
+
 unsigned long long Board::id() const {
   auto id = id_raw_for_empty_spaces();
+  id = id_raw_for_occupied_spaces();
   // FIXME
   return id;
 }
