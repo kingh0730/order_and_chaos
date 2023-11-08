@@ -2,6 +2,8 @@
 #include "lib/player.h"
 #include "lib/position.h"
 #include "lib/primitive_value.h"
+#include "lib/recursive_value.h"
+#include "lib/tier.h"
 #include <cassert>
 #include <iostream>
 
