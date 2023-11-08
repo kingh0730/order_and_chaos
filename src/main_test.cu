@@ -43,7 +43,27 @@ void test_tiers() {
   std::cout << tier3.format() << std::endl;
 
   Tier tier4 = Tier(4, &tier3);
+  tier4.solve(Tier::SolveBy::GPU);
   std::cout << tier4.format() << std::endl;
+
+  Tier tier5 = Tier(5, &tier4);
+  tier5.solve(Tier::SolveBy::CPU);
+  std::cout << tier5.format() << std::endl;
+
+  Tier tier6 = Tier(6, &tier5);
+  tier6.solve(Tier::SolveBy::GPU);
+  std::cout << tier6.format() << std::endl;
+
+  Tier tier7 = Tier(7, &tier6);
+  tier7.solve(Tier::SolveBy::CPU);
+  std::cout << tier7.format() << std::endl;
+
+  Tier tier8 = Tier(8, &tier7);
+  tier8.solve(Tier::SolveBy::GPU);
+  std::cout << tier8.format() << std::endl;
+
+  Tier tier9 = Tier(9, &tier8);
+  std::cout << tier9.format() << std::endl;
 }
 
 void test_utils() {
