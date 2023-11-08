@@ -9,9 +9,13 @@ std::string Tier::format() const {
 }
 
 Tier::SolveResult Tier::solve(SolveBy solve_by) {
+
+  auto child_position_hash_to_rv =
+      next_tier ? next_tier->position_hash_to_rv : nullptr;
+
   switch (solve_by) {
   case SolveBy::CPU:
-    solve_by_cpu(position_hash_to_rv, next_tier->position_hash_to_rv);
+    solve_by_cpu(position_hash_to_rv, child_position_hash_to_rv);
     break;
   case SolveBy::GPU:
     // solve_by_gpu(position_hash_to_rv, next_tier->position_hash_to_rv);
