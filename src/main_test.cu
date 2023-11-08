@@ -38,6 +38,35 @@ void test_utils() {
   assert(factorial(7) == 5040);
   assert(factorial(8) == 40320);
   assert(factorial(9) == 362880);
+
+  assert(combination(0, 0) == 1);
+  assert(combination(1, 0) == 1);
+  assert(combination(1, 1) == 1);
+  assert(combination(2, 0) == 1);
+  assert(combination(2, 1) == 2);
+  assert(combination(2, 2) == 1);
+  assert(combination(3, 0) == 1);
+  assert(combination(3, 1) == 3);
+  assert(combination(3, 2) == 3);
+  assert(combination(3, 3) == 1);
+  assert(combination(4, 0) == 1);
+  assert(combination(4, 1) == 4);
+  assert(combination(4, 2) == 6);
+  assert(combination(4, 3) == 4);
+  assert(combination(4, 4) == 1);
+  assert(combination(5, 0) == 1);
+  assert(combination(5, 1) == 5);
+  assert(combination(5, 2) == 10);
+  assert(combination(5, 3) == 10);
+  assert(combination(5, 4) == 5);
+  assert(combination(5, 5) == 1);
+  assert(combination(6, 0) == 1);
+  assert(combination(6, 1) == 6);
+  assert(combination(6, 2) == 15);
+  assert(combination(6, 3) == 20);
+  assert(combination(6, 4) == 15);
+  assert(combination(6, 5) == 6);
+  assert(combination(6, 6) == 1);
 }
 
 void test_boards() {
