@@ -23,6 +23,8 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
   auto child_position_hash_to_rv =
       next_tier ? next_tier->position_hash_to_rv : nullptr;
 
+  auto child_num_positions = next_tier ? next_tier->num_positions : 0;
+
   switch (solve_by) {
 
   case SolveBy::CPU:
@@ -30,11 +32,19 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
     break;
 
   case SolveBy::GPU:
-    int *d_position_hash_to_rv, *d_child_position_hash_to_rv;
-    // cudaMalloc(&d_a, bytes);
-    // cudaMalloc(&d_c, bytes);
-    // cudaMemcpy(d_a, a.data(), bytes, cudaMemcpyHostToDevice);
-    // cudaMemcpy(d_b, b.data(), bytes, cudaMemcpyHostToDevice);
+    RecursiveValue *d_position_hash_to_rv, *d_child_position_hash_to_rv;
+
+    unsigned long long position_hash_to_rv_size =
+        sizeof(RecursiveValue) * num_positions;
+    unsigned long long child_position_hash_to_rv_size =
+        sizeof(RecursiveValue) * child_num_positions;
+    cudaMalloc(&d_position_hash_to_rv, position_hash_to_rv_size);
+    cudaMemcpy(d_position_hash_to_rv, position_hash_to_rv,
+               position_hash_to_rv_size, cudaMemcpyHostToDevice);
+    cudaMalloc(&d_child_position_hash_to_rv, child_position_hash_to_rv_size);
+    cudaMemcpy(d_child_position_hash_to_rv, child_position_hash_to_rv,
+               child_position_hash_to_rv_size, cudaMemcpyHostToDevice);
+
     // solve_by_gpu(position_hash_to_rv, next_tier->position_hash_to_rv);
     break;
   }
