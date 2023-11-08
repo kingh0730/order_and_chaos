@@ -3,13 +3,16 @@
 
 Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
     : num_empty_spaces(num_empty_spaces), next_tier(next_tier) {
-  position_hash_to_rv = (RecursiveValue *)malloc(0); // FIXME
+
+  num_positions = Position::num_positions(num_empty_spaces);
+  position_hash_to_rv = new RecursiveValue[num_positions];
 }
 
 std::string Tier::format() const {
   std::stringstream ss;
   ss << "Tier:\n";
   ss << "  num_empty_spaces: " << num_empty_spaces << "\n";
+  ss << "  num_positions: " << num_positions << "\n";
   return ss.str();
 }
 
@@ -26,10 +29,10 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
 
   case SolveBy::GPU:
     int *d_position_hash_to_rv, *d_child_position_hash_to_rv;
-    cudaMalloc(&d_a, bytes);
-    cudaMalloc(&d_c, bytes);
-    cudaMemcpy(d_a, a.data(), bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_b, b.data(), bytes, cudaMemcpyHostToDevice);
+    // cudaMalloc(&d_a, bytes);
+    // cudaMalloc(&d_c, bytes);
+    // cudaMemcpy(d_a, a.data(), bytes, cudaMemcpyHostToDevice);
+    // cudaMemcpy(d_b, b.data(), bytes, cudaMemcpyHostToDevice);
     // solve_by_gpu(position_hash_to_rv, next_tier->position_hash_to_rv);
     break;
   }
