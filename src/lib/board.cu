@@ -123,7 +123,7 @@ unsigned long long Board::id() const {
   return id;
 }
 
-unsigned long long Board::max_id(unsigned int num_empty_spaces) {
+Board Board::board_with_max_id(unsigned int num_empty_spaces) {
 
   Board b_max = Board();
 
@@ -137,7 +137,11 @@ unsigned long long Board::max_id(unsigned int num_empty_spaces) {
     b_max.board[i / TTT_N][i % TTT_N] = Board::E;
   }
 
-  return b_max.id();
+  return b_max;
+}
+
+unsigned long long Board::max_id(unsigned int num_empty_spaces) {
+  return board_with_max_id(num_empty_spaces).id();
 }
 
 unsigned long long Board::num_boards(unsigned int num_empty_spaces) {

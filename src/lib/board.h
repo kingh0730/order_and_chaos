@@ -27,6 +27,7 @@ public:
   unsigned long long id_raw_for_empty_spaces() const;
   unsigned long long id_raw_for_occupied_spaces() const;
   unsigned long long id() const;
+  static Board board_with_max_id(unsigned int num_empty_spaces);
   static unsigned long long max_id(unsigned int num_empty_spaces);
   static unsigned long long num_boards(unsigned int num_empty_spaces);
 
