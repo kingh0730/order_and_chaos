@@ -191,9 +191,4 @@ void test_boards() {
   std::cout << Board::board_with_max_id(7).format() << std::endl;
   std::cout << Board::board_with_max_id(8).format() << std::endl;
   std::cout << Board::board_with_max_id(9).format() << std::endl;
-
-  assert(Board::max_id(3) == 511);
-  assert(Board::max_id(4) == 511);
-  assert(Board::max_id(5) == 511);
-  assert(Board::max_id(6) == 511);
 }

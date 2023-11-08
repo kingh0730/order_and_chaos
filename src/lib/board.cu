@@ -126,6 +126,7 @@ unsigned long long Board::id() const {
 Board Board::board_with_max_id(unsigned int num_empty_spaces) {
 
   Board b_max = Board();
+  b_max.num_empty_spaces = num_empty_spaces;
 
   unsigned int num_occupied = TTT_N * TTT_N - num_empty_spaces;
 
