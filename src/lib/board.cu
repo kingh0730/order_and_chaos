@@ -16,6 +16,16 @@ Board::Board(PieceType b[TTT_N][TTT_N]) {
   }
 }
 
+Board::Board() {
+  num_empty_spaces = TTT_N * TTT_N;
+
+  for (int i = 0; i < TTT_N; i++) {
+    for (int j = 0; j < TTT_N; j++) {
+      board[i][j] = Board::E;
+    }
+  }
+}
+
 bool Board::is_win_for(PieceType piece) const {
   if (piece == Board::E) {
     throw std::invalid_argument("Board::is_win_for: piece cannot be empty");

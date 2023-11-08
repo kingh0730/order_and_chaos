@@ -19,6 +19,7 @@ private:
 
 public:
   Board(PieceType board[TTT_N][TTT_N]);
+  Board();
 
   bool is_win_for(PieceType piece) const;
   bool is_full() const;
