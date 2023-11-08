@@ -1,10 +1,11 @@
 #pragma once
 
+#include <stdint.h>
 #include <string>
 
 class RecursiveValue {
 public:
-  enum _RecursiveValueType {
+  enum _RecursiveValueType : uint8_t {
     Undetermined = 0,
     Win = 1,
     Lose = 2,

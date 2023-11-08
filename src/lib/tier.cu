@@ -1,5 +1,6 @@
 #include "tier.h"
 #include <sstream>
+#include <stdint.h>
 
 Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
     : num_empty_spaces(num_empty_spaces), next_tier(next_tier) {
@@ -75,5 +76,6 @@ __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
                              unsigned long long num_positions) {
   unsigned long long tid = (blockDim.x * blockIdx.x) + threadIdx.x;
 
-  // position_hash_to_rv[tid] = RecursiveValue::Tie;
+  auto cast_rv = (uint8_t *)position_hash_to_rv;
+  cast_rv[tid] = 3;
 }
