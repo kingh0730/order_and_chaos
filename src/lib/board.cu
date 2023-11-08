@@ -185,6 +185,10 @@ std::string Board::format() const {
 
   result += "num_empty_spaces: " + std::to_string(num_empty_spaces) + "\n";
   result += "id: " + std::to_string(id()) + "\n";
+  result += "id_raw_for_empty_spaces: ";
+  result += std::to_string(id_raw_for_empty_spaces()) + "\n";
+  result += "id_raw_for_occupied_spaces: ";
+  result += std::to_string(id_raw_for_occupied_spaces()) + "\n";
 
   return result;
 }
