@@ -3,6 +3,10 @@
 
 unsigned long long Position::id() const { return board.id(); }
 
+unsigned long long Position::max_id(unsigned int num_empty_spaces) {
+  return Board::max_id(num_empty_spaces);
+}
+
 unsigned long long Position::num_positions(unsigned int num_empty_spaces) {
   return Board::num_boards(num_empty_spaces);
 }

@@ -14,6 +14,7 @@ public:
   Position(Player player, Board board) : player(player), board(board) {}
 
   unsigned long long id() const;
+  static unsigned long long max_id(unsigned int num_empty_spaces);
   static unsigned long long num_positions(unsigned int num_empty_spaces);
 
   static Board::PieceType player_to_piece(Player::PlayerType player);
