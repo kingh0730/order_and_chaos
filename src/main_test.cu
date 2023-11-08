@@ -4,12 +4,36 @@
 #include "lib/primitive_value.h"
 #include "lib/recursive_value.h"
 #include "lib/tier.h"
+#include "lib/utils.h"
 #include <cassert>
 #include <iostream>
+
+void test_utils();
+void test_boards();
 
 int main() {
   std::cout << "Hello, world!" << std::endl;
 
+  test_utils();
+  test_boards();
+
+  // Tier
+  Tier tier0 = Tier(0, nullptr);
+
+  tier0.solve(Tier::SolveBy::CPU);
+  std::cout << tier0.format() << std::endl;
+
+  return 0;
+}
+
+void test_utils() {
+  assert(factorial(0) == 1);
+  assert(factorial(1) == 1);
+  assert(factorial(2) == 2);
+  assert(factorial(3) == 6);
+}
+
+void test_boards() {
   const Player p1 = Player::X;
   std::cout << p1.format() << std::endl;
 
@@ -31,7 +55,7 @@ int main() {
 
   assert(position1.primitive_value() == PrimitiveValue::NotPrimitive);
 
-  // Board tests
+  // Boards
   assert(Position(Player::X, Board(new Board::PieceType[TTT_N][TTT_N]{
                                  {Board::X, Board::X, Board::O},
                                  {Board::O, Board::E, Board::O},
@@ -56,12 +80,4 @@ int main() {
                                  {Board::X, Board::O, Board::O},
                              }))
              .primitive_value() == PrimitiveValue::Tie);
-
-  // Tier
-  Tier tier0 = Tier(0, nullptr);
-
-  tier0.solve(Tier::SolveBy::CPU);
-  std::cout << tier0.format() << std::endl;
-
-  return 0;
 }
