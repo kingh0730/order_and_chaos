@@ -19,4 +19,22 @@ public:
     delete position_hash_to_rv;
     return;
   }
+
+  enum class SolveBy {
+    CPU,
+    GPU,
+  };
+
+  enum class SolveResult {
+    Success,
+    Error,
+  };
+
+  SolveResult solve(SolveBy solve_by);
 };
+
+void solve_by_cpu(RecursiveValue *position_hash_to_rv,
+                  RecursiveValue *child_position_hash_to_rv);
+
+__global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
+                             RecursiveValue *child_position_hash_to_rv);
