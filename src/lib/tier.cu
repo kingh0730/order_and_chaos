@@ -39,6 +39,7 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
     break;
   }
 
+  solved = true;
   return SolveResult::Success;
 }
 
