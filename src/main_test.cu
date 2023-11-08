@@ -31,12 +31,19 @@ void test_tiers() {
   std::cout << tier0.format() << std::endl;
 
   Tier tier1 = Tier(1, &tier0);
-  tier1.solve(Tier::SolveBy::CPU);
+  tier1.solve(Tier::SolveBy::GPU);
   std::cout << tier1.format() << std::endl;
 
   Tier tier2 = Tier(2, &tier1);
   tier2.solve(Tier::SolveBy::CPU);
   std::cout << tier2.format() << std::endl;
+
+  Tier tier3 = Tier(3, &tier2);
+  tier3.solve(Tier::SolveBy::GPU);
+  std::cout << tier3.format() << std::endl;
+
+  Tier tier4 = Tier(4, &tier3);
+  std::cout << tier4.format() << std::endl;
 }
 
 void test_utils() {

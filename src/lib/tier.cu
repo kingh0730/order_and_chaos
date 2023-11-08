@@ -14,6 +14,7 @@ std::string Tier::format() const {
   ss << "Tier:\n";
   ss << "  num_empty_spaces: " << num_empty_spaces << "\n";
   ss << "  num_positions: " << num_positions << "\n";
+  ss << "  solved: " << (solved ? "True" : "False") << "\n";
   return ss.str();
 }
 
