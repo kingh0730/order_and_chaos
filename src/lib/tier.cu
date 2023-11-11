@@ -125,7 +125,6 @@ void solve_by_cpu(RecursiveValue *position_hash_to_rv,
     if (position_hash_to_rv[id] == RecursiveValue::Undetermined) {
       position_hash_to_rv[id] = RecursiveValue::Lose;
       delete[] children;
-      continue;
     }
   }
 }
