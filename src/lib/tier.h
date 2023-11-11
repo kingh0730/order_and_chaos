@@ -41,8 +41,10 @@ public:
 
 void solve_by_cpu(RecursiveValue *position_hash_to_rv,
                   RecursiveValue *child_position_hash_to_rv,
-                  unsigned long long num_positions);
+                  unsigned long long num_positions,
+                  unsigned int num_empty_spaces);
 
 __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
                              RecursiveValue *child_position_hash_to_rv,
-                             unsigned long long num_positions);
+                             unsigned long long num_positions,
+                             unsigned int num_empty_spaces);
