@@ -11,6 +11,19 @@ unsigned long long Position::num_positions(unsigned int num_empty_spaces) {
   return Board::num_boards(num_empty_spaces);
 }
 
+unsigned int Position::children(Position *&children) const {
+  Board *child_boards;
+  unsigned int num_children = board.children(child_boards);
+  children = new Position[num_children];
+
+  for (unsigned int i = 0; i < num_children; i++) {
+    children[i] = Position(player.next_player_type(), child_boards[i]);
+  }
+
+  delete[] child_boards;
+  return num_children;
+}
+
 Player::PlayerType Position::piece_to_player(Board::PieceType piece) {
   switch (piece) {
   case Board::X:
