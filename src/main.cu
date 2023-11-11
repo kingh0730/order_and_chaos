@@ -30,19 +30,20 @@ Tier *solve(Tier::SolveBy solve_by, bool destroy_tiers) {
 }
 
 void play_game(Tier *top_tier) {
-  Board board = Board();
+  Position position = Position();
   Tier *tier = top_tier;
 
   unsigned int row;
   unsigned int col;
+
   while (true) {
     std::cout << "===================="
               << "====================" << std::endl;
-    auto id = board.id();
+    auto id = position.id();
     auto rv = tier->rv(id);
     std::cout << rv.format() << std::endl;
 
-    std::cout << board.format() << std::endl;
+    std::cout << position.format() << std::endl;
     std::cout << "Enter i: ";
     std::cin >> row;
     if (row >= TTT_N) {
@@ -55,6 +56,9 @@ void play_game(Tier *top_tier) {
       std::cerr << "[!] Invalid j" << std::endl;
       continue;
     }
+
+    position = position.next_position(row, col);
+    tier = tier->get_next_tier();
   }
 }
 

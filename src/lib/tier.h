@@ -32,7 +32,9 @@ public:
   SolveResult solve(SolveBy solve_by);
   bool is_solved() const { return solved; }
 
+  Tier *get_next_tier() const { return next_tier; }
   void set_next_tier_null() { next_tier = nullptr; }
+
   RecursiveValue rv(unsigned long long id) const {
     return position_hash_to_rv[id];
   }
