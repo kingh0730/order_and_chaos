@@ -3,7 +3,6 @@
 #include <chrono>
 #include <iostream>
 
-
 using std::chrono::duration_cast;
 using std::chrono::high_resolution_clock;
 using std::chrono::milliseconds;
@@ -21,6 +20,7 @@ Tier *solve(Tier::SolveBy solve_by) {
 
     if (next_tier != nullptr) {
       delete next_tier;
+      tier->set_next_tier_null();
     }
 
     next_tier = tier;

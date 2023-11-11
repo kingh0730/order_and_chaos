@@ -20,7 +20,8 @@ public:
   RecursiveValue(_RecursiveValueType rv) : rv(rv) {}
   RecursiveValue() : RecursiveValue(Undetermined) {}
 
-  bool operator==(const RecursiveValue &other) const { return rv == other.rv; }
+  bool operator==(const RecursiveValue &o) const { return rv == o.rv; }
+  bool operator!=(const RecursiveValue &o) const { return !(*this == o); }
 
   std::string format() const;
 };

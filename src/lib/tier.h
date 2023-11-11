@@ -32,6 +32,10 @@ public:
   SolveResult solve(SolveBy solve_by);
   bool is_solved() const { return solved; }
 
+  void set_next_tier_null() { next_tier = nullptr; }
+
+  bool operator==(const Tier &other) const;
+
   std::string format() const;
 };
 

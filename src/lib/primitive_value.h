@@ -17,7 +17,8 @@ private:
 public:
   PrimitiveValue(_PrimitiveValueType pv) : pv(pv) {}
 
-  bool operator==(const PrimitiveValue &other) const { return pv == other.pv; }
+  bool operator==(const PrimitiveValue &o) const { return pv == o.pv; }
+  bool operator!=(const PrimitiveValue &o) const { return !(*this == o); }
 
   std::string format() const;
 };

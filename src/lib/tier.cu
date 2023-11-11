@@ -12,6 +12,29 @@ Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
   solved = false;
 }
 
+bool Tier::operator==(const Tier &other) const {
+  if (num_empty_spaces != other.num_empty_spaces) {
+    return false;
+  }
+  if (num_positions != other.num_positions) {
+    return false;
+  }
+  if (solved != other.solved) {
+    return false;
+  }
+  // if (next_tier != other.next_tier) {
+  //   return false;
+  // }
+
+  for (unsigned long long i = 0; i < num_positions; i++) {
+    if (position_hash_to_rv[i] != other.position_hash_to_rv[i]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 std::string Tier::format() const {
   std::stringstream ss;
   ss << "Tier:\n";
