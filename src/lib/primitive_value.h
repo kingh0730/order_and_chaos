@@ -1,5 +1,6 @@
 #pragma once
 
+#include "recursive_value.h"
 #include <string>
 
 class PrimitiveValue {
@@ -19,6 +20,8 @@ public:
 
   bool operator==(const PrimitiveValue &o) const { return pv == o.pv; }
   bool operator!=(const PrimitiveValue &o) const { return !(*this == o); }
+
+  RecursiveValue to_recursive_value() const;
 
   std::string format() const;
 };
