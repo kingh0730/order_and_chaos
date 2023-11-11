@@ -37,13 +37,13 @@ void play_game(Tier *top_tier) {
   unsigned int col;
   while (true) {
     std::cout << board.format() << std::endl;
-    std::cout << "Enter row:";
+    std::cout << "Enter i: ";
     std::cin >> row;
     if (row >= TTT_N) {
       std::cout << "Invalid row" << std::endl;
       continue;
     }
-    std::cout << "Enter col:";
+    std::cout << "Enter j: ";
     std::cin >> col;
     if (col >= TTT_N) {
       std::cout << "Invalid col" << std::endl;

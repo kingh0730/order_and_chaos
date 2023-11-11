@@ -234,7 +234,7 @@ std::string Board::format(const PieceType &piece) {
 std::string Board::format() const {
   std::string result;
 
-  result += "----";
+  result += "-----";
   for (int j = 0; j < TTT_N; j++) {
     result += "--";
   }
