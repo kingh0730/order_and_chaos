@@ -40,13 +40,13 @@ void play_game(Tier *top_tier) {
     std::cout << "Enter i: ";
     std::cin >> row;
     if (row >= TTT_N) {
-      std::cout << "Invalid row" << std::endl;
+      std::cerr << "[!] Invalid i" << std::endl;
       continue;
     }
     std::cout << "Enter j: ";
     std::cin >> col;
     if (col >= TTT_N) {
-      std::cout << "Invalid col" << std::endl;
+      std::cerr << "[!] Invalid j" << std::endl;
       continue;
     }
   }
