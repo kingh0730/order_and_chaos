@@ -12,9 +12,9 @@ unsigned long long Position::num_positions(unsigned int num_empty_spaces) {
 }
 
 unsigned int Position::children(Position *&children) const {
-  Board::PieceType next_piece = player_to_piece(player.get_player_type());
+  Board::PieceType piece = player_to_piece(player.get_player_type());
   Board *child_boards;
-  unsigned int num_children = board.children(child_boards, next_piece);
+  unsigned int num_children = board.children(child_boards, piece);
   children = new Position[num_children];
 
   for (unsigned int i = 0; i < num_children; i++) {
@@ -30,9 +30,9 @@ bool Position::is_occupied(unsigned int i, unsigned int j) const {
 }
 
 Position Position::next_position(unsigned int i, unsigned int j) const {
-  Player::PlayerType next_player_type = player.next_player_type();
-  Board next_board = board.next_board(i, j, player_to_piece(next_player_type));
-  return Position(next_player_type, next_board);
+  Board::PieceType piece = player_to_piece(player.get_player_type());
+  Board next_board = board.next_board(i, j, piece);
+  return Position(player.next_player_type(), next_board);
 }
 
 Player::PlayerType Position::piece_to_player(Board::PieceType piece) {
