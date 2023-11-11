@@ -69,6 +69,13 @@ unsigned int Board::children(Board *&children) const {
   return num_children;
 }
 
+Board Board::next_board(unsigned int i, unsigned int j, PieceType piece) const {
+  Board next_board(*this);
+  next_board.board[i][j] = piece;
+  next_board.num_empty_spaces--;
+  return next_board;
+}
+
 Board::Board(unsigned int num_empty_spaces, unsigned long long id)
     : num_empty_spaces(num_empty_spaces) {
 
