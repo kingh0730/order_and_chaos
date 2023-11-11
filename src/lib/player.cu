@@ -3,6 +3,17 @@
 
 #include "player.h"
 
+Player::Player(unsigned int num_empty_spaces) {
+  switch (num_empty_spaces % 2) {
+  case 0:
+    player_type = Player::O;
+    break;
+  case 1:
+    player_type = Player::X;
+    break;
+  }
+}
+
 Player::PlayerType Player::next_player_type() const {
   switch (player_type) {
   case Player::O:
