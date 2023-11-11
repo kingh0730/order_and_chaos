@@ -103,7 +103,7 @@ void solve_by_cpu(RecursiveValue *position_hash_to_rv,
                   unsigned long long num_positions,
                   unsigned int num_empty_spaces) {
   for (unsigned long long id = 0; id < num_positions; id++) {
-    Position position = Position(num_empty_spaces, id);
+    Position position = Position(id, num_empty_spaces);
 
     auto pv = position.primitive_value();
     if (pv != PrimitiveValue::NotPrimitive) {
