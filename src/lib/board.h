@@ -18,9 +18,12 @@ private:
   PieceType board[TTT_N][TTT_N];
 
 public:
+  Board(const Board &other);
   Board(PieceType board[TTT_N][TTT_N]);
   Board(unsigned int num_empty_spaces, unsigned long long id);
   Board();
+
+  Board *children() const;
 
   bool is_win_for(PieceType piece) const;
   bool is_full() const;
