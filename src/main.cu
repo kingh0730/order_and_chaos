@@ -84,6 +84,24 @@ void play_game(Tier *top_tier) {
   }
 }
 
+bool validate(Tier *tier_solved_by_cpu, Tier *tier_solved_by_gpu) {
+  while ((tier_solved_by_cpu != nullptr) && (tier_solved_by_gpu != nullptr)) {
+    if (*tier_solved_by_cpu != *tier_solved_by_gpu) {
+      std::cerr << "[!] Results by CPU and GPU are different!" << std::endl;
+      return false;
+    }
+    tier_solved_by_cpu = tier_solved_by_cpu->get_next_tier();
+    tier_solved_by_gpu = tier_solved_by_gpu->get_next_tier();
+  }
+
+  if ((tier_solved_by_cpu != nullptr) || (tier_solved_by_gpu != nullptr)) {
+    std::cerr << "[!] Results by CPU and GPU are different!" << std::endl;
+    return false;
+  }
+
+  return true;
+}
+
 int main() {
   std::cout << "== Start!" << std::endl;
 
