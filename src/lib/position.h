@@ -21,6 +21,7 @@ public:
   static unsigned long long num_positions(unsigned int num_empty_spaces);
 
   unsigned int children(Position *&children) const;
+  Position next_position(unsigned int i, unsigned int j) const;
 
   static Board::PieceType player_to_piece(Player::PlayerType player);
   static Player::PlayerType piece_to_player(Board::PieceType piece);
