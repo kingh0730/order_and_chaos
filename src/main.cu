@@ -87,7 +87,7 @@ void play_game(Tier *top_tier) {
 bool validate(Tier *tier_solved_by_cpu, Tier *tier_solved_by_gpu) {
   while ((tier_solved_by_cpu != nullptr) && (tier_solved_by_gpu != nullptr)) {
     if (*tier_solved_by_cpu != *tier_solved_by_gpu) {
-      std::cerr << "[!] Results by CPU and GPU are different!" << std::endl;
+      std::cerr << "[*] Results by CPU and GPU are different!" << std::endl;
       return false;
     }
     tier_solved_by_cpu = tier_solved_by_cpu->get_next_tier();
@@ -95,7 +95,7 @@ bool validate(Tier *tier_solved_by_cpu, Tier *tier_solved_by_gpu) {
   }
 
   if ((tier_solved_by_cpu != nullptr) || (tier_solved_by_gpu != nullptr)) {
-    std::cerr << "[!] Results by CPU and GPU are different!" << std::endl;
+    std::cerr << "[*] Results by CPU and GPU are different!" << std::endl;
     return false;
   }
 
@@ -122,9 +122,14 @@ int main() {
   std::cout << "== Validating..." << std::endl;
   std::cout << "CPU: " << tier_solved_by_cpu->format() << std::endl;
   std::cout << "GPU: " << tier_solved_by_gpu->format() << std::endl;
+  if (validate(tier_solved_by_cpu, tier_solved_by_gpu)) {
+    std::cout << "[*] Results by CPU and GPU are the same!" << std::endl;
+  } else {
+    throw std::runtime_error("[*] Results by CPU and GPU are different!");
+  }
+
+  std::cout << "== Playing..." << std::endl;
   play_game(tier_solved_by_cpu);
-  assert(*tier_solved_by_cpu == *tier_solved_by_gpu);
-  std::cout << "Results by CPU and GPU are the same!" << std::endl;
 
   return 0;
 }
