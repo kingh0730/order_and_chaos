@@ -12,6 +12,8 @@ private:
 
 public:
   Position(Player player, Board board) : player(player), board(board) {}
+  Position(unsigned long long id, unsigned int num_empty_spaces)
+      : player(num_empty_spaces), board(num_empty_spaces, id) {}
 
   unsigned long long id() const;
   static unsigned long long max_id(unsigned int num_empty_spaces);
