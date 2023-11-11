@@ -109,23 +109,33 @@ void solve_by_cpu(RecursiveValue *position_hash_to_rv,
 
     for (unsigned int i = 0; i < num_children; i++) {
       unsigned long long child_id = children[i].id();
-
       if (child_position_hash_to_rv[child_id] == RecursiveValue::Lose) {
         position_hash_to_rv[id] = RecursiveValue::Win;
-        delete[] children;
-        break;
-      }
-      if (child_position_hash_to_rv[child_id] == RecursiveValue::Tie) {
-        position_hash_to_rv[id] = RecursiveValue::Tie;
-        delete[] children;
         break;
       }
     }
 
-    if (position_hash_to_rv[id] == RecursiveValue::Undetermined) {
-      position_hash_to_rv[id] = RecursiveValue::Lose;
+    if (position_hash_to_rv[id] == RecursiveValue::Win) {
       delete[] children;
+      continue;
     }
+
+    for (unsigned int i = 0; i < num_children; i++) {
+      unsigned long long child_id = children[i].id();
+      if (child_position_hash_to_rv[child_id] == RecursiveValue::Tie) {
+        position_hash_to_rv[id] = RecursiveValue::Tie;
+        break;
+      }
+    }
+
+    if (position_hash_to_rv[id] == RecursiveValue::Tie) {
+      delete[] children;
+      continue;
+    }
+
+    position_hash_to_rv[id] = RecursiveValue::Lose;
+    delete[] children;
+    continue;
   }
 }
 
