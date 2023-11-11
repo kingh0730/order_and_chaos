@@ -6,22 +6,25 @@ using std::chrono::duration_cast;
 using std::chrono::high_resolution_clock;
 using std::chrono::milliseconds;
 
-Tier::SolveResult solve(Tier::SolveBy solve_by) {
-  Tier next_tier = Tier(0, nullptr);
+Tier *solve(Tier::SolveBy solve_by) {
+  Tier *next_tier = nullptr;
 
-  auto solve_result = next_tier.solve(solve_by);
-  if (solve_result != Tier::SolveResult::Success) {
-    return solve_result;
-  }
+  for (int i = 0; i < TTT_N * TTT_N + 1; i++) {
+    Tier *tier = new Tier(i, next_tier);
 
-  for (int i = 1; i < TTT_N * TTT_N + 1; i++) {
-    Tier tier = Tier(i, &next_tier);
-
-    auto solve_result = tier.solve(solve_by);
+    auto solve_result = tier->solve(solve_by);
     if (solve_result != Tier::SolveResult::Success) {
-      return solve_result;
+      throw std::runtime_error("Failed to solve tier " + std::to_string(i));
     }
+
+    if (next_tier != nullptr) {
+      delete next_tier;
+    }
+
+    next_tier = tier;
   }
+
+  return next_tier;
 }
 
 int main() {
@@ -40,6 +43,8 @@ int main() {
   std::cout << "GPU: ";
   std::cout << duration_cast<milliseconds>(t4 - t3).count() << "ms"
             << std::endl;
+
+  std::cout << "Validating..." << std::endl;
 
   return 0;
 }
