@@ -42,8 +42,20 @@ void play_game(Tier *top_tier) {
     auto id = position.id();
     auto rv = tier->rv(id);
     std::cout << rv.format() << std::endl;
-
     std::cout << position.format() << std::endl;
+
+    Position *children;
+    auto num_children = position.children(children);
+    for (int i = 0; i < num_children; i++) {
+      std::cout << "---------------- Child " << std::to_string(i + 1)
+                << " ----------------" << std::endl;
+      auto id = children[i].id();
+      auto rv = tier->get_next_tier()->rv(id);
+      std::cout << rv.format() << std::endl;
+      std::cout << children[i].format() << std::endl;
+    }
+    delete[] children;
+
     std::cout << "Enter i: ";
     std::cin >> row;
     if (row >= TTT_N) {
