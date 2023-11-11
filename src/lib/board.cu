@@ -2,6 +2,16 @@
 #include "utils.h"
 #include <iostream>
 
+Board::Board(const Board &other) {
+  num_empty_spaces = other.num_empty_spaces;
+
+  for (int i = 0; i < TTT_N; i++) {
+    for (int j = 0; j < TTT_N; j++) {
+      board[i][j] = other.board[i][j];
+    }
+  }
+}
+
 Board::Board(PieceType b[TTT_N][TTT_N]) {
   num_empty_spaces = 0;
 
@@ -14,6 +24,25 @@ Board::Board(PieceType b[TTT_N][TTT_N]) {
       }
     }
   }
+}
+
+Board *Board::children() const {
+  unsigned int num_children = num_empty_spaces * 2;
+  Board *children = new Board[num_children];
+
+  unsigned int child_idx = 0;
+  for (int i = 0; i < TTT_N; i++) {
+    for (int j = 0; j < TTT_N; j++) {
+      if (board[i][j] == Board::E) {
+        children[child_idx++] = Board(*this);
+        children[child_idx - 1].board[i][j] = Board::X;
+        children[child_idx++] = Board(*this);
+        children[child_idx - 1].board[i][j] = Board::O;
+      }
+    }
+  }
+
+  return children;
 }
 
 Board::Board(unsigned int num_empty_spaces, unsigned long long id)
