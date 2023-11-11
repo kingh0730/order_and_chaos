@@ -47,6 +47,8 @@ int main() {
             << std::endl;
 
   std::cout << "Validating..." << std::endl;
+  std::cout << "CPU: " << tier_solved_by_cpu->format() << std::endl;
+  std::cout << "CPU: " << tier_solved_by_gpu->format() << std::endl;
   assert(*tier_solved_by_cpu == *tier_solved_by_gpu);
   std::cout << "Results by CPU and GPU are the same!" << std::endl;
 
