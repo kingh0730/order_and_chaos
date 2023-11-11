@@ -40,6 +40,7 @@ public:
   }
 
   bool operator==(const Tier &other) const;
+  bool operator!=(const Tier &other) const { return !(*this == other); }
 
   std::string format() const;
 };
