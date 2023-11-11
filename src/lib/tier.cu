@@ -7,7 +7,7 @@ Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
     : num_empty_spaces(num_empty_spaces), next_tier(next_tier) {
 
   // ! Use max_id >= num_positions
-  num_positions = Position::max_id(num_empty_spaces);
+  num_positions = Position::max_id(num_empty_spaces) + 1;
 
   position_hash_to_rv = new RecursiveValue[num_positions];
   solved = false;
