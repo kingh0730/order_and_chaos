@@ -44,7 +44,7 @@ void play_game(Tier *top_tier) {
                 << " ----------------" << std::endl;
       auto id = children[i].id();
       auto rv = tier->get_next_tier()->rv(id);
-      std::cout << rv.format() << std::endl;
+      std::cout << "Opponent will: " << rv.format() << std::endl;
       std::cout << children[i].format() << std::endl;
     }
     delete[] children;
@@ -55,6 +55,11 @@ void play_game(Tier *top_tier) {
     auto rv = tier->rv(id);
     std::cout << rv.format() << std::endl;
     std::cout << position.format() << std::endl;
+
+    if (num_children == 0) {
+      std::cout << "[*] Game over!" << std::endl;
+      break;
+    }
 
     std::cout << "Enter i: ";
     std::cin >> row;
