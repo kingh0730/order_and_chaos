@@ -33,6 +33,9 @@ public:
   bool is_solved() const { return solved; }
 
   void set_next_tier_null() { next_tier = nullptr; }
+  RecursiveValue rv(unsigned long long id) const {
+    return position_hash_to_rv[id];
+  }
 
   bool operator==(const Tier &other) const;
 

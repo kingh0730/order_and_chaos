@@ -36,6 +36,12 @@ void play_game(Tier *top_tier) {
   unsigned int row;
   unsigned int col;
   while (true) {
+    std::cout << "===================="
+              << "====================" << std::endl;
+    auto id = board.id();
+    auto rv = tier->rv(id);
+    std::cout << rv.format() << std::endl;
+
     std::cout << board.format() << std::endl;
     std::cout << "Enter i: ";
     std::cin >> row;
