@@ -47,7 +47,7 @@ int main() {
             << std::endl;
 
   std::cout << "Validating..." << std::endl;
-  assert(tier_solved_by_cpu == tier_solved_by_gpu);
+  assert(*tier_solved_by_cpu == *tier_solved_by_gpu);
 
   return 0;
 }
