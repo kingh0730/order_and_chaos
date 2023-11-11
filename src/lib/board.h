@@ -23,7 +23,7 @@ public:
   Board(unsigned int num_empty_spaces, unsigned long long id);
   Board();
 
-  unsigned int children(Board *&children) const;
+  unsigned int children(Board *&children, PieceType piece) const;
   Board next_board(unsigned int i, unsigned int j, PieceType piece) const;
 
   bool is_occupied(unsigned int i, unsigned int j) const;

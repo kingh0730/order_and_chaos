@@ -48,14 +48,14 @@ bool Board::is_valid() const {
   return true;
 }
 
-unsigned int Board::children(Board *&children) const {
+unsigned int Board::children(Board *&children, PieceType piece) const {
   if (!is_valid()) {
     unsigned int num_children = 0;
     children = new Board[num_children];
     return num_children;
   }
 
-  unsigned int num_children = num_empty_spaces * 2;
+  unsigned int num_children = num_empty_spaces;
   children = new Board[num_children];
 
   unsigned int child_idx = 0;
@@ -63,9 +63,8 @@ unsigned int Board::children(Board *&children) const {
     for (int j = 0; j < TTT_N; j++) {
       if (board[i][j] == Board::E) {
         children[child_idx++] = Board(*this);
-        children[child_idx - 1].board[i][j] = Board::X;
-        children[child_idx++] = Board(*this);
-        children[child_idx - 1].board[i][j] = Board::O;
+        children[child_idx - 1].board[i][j] = piece;
+        children[child_idx - 1].num_empty_spaces--;
       }
     }
   }
