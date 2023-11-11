@@ -26,6 +26,24 @@ Board::Board(PieceType b[TTT_N][TTT_N]) {
   }
 }
 
+bool Board::is_valid() const {
+  unsigned int count_empty_spaces = 0;
+  for (int i = 0; i < TTT_N; i++) {
+    for (int j = 0; j < TTT_N; j++) {
+      if (board[i][j] == Board::E) {
+        count_empty_spaces++;
+      }
+    }
+  }
+
+  if (count_empty_spaces != num_empty_spaces) {
+    std::cerr << "Board::is_valid: num_empty_spaces is incorrect\n";
+    return false;
+  }
+
+  return true;
+}
+
 unsigned int Board::children(Board *&children) const {
   unsigned int num_children = num_empty_spaces * 2;
   children = new Board[num_children];

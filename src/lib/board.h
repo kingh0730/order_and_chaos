@@ -27,6 +27,7 @@ public:
 
   bool is_win_for(PieceType piece) const;
   bool is_full() const;
+  bool is_valid() const;
 
   unsigned long long id_raw_for_empty_spaces() const;
   unsigned long long id_raw_for_occupied_spaces() const;
