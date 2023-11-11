@@ -103,9 +103,16 @@ void solve_by_cpu(RecursiveValue *position_hash_to_rv,
                   unsigned long long num_positions,
                   unsigned int num_empty_spaces) {
   for (unsigned long long id = 0; id < num_positions; id++) {
-    Board board = Board(num_empty_spaces, id);
-    Board *children;
-    unsigned num_children = board.children(children);
+    Position position = Position(num_empty_spaces, id);
+
+    auto pv = position.primitive_value();
+    if (pv != PrimitiveValue::NotPrimitive) {
+      position_hash_to_rv[id] = pv.to_recursive_value();
+      continue;
+    }
+
+    Position *children;
+    unsigned int num_children = position.children(children);
 
     for (unsigned int i = 0; i < num_children; i++) {
       unsigned long long child_id = children[i].id();
