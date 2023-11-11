@@ -30,7 +30,7 @@ Tier *solve(Tier::SolveBy solve_by) {
 }
 
 int main() {
-  std::cout << "Hello, world!" << std::endl;
+  std::cout << "== Start!" << std::endl;
 
   auto t1 = high_resolution_clock::now();
   auto tier_solved_by_cpu = solve(Tier::SolveBy::CPU);
@@ -46,9 +46,9 @@ int main() {
   std::cout << duration_cast<milliseconds>(t4 - t3).count() << "ms"
             << std::endl;
 
-  std::cout << "Validating..." << std::endl;
+  std::cout << "== Validating..." << std::endl;
   std::cout << "CPU: " << tier_solved_by_cpu->format() << std::endl;
-  std::cout << "CPU: " << tier_solved_by_gpu->format() << std::endl;
+  std::cout << "GPU: " << tier_solved_by_gpu->format() << std::endl;
   assert(*tier_solved_by_cpu == *tier_solved_by_gpu);
   std::cout << "Results by CPU and GPU are the same!" << std::endl;
 
