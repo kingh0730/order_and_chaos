@@ -12,7 +12,7 @@ unsigned long long Position::num_positions(unsigned int num_empty_spaces) {
 }
 
 unsigned int Position::children(Position *&children) const {
-  Board::PieceType next_piece = player_to_piece(player.next_player_type());
+  Board::PieceType next_piece = player_to_piece(player.get_player_type());
   Board *child_boards;
   unsigned int num_children = board.children(child_boards, next_piece);
   children = new Position[num_children];
