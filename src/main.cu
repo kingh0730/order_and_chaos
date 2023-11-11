@@ -1,6 +1,8 @@
 #include "lib/tier.h"
+#include <cassert>
 #include <chrono>
 #include <iostream>
+
 
 using std::chrono::duration_cast;
 using std::chrono::high_resolution_clock;
@@ -31,20 +33,21 @@ int main() {
   std::cout << "Hello, world!" << std::endl;
 
   auto t1 = high_resolution_clock::now();
-  solve(Tier::SolveBy::CPU);
+  auto tier_solved_by_cpu = solve(Tier::SolveBy::CPU);
   auto t2 = high_resolution_clock::now();
   std::cout << "CPU: ";
   std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
             << std::endl;
 
   auto t3 = high_resolution_clock::now();
-  solve(Tier::SolveBy::GPU);
+  auto tier_solved_by_gpu = solve(Tier::SolveBy::GPU);
   auto t4 = high_resolution_clock::now();
   std::cout << "GPU: ";
   std::cout << duration_cast<milliseconds>(t4 - t3).count() << "ms"
             << std::endl;
 
   std::cout << "Validating..." << std::endl;
+  assert(tier_solved_by_cpu == tier_solved_by_gpu);
 
   return 0;
 }
