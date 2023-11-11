@@ -26,9 +26,9 @@ Board::Board(PieceType b[TTT_N][TTT_N]) {
   }
 }
 
-Board *Board::children() const {
+unsigned int Board::children(Board *&children) const {
   unsigned int num_children = num_empty_spaces * 2;
-  Board *children = new Board[num_children];
+  children = new Board[num_children];
 
   unsigned int child_idx = 0;
   for (int i = 0; i < TTT_N; i++) {
@@ -42,7 +42,7 @@ Board *Board::children() const {
     }
   }
 
-  return children;
+  return num_children;
 }
 
 Board::Board(unsigned int num_empty_spaces, unsigned long long id)

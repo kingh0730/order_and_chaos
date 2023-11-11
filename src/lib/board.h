@@ -23,7 +23,7 @@ public:
   Board(unsigned int num_empty_spaces, unsigned long long id);
   Board();
 
-  Board *children() const;
+  unsigned int children(Board *&children) const;
 
   bool is_win_for(PieceType piece) const;
   bool is_full() const;

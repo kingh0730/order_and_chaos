@@ -104,7 +104,27 @@ void solve_by_cpu(RecursiveValue *position_hash_to_rv,
                   unsigned int num_empty_spaces) {
   for (unsigned long long id = 0; id < num_positions; id++) {
     Board board = Board(num_empty_spaces, id);
-    position_hash_to_rv[id] = RecursiveValue::Tie;
+    Board *children;
+    unsigned num_children = board.children(children);
+
+    for (unsigned int i = 0; i < num_children; i++) {
+      unsigned long long child_id = children[i].id();
+
+      if (child_position_hash_to_rv[child_id] == RecursiveValue::Lose) {
+        position_hash_to_rv[id] = RecursiveValue::Win;
+        delete[] children;
+        return;
+      }
+      if (child_position_hash_to_rv[child_id] == RecursiveValue::Tie) {
+        position_hash_to_rv[id] = RecursiveValue::Tie;
+        delete[] children;
+        return;
+      }
+    }
+
+    position_hash_to_rv[id] = RecursiveValue::Lose;
+    delete[] children;
+    return;
   }
 }
 
