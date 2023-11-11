@@ -45,6 +45,12 @@ bool Board::is_valid() const {
 }
 
 unsigned int Board::children(Board *&children) const {
+  if (!is_valid()) {
+    unsigned int num_children = 0;
+    children = new Board[num_children];
+    return num_children;
+  }
+
   unsigned int num_children = num_empty_spaces * 2;
   children = new Board[num_children];
 
