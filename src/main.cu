@@ -29,6 +29,21 @@ Tier *solve(Tier::SolveBy solve_by, bool destroy_tiers) {
   return next_tier;
 }
 
+void play_game(Tier *top_tier) {
+  Board board = Board();
+  Tier *tier = top_tier;
+
+  unsigned int row;
+  unsigned int col;
+  while (true) {
+    std::cout << board.format() << std::endl;
+    std::cout << "Enter row:";
+    std::cin >> row;
+    std::cout << "Enter col:";
+    std::cin >> col;
+  }
+}
+
 int main() {
   std::cout << "== Start!" << std::endl;
 
@@ -49,6 +64,7 @@ int main() {
   std::cout << "== Validating..." << std::endl;
   std::cout << "CPU: " << tier_solved_by_cpu->format() << std::endl;
   std::cout << "GPU: " << tier_solved_by_gpu->format() << std::endl;
+  play_game(tier_solved_by_cpu);
   assert(*tier_solved_by_cpu == *tier_solved_by_gpu);
   std::cout << "Results by CPU and GPU are the same!" << std::endl;
 
