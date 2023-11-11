@@ -37,7 +37,7 @@ bool Board::is_valid() const {
   }
 
   if (count_empty_spaces != num_empty_spaces) {
-    std::cerr << "Board::is_valid: num_empty_spaces is incorrect\n";
+    // std::cerr << "Board::is_valid: num_empty_spaces is incorrect\n";
     return false;
   }
 
