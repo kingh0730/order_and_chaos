@@ -233,12 +233,34 @@ std::string Board::format(const PieceType &piece) {
 
 std::string Board::format() const {
   std::string result;
+
+  result += "----";
+  for (int j = 0; j < TTT_N; j++) {
+    result += "--";
+  }
+  result += '\n';
+
+  result += "j ->";
+  for (int j = 0; j < TTT_N; j++) {
+    result += ' ' + std::to_string(j);
+  }
+  result += '\n';
+
   for (int i = 0; i < TTT_N; i++) {
+    result += 'i' + std::to_string(i) + "  |";
     for (int j = 0; j < TTT_N; j++) {
       result += format(board[i][j]);
+      result += '|';
     }
-    result += "\n";
+    result += '\n';
   }
+
+  // for (int i = 0; i < TTT_N; i++) {
+  //   for (int j = 0; j < TTT_N; j++) {
+  //     result += format(board[i][j]);
+  //   }
+  //   result += "\n";
+  // }
 
   result += "num_empty_spaces: " + std::to_string(num_empty_spaces) + "\n";
   result += "id: " + std::to_string(id()) + "\n";
