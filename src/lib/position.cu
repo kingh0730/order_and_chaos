@@ -24,6 +24,10 @@ unsigned int Position::children(Position *&children) const {
   return num_children;
 }
 
+bool Position::is_occupied(unsigned int i, unsigned int j) const {
+  return board.is_occupied(i, j);
+}
+
 Position Position::next_position(unsigned int i, unsigned int j) const {
   Player::PlayerType next_player_type = player.next_player_type();
   Board next_board = board.next_board(i, j, player_to_piece(next_player_type));

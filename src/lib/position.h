@@ -20,6 +20,7 @@ public:
   static unsigned long long max_id(unsigned int num_empty_spaces);
   static unsigned long long num_positions(unsigned int num_empty_spaces);
 
+  bool is_occupied(unsigned int i, unsigned int j) const;
   unsigned int children(Position *&children) const;
   Position next_position(unsigned int i, unsigned int j) const;
 

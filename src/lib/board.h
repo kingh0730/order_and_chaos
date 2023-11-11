@@ -26,6 +26,7 @@ public:
   unsigned int children(Board *&children) const;
   Board next_board(unsigned int i, unsigned int j, PieceType piece) const;
 
+  bool is_occupied(unsigned int i, unsigned int j) const;
   bool is_win_for(PieceType piece) const;
   bool is_full() const;
   bool is_valid() const;

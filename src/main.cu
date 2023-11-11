@@ -57,6 +57,11 @@ void play_game(Tier *top_tier) {
       continue;
     }
 
+    if (position.is_occupied(row, col)) {
+      std::cerr << "[!] Position is occupied" << std::endl;
+      continue;
+    }
+
     position = position.next_position(row, col);
     tier = tier->get_next_tier();
   }
