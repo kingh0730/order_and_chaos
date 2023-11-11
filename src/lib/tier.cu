@@ -113,18 +113,18 @@ void solve_by_cpu(RecursiveValue *position_hash_to_rv,
       if (child_position_hash_to_rv[child_id] == RecursiveValue::Lose) {
         position_hash_to_rv[id] = RecursiveValue::Win;
         delete[] children;
-        return;
+        continue;
       }
       if (child_position_hash_to_rv[child_id] == RecursiveValue::Tie) {
         position_hash_to_rv[id] = RecursiveValue::Tie;
         delete[] children;
-        return;
+        continue;
       }
     }
 
     position_hash_to_rv[id] = RecursiveValue::Lose;
     delete[] children;
-    return;
+    continue;
   }
 }
 
