@@ -18,18 +18,21 @@ public:
       : player(num_empty_spaces), board(num_empty_spaces, id) {}
   CUDA_CALLABLE Position() : player(Player(TTT_N * TTT_N)), board() {}
 
-  unsigned long long id() const;
-  static unsigned long long max_id(unsigned int num_empty_spaces);
-  static unsigned long long num_positions(unsigned int num_empty_spaces);
+  CUDA_CALLABLE unsigned long long id() const;
+  CUDA_CALLABLE static unsigned long long max_id(unsigned int num_empty_spaces);
+  CUDA_CALLABLE static unsigned long long
+  num_positions(unsigned int num_empty_spaces);
 
-  bool is_occupied(unsigned int i, unsigned int j) const;
-  unsigned int children(Position *&children) const;
-  Position next_position(unsigned int i, unsigned int j) const;
+  CUDA_CALLABLE bool is_occupied(unsigned int i, unsigned int j) const;
+  CUDA_CALLABLE unsigned int children(Position *&children) const;
+  CUDA_CALLABLE Position next_position(unsigned int i, unsigned int j) const;
 
-  static Board::PieceType player_to_piece(Player::PlayerType player);
-  static Player::PlayerType piece_to_player(Board::PieceType piece);
+  CUDA_CALLABLE static Board::PieceType
+  player_to_piece(Player::PlayerType player);
+  CUDA_CALLABLE static Player::PlayerType
+  piece_to_player(Board::PieceType piece);
 
-  PrimitiveValue primitive_value() const;
+  CUDA_CALLABLE PrimitiveValue primitive_value() const;
 
   std::string format() const;
 };
