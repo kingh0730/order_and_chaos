@@ -1,6 +1,7 @@
 #pragma once
 
 #include "_config.h"
+#include "utils.h"
 #include <map>
 #include <string>
 #include <vector>
@@ -18,10 +19,10 @@ private:
   PieceType board[TTT_N][TTT_N];
 
 public:
-  Board(const Board &other);
-  Board(PieceType board[TTT_N][TTT_N]);
-  Board(unsigned int num_empty_spaces, unsigned long long id);
-  Board();
+  CUDA_CALLABLE Board(const Board &other);
+  CUDA_CALLABLE Board(PieceType board[TTT_N][TTT_N]);
+  CUDA_CALLABLE Board(unsigned int num_empty_spaces, unsigned long long id);
+  CUDA_CALLABLE Board();
 
   unsigned int children(Board *&children, PieceType piece) const;
   Board next_board(unsigned int i, unsigned int j, PieceType piece) const;
