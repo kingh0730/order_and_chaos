@@ -169,6 +169,6 @@ __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
   solve_common(position_hash_to_rv, child_position_hash_to_rv, num_empty_spaces,
                num_positions, id);
 
-  // auto cast_rv = (uint8_t *)position_hash_to_rv;
+  // auto cast_rv = (int8_t *)position_hash_to_rv;
   // cast_rv[id] = 3;
 }
