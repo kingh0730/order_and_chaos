@@ -1,5 +1,9 @@
 #pragma once
 
+#ifndef __CUDACC__
+#define __global__
+#endif
+
 #ifdef __CUDACC__
 #define CUDA_CALLABLE __host__ __device__
 #else
