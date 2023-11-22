@@ -17,7 +17,14 @@ Tier *solve(Tier::SolveBy solve_by, bool destroy_tiers) {
 
     Tier *tier = new Tier(i, next_tier);
 
+    auto t1 = high_resolution_clock::now();
     auto solve_result = tier->solve(solve_by);
+    auto t2 = high_resolution_clock::now();
+    std::cout << "\tSolved using: ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
+
     if (solve_result != Tier::SolveResult::Success) {
       throw std::runtime_error("Failed to solve tier " + std::to_string(i));
     }
