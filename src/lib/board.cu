@@ -118,7 +118,9 @@ Board::Board() {
 
 bool Board::is_win_for(PieceType piece) const {
   if (piece == Board::E) {
-    throw std::invalid_argument("Board::is_win_for: piece cannot be empty");
+    // ! Device code does not support exception handling.
+    // throw std::invalid_argument("Board::is_win_for: piece cannot be empty");
+    return false;
   }
 
   // check rows
@@ -237,8 +239,10 @@ unsigned long long Board::max_id(unsigned int num_empty_spaces) {
 
 unsigned long long Board::num_boards(unsigned int num_empty_spaces) {
   if (num_empty_spaces > TTT_N * TTT_N) {
-    throw std::invalid_argument("Board::num_boards: num_empty_spaces cannot be "
-                                "greater than TTT_N * TTT_N");
+    // ! Device code does not support exception handling.
+    // throw std::invalid_argument("Board::num_boards: num_empty_spaces"
+    //                             "cannot be greater than TTT_N * TTT_N");
+    return 0;
   }
 
   unsigned int num_occupied = TTT_N * TTT_N - num_empty_spaces;

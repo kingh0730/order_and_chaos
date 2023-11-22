@@ -22,6 +22,7 @@ RecursiveValue PrimitiveValue::to_recursive_value() const {
 
     // ! Device code does not support exception handling.
     // throw std::invalid_argument("unknown PrimitiveValue type");
+    return RecursiveValue::Undetermined;
   }
 }
 

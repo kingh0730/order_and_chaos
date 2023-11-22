@@ -14,5 +14,5 @@
 #define CUDA_CALLABLE
 #endif
 
-unsigned long long factorial(unsigned int n);
-unsigned long long combination(unsigned int n, unsigned int k);
+CUDA_CALLABLE unsigned long long factorial(unsigned int n);
+CUDA_CALLABLE unsigned long long combination(unsigned int n, unsigned int k);
