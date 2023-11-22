@@ -111,6 +111,9 @@ bool validate(Tier *tier_solved_by_cpu, Tier *tier_solved_by_gpu) {
 
 int main() {
   std::cout << "== Start!" << std::endl;
+  auto t0 = high_resolution_clock::now();
+  std::cout << "Current time: " << t0.time_since_epoch().count() << "\n"
+            << std::endl;
 
   auto t1 = high_resolution_clock::now();
   auto tier_solved_by_cpu = solve(Tier::SolveBy::CPU, false);
