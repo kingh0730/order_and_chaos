@@ -115,20 +115,22 @@ int main() {
   auto t1 = high_resolution_clock::now();
   auto tier_solved_by_cpu = solve(Tier::SolveBy::CPU, false);
   auto t2 = high_resolution_clock::now();
-  std::cout << "CPU: ";
+  std::cout << "\n=== CPU: ";
   std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+            << " from time " << t1.time_since_epoch().count() << " to "
+            << t2.time_since_epoch().count() << "\n"
             << std::endl;
 
   auto t3 = high_resolution_clock::now();
   auto tier_solved_by_gpu = solve(Tier::SolveBy::GPU, false);
   auto t4 = high_resolution_clock::now();
-  std::cout << "GPU: ";
+  std::cout << "\n=== GPU: ";
   std::cout << duration_cast<milliseconds>(t4 - t3).count() << "ms"
+            << " from time " << t3.time_since_epoch().count() << " to "
+            << t4.time_since_epoch().count() << "\n"
             << std::endl;
 
   std::cout << "== Validating..." << std::endl;
-  std::cout << "CPU: " << tier_solved_by_cpu->format() << std::endl;
-  std::cout << "GPU: " << tier_solved_by_gpu->format() << std::endl;
   if (validate(tier_solved_by_cpu, tier_solved_by_gpu)) {
     std::cout << "[*] Results by CPU and GPU are the same!" << std::endl;
   } else {
