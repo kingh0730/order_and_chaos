@@ -140,8 +140,8 @@ int main() {
     throw std::runtime_error("[*] Results by CPU and GPU are different!");
   }
 
-  std::cout << "== Playing..." << std::endl;
-  // play_game(tier_solved_by_cpu);
+  std::cout << "\n== Playing..." << std::endl;
+  play_game(tier_solved_by_cpu);
 
   return 0;
 }
