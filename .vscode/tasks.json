@@ -16,6 +16,7 @@
         "./src/lib/utils.cu",
         "-o",
         "./build/main",
+        "-rdc=true",
       ],
       "group": {
         "kind": "build",
@@ -38,6 +39,7 @@
         "./src/lib/utils.cu",
         "-o",
         "./build/main_test",
+        "-rdc=true",
         "-D",
         "TTT_N=3",
       ],
