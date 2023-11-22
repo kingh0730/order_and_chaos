@@ -103,6 +103,7 @@ CUDA_CALLABLE void solve_common(RecursiveValue *position_hash_to_rv,
                                 unsigned int num_empty_spaces,
                                 unsigned long long num_positions,
                                 unsigned long long id) {
+
   Position position = Position(id, num_empty_spaces);
 
   auto pv = position.primitive_value();
