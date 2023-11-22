@@ -1,5 +1,6 @@
 #pragma once
 
+#include "utils.h"
 #include <stdint.h>
 #include <string>
 
@@ -17,8 +18,8 @@ private:
   _RecursiveValueType rv;
 
 public:
-  RecursiveValue(_RecursiveValueType rv) : rv(rv) {}
-  RecursiveValue() : RecursiveValue(Undetermined) {}
+  CUDA_CALLABLE RecursiveValue(_RecursiveValueType rv) : rv(rv) {}
+  CUDA_CALLABLE RecursiveValue() : RecursiveValue(Undetermined) {}
 
   bool operator==(const RecursiveValue &o) const { return rv == o.rv; }
   bool operator!=(const RecursiveValue &o) const { return !(*this == o); }
