@@ -24,7 +24,9 @@ Player::PlayerType Player::next_player_type() const {
 
   default:
     std::cerr << "Player::Unknown(" + std::to_string(player_type) + ")";
-    throw std::invalid_argument("unknown player type");
+
+    // ! Device code does not support exception handling.
+    // throw std::invalid_argument("unknown player type");
   }
 }
 
