@@ -172,3 +172,15 @@ __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
   // auto cast_rv = (int8_t *)position_hash_to_rv;
   // cast_rv[id] = 3;
 }
+
+std::string Tier::format(const SolveBy &solve_by) {
+  switch (solve_by) {
+  case SolveBy::CPU:
+    return "Tier::SolveBy::CPU";
+  case SolveBy::GPU:
+    return "Tier::SolveBy::GPU";
+  default:
+    std::cerr << "Tier::SolveBy::Unknown" << std::endl;
+    throw std::invalid_argument("Unknown Tier::SolveBy");
+  }
+}

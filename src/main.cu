@@ -11,6 +11,10 @@ Tier *solve(Tier::SolveBy solve_by, bool destroy_tiers) {
   Tier *next_tier = nullptr;
 
   for (int i = 0; i < TTT_N * TTT_N + 1; i++) {
+    std::cout << "Solving tier " << i << "/" << TTT_N * TTT_N << "..."
+              << std::endl;
+    std::cout << "\tusing " << Tier::format(solve_by) << std::endl;
+
     Tier *tier = new Tier(i, next_tier);
 
     auto solve_result = tier->solve(solve_by);
@@ -86,6 +90,9 @@ void play_game(Tier *top_tier) {
 
 bool validate(Tier *tier_solved_by_cpu, Tier *tier_solved_by_gpu) {
   while ((tier_solved_by_cpu != nullptr) && (tier_solved_by_gpu != nullptr)) {
+    std::cout << "Validating tier " << tier_solved_by_cpu->format() << "/"
+              << TTT_N * TTT_N << "..." << std::endl;
+
     if (*tier_solved_by_cpu != *tier_solved_by_gpu) {
       std::cerr << "[*] Results by CPU and GPU are different!" << std::endl;
       return false;
@@ -129,7 +136,7 @@ int main() {
   }
 
   std::cout << "== Playing..." << std::endl;
-  play_game(tier_solved_by_cpu);
+  // play_game(tier_solved_by_cpu);
 
   return 0;
 }

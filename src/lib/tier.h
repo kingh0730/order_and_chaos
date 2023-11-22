@@ -43,6 +43,7 @@ public:
   bool operator==(const Tier &other) const;
   bool operator!=(const Tier &other) const { return !(*this == other); }
 
+  static std::string format(const SolveBy &solve_by);
   std::string format() const;
 };
 
