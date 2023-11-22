@@ -64,8 +64,8 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
   switch (solve_by) {
 
   case SolveBy::CPU:
-    solve_by_cpu(position_hash_to_rv, child_position_hash_to_rv, num_positions,
-                 num_empty_spaces);
+    solve_by_cpu(position_hash_to_rv, child_position_hash_to_rv,
+                 num_empty_spaces, num_positions);
     break;
 
   case SolveBy::GPU:
@@ -83,8 +83,8 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
                child_position_hash_to_rv_size, cudaMemcpyHostToDevice);
 
     solve_by_gpu<<<GRID_SIZE(num_positions, BLOCK_SIZE), BLOCK_SIZE>>>(
-        d_position_hash_to_rv, d_child_position_hash_to_rv, num_positions,
-        num_empty_spaces);
+        d_position_hash_to_rv, d_child_position_hash_to_rv, num_empty_spaces,
+        num_positions);
 
     cudaMemcpy(position_hash_to_rv, d_position_hash_to_rv,
                position_hash_to_rv_size, cudaMemcpyDeviceToHost);
@@ -100,8 +100,8 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
 
 void solve_by_cpu(RecursiveValue *position_hash_to_rv,
                   RecursiveValue *child_position_hash_to_rv,
-                  unsigned long long num_positions,
-                  unsigned int num_empty_spaces) {
+                  unsigned int num_empty_spaces,
+                  unsigned long long num_positions) {
   for (unsigned long long id = 0; id < num_positions; id++) {
     Position position = Position(id, num_empty_spaces);
 
@@ -148,8 +148,8 @@ void solve_by_cpu(RecursiveValue *position_hash_to_rv,
 
 __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
                              RecursiveValue *child_position_hash_to_rv,
-                             unsigned long long num_positions,
-                             unsigned int num_empty_spaces) {
+                             unsigned int num_empty_spaces,
+                             unsigned long long num_positions) {
   unsigned long long id = (blockDim.x * blockIdx.x) + threadIdx.x;
 
   Position position = Position(id, num_empty_spaces);
@@ -160,8 +160,8 @@ __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
 
 CUDA_CALLABLE void solve_common(RecursiveValue *position_hash_to_rv,
                                 RecursiveValue *child_position_hash_to_rv,
-                                unsigned long long num_positions,
                                 unsigned int num_empty_spaces,
+                                unsigned long long num_positions,
                                 unsigned long long id) {
   Position position = Position(id, num_empty_spaces);
 
