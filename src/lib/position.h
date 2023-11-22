@@ -3,6 +3,7 @@
 #include "board.h"
 #include "player.h"
 #include "primitive_value.h"
+#include "utils.h"
 #include <string>
 
 class Position {
@@ -11,10 +12,11 @@ private:
   Board board;
 
 public:
-  Position(Player player, Board board) : player(player), board(board) {}
-  Position(unsigned long long id, unsigned int num_empty_spaces)
+  CUDA_CALLABLE Position(Player player, Board board)
+      : player(player), board(board) {}
+  CUDA_CALLABLE Position(unsigned long long id, unsigned int num_empty_spaces)
       : player(num_empty_spaces), board(num_empty_spaces, id) {}
-  Position() : player(Player(TTT_N * TTT_N)), board() {}
+  CUDA_CALLABLE Position() : player(Player(TTT_N * TTT_N)), board() {}
 
   unsigned long long id() const;
   static unsigned long long max_id(unsigned int num_empty_spaces);
