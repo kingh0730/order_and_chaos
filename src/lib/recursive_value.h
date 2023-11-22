@@ -21,8 +21,12 @@ public:
   CUDA_CALLABLE RecursiveValue(_RecursiveValueType rv) : rv(rv) {}
   CUDA_CALLABLE RecursiveValue() : RecursiveValue(Undetermined) {}
 
-  bool operator==(const RecursiveValue &o) const { return rv == o.rv; }
-  bool operator!=(const RecursiveValue &o) const { return !(*this == o); }
+  CUDA_CALLABLE bool operator==(const RecursiveValue &o) const {
+    return rv == o.rv;
+  }
+  CUDA_CALLABLE bool operator!=(const RecursiveValue &o) const {
+    return !(*this == o);
+  }
 
   std::string format() const;
 };

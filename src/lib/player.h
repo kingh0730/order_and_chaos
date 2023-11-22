@@ -17,8 +17,8 @@ public:
   CUDA_CALLABLE Player(unsigned int num_empty_spaces);
   CUDA_CALLABLE Player(PlayerType player_type) : player_type(player_type) {}
 
-  PlayerType get_player_type() const { return player_type; }
-  PlayerType next_player_type() const;
+  CUDA_CALLABLE PlayerType get_player_type() const { return player_type; }
+  CUDA_CALLABLE PlayerType next_player_type() const;
 
   std::string format() const;
 };
