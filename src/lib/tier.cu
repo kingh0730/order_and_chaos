@@ -98,66 +98,6 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
   return SolveResult::Success;
 }
 
-void solve_by_cpu(RecursiveValue *position_hash_to_rv,
-                  RecursiveValue *child_position_hash_to_rv,
-                  unsigned int num_empty_spaces,
-                  unsigned long long num_positions) {
-  for (unsigned long long id = 0; id < num_positions; id++) {
-    Position position = Position(id, num_empty_spaces);
-
-    auto pv = position.primitive_value();
-    if (pv != PrimitiveValue::NotPrimitive) {
-      position_hash_to_rv[id] = pv.to_recursive_value();
-      continue;
-    }
-
-    Position *children;
-    unsigned int num_children = position.children(children);
-
-    for (unsigned int i = 0; i < num_children; i++) {
-      unsigned long long child_id = children[i].id();
-      if (child_position_hash_to_rv[child_id] == RecursiveValue::Lose) {
-        position_hash_to_rv[id] = RecursiveValue::Win;
-        break;
-      }
-    }
-
-    if (position_hash_to_rv[id] == RecursiveValue::Win) {
-      delete[] children;
-      continue;
-    }
-
-    for (unsigned int i = 0; i < num_children; i++) {
-      unsigned long long child_id = children[i].id();
-      if (child_position_hash_to_rv[child_id] == RecursiveValue::Tie) {
-        position_hash_to_rv[id] = RecursiveValue::Tie;
-        break;
-      }
-    }
-
-    if (position_hash_to_rv[id] == RecursiveValue::Tie) {
-      delete[] children;
-      continue;
-    }
-
-    position_hash_to_rv[id] = RecursiveValue::Lose;
-    delete[] children;
-    continue;
-  }
-}
-
-__global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
-                             RecursiveValue *child_position_hash_to_rv,
-                             unsigned int num_empty_spaces,
-                             unsigned long long num_positions) {
-  unsigned long long id = (blockDim.x * blockIdx.x) + threadIdx.x;
-
-  Position position = Position(id, num_empty_spaces);
-
-  auto cast_rv = (uint8_t *)position_hash_to_rv;
-  cast_rv[id] = 3;
-}
-
 CUDA_CALLABLE void solve_common(RecursiveValue *position_hash_to_rv,
                                 RecursiveValue *child_position_hash_to_rv,
                                 unsigned int num_empty_spaces,
@@ -203,4 +143,26 @@ CUDA_CALLABLE void solve_common(RecursiveValue *position_hash_to_rv,
   position_hash_to_rv[id] = RecursiveValue::Lose;
   delete[] children;
   return;
+}
+
+void solve_by_cpu(RecursiveValue *position_hash_to_rv,
+                  RecursiveValue *child_position_hash_to_rv,
+                  unsigned int num_empty_spaces,
+                  unsigned long long num_positions) {
+  for (unsigned long long id = 0; id < num_positions; id++) {
+    solve_common(position_hash_to_rv, child_position_hash_to_rv,
+                 num_empty_spaces, num_positions, id);
+  }
+}
+
+__global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
+                             RecursiveValue *child_position_hash_to_rv,
+                             unsigned int num_empty_spaces,
+                             unsigned long long num_positions) {
+  unsigned long long id = (blockDim.x * blockIdx.x) + threadIdx.x;
+
+  Position position = Position(id, num_empty_spaces);
+
+  auto cast_rv = (uint8_t *)position_hash_to_rv;
+  cast_rv[id] = 3;
 }
