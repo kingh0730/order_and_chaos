@@ -11,11 +11,11 @@ Tier *solve(Tier::SolveBy solve_by, bool destroy_tiers) {
   Tier *next_tier = nullptr;
 
   for (int i = 0; i < TTT_N * TTT_N + 1; i++) {
-    std::cout << "Solving tier " << i << "/" << TTT_N * TTT_N << "..."
-              << std::endl;
-    std::cout << "\tusing " << Tier::format(solve_by) << std::endl;
-
     Tier *tier = new Tier(i, next_tier);
+
+    std::cout << "Solving tier " << tier->format() << "/" << TTT_N * TTT_N
+              << "..." << std::endl;
+    std::cout << "\tusing " << Tier::format(solve_by) << std::endl;
 
     auto t1 = high_resolution_clock::now();
     auto solve_result = tier->solve(solve_by);
