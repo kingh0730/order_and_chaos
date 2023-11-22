@@ -161,8 +161,13 @@ __global__ void solve_by_gpu(RecursiveValue *position_hash_to_rv,
                              unsigned long long num_positions) {
   unsigned long long id = (blockDim.x * blockIdx.x) + threadIdx.x;
 
-  Position position = Position(id, num_empty_spaces);
+  if (id >= num_positions) {
+    return;
+  }
 
-  auto cast_rv = (uint8_t *)position_hash_to_rv;
-  cast_rv[id] = 3;
+  solve_common(position_hash_to_rv, child_position_hash_to_rv, num_empty_spaces,
+               num_positions, id);
+
+  // auto cast_rv = (uint8_t *)position_hash_to_rv;
+  // cast_rv[id] = 3;
 }
