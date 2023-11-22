@@ -24,20 +24,22 @@ public:
   CUDA_CALLABLE Board(unsigned int num_empty_spaces, unsigned long long id);
   CUDA_CALLABLE Board();
 
-  unsigned int children(Board *&children, PieceType piece) const;
-  Board next_board(unsigned int i, unsigned int j, PieceType piece) const;
+  CUDA_CALLABLE unsigned int children(Board *&children, PieceType piece) const;
+  CUDA_CALLABLE Board next_board(unsigned int i, unsigned int j,
+                                 PieceType piece) const;
 
-  bool is_occupied(unsigned int i, unsigned int j) const;
-  bool is_win_for(PieceType piece) const;
-  bool is_full() const;
-  bool is_valid() const;
+  CUDA_CALLABLE bool is_occupied(unsigned int i, unsigned int j) const;
+  CUDA_CALLABLE bool is_win_for(PieceType piece) const;
+  CUDA_CALLABLE bool is_full() const;
+  CUDA_CALLABLE bool is_valid() const;
 
-  unsigned long long id_raw_for_empty_spaces() const;
-  unsigned long long id_raw_for_occupied_spaces() const;
-  unsigned long long id() const;
-  static Board board_with_max_id(unsigned int num_empty_spaces);
-  static unsigned long long max_id(unsigned int num_empty_spaces);
-  static unsigned long long num_boards(unsigned int num_empty_spaces);
+  CUDA_CALLABLE unsigned long long id_raw_for_empty_spaces() const;
+  CUDA_CALLABLE unsigned long long id_raw_for_occupied_spaces() const;
+  CUDA_CALLABLE unsigned long long id() const;
+  CUDA_CALLABLE static Board board_with_max_id(unsigned int num_empty_spaces);
+  CUDA_CALLABLE static unsigned long long max_id(unsigned int num_empty_spaces);
+  CUDA_CALLABLE static unsigned long long
+  num_boards(unsigned int num_empty_spaces);
 
   static std::string format(const PieceType &piece);
   std::string format() const;
