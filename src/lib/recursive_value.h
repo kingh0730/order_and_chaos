@@ -6,12 +6,13 @@
 
 class RecursiveValue {
 public:
-  enum _RecursiveValueType : uint8_t {
+  enum _RecursiveValueType : int8_t {
     Undetermined = 0,
     Win = 1,
     Lose = 2,
     Tie = 3,
     Draw = 4,
+    Error = -1,
   };
 
 private:

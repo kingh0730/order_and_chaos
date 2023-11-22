@@ -117,7 +117,7 @@ Board::Board() {
 }
 
 bool Board::is_win_for(PieceType piece) const {
-  if (piece == Board::E) {
+  if ((piece != Board::X) && (piece != Board::O)) {
     // ! Device code does not support exception handling.
     // throw std::invalid_argument("Board::is_win_for: piece cannot be empty");
     return false;

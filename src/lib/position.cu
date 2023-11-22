@@ -42,7 +42,9 @@ Player::PlayerType Position::piece_to_player(Board::PieceType piece) {
   case Board::O:
     return Player::O;
   default:
-    throw std::invalid_argument("Invalid piece type");
+    // ! Device code does not support exception handling.
+    // throw std::invalid_argument("Invalid piece type");
+    return Player::Error;
   }
 }
 
@@ -53,7 +55,9 @@ Board::PieceType Position::player_to_piece(Player::PlayerType player) {
   case Player::O:
     return Board::O;
   default:
-    throw std::invalid_argument("Invalid player");
+    // ! Device code does not support exception handling.
+    //   throw std::invalid_argument("Invalid player");
+    return Board::Error;
   }
 }
 

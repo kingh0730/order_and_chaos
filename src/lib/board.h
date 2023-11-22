@@ -12,6 +12,7 @@ public:
     O = 0,
     X = 1,
     E = 2,
+    Error = -1,
   };
 
 private:

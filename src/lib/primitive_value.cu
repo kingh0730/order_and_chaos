@@ -18,11 +18,11 @@ RecursiveValue PrimitiveValue::to_recursive_value() const {
     return RecursiveValue::Tie;
 
   default:
-    std::cerr << "PrimitiveValue::Unknown(" + std::to_string(pv) + ")";
+    // std::cerr << "PrimitiveValue::Unknown(" + std::to_string(pv) + ")";
 
     // ! Device code does not support exception handling.
     // throw std::invalid_argument("unknown PrimitiveValue type");
-    return RecursiveValue::Undetermined;
+    return RecursiveValue::Error;
   }
 }
 

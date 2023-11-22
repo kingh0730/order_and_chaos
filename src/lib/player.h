@@ -8,6 +8,7 @@ public:
   enum PlayerType {
     O = 0,
     X = 1,
+    Error = -1,
   };
 
 private:

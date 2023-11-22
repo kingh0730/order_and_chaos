@@ -22,10 +22,11 @@ Player::PlayerType Player::next_player_type() const {
   case Player::X:
     return Player::O;
 
-    // default:
+  default:
     // std::cerr << "Player::Unknown(" + std::to_string(player_type) + ")";
     // ! Device code does not support exception handling.
     // throw std::invalid_argument("unknown player type");
+    return Player::Error;
   }
 }
 
