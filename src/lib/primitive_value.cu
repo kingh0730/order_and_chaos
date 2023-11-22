@@ -19,7 +19,9 @@ RecursiveValue PrimitiveValue::to_recursive_value() const {
 
   default:
     std::cerr << "PrimitiveValue::Unknown(" + std::to_string(pv) + ")";
-    throw std::invalid_argument("unknown PrimitiveValue type");
+
+    // ! Device code does not support exception handling.
+    // throw std::invalid_argument("unknown PrimitiveValue type");
   }
 }
 

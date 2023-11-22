@@ -1,6 +1,7 @@
 #pragma once
 
 #include "recursive_value.h"
+#include "utils.h"
 #include <string>
 
 class PrimitiveValue {
@@ -16,12 +17,16 @@ private:
   _PrimitiveValueType pv;
 
 public:
-  PrimitiveValue(_PrimitiveValueType pv) : pv(pv) {}
+  CUDA_CALLABLE PrimitiveValue(_PrimitiveValueType pv) : pv(pv) {}
 
-  bool operator==(const PrimitiveValue &o) const { return pv == o.pv; }
-  bool operator!=(const PrimitiveValue &o) const { return !(*this == o); }
+  CUDA_CALLABLE bool operator==(const PrimitiveValue &o) const {
+    return pv == o.pv;
+  }
+  CUDA_CALLABLE bool operator!=(const PrimitiveValue &o) const {
+    return !(*this == o);
+  }
 
-  RecursiveValue to_recursive_value() const;
+  CUDA_CALLABLE RecursiveValue to_recursive_value() const;
 
   std::string format() const;
 };
