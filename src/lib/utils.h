@@ -1,7 +1,11 @@
 #pragma once
 
+// ! For suppressing warnings
 #ifndef __CUDACC__
 #define __global__
+#define cudaMemcpy(dst, src, size, kind)
+#define cudaMalloc(ptr, size)
+#define cudaFree(ptr)
 #endif
 
 #ifdef __CUDACC__
