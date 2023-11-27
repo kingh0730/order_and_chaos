@@ -1,24 +1,11 @@
-# GamesCraftersGPU
+# GamesmanGPU
 
-Ignore folder `cuda_learning`.
+## Tutorials
 
-## Meeting chat log
+These are ranked from easiest to hardest in terms of difficulty:
 
-- 20:12:21 From King Han to Everyone:
-  - <https://nyc.cs.berkeley.edu/uni/>
-- 20:18:23 From King Han to Everyone:
-  - <https://classes.berkeley.edu/content/2023-fall-compsci-198-002-grp-002>
-- 20:19:26 From King Han to Everyone:
-  - <https://nyc.cs.berkeley.edu/uni/games/ttt/variants/regular>
-- 20:20:38 From King Han to Everyone:
-  - <https://www.youtube.com/watch?v=2NgpYFdsduY&list=PLxNPSjHT5qvtYRVdNN1yDcdSl39uHV_sU&ab_channel=CoffeeBeforeArch>
-- 20:23:08 From King Han to Everyone:
-  - UML
-- 20:25:07 From King Han to Everyone:
-  - CS 169
-- 20:28:49 From King Han to Everyone:
-  - Student researcher with Dan CS 199-16 (for undergrads)
-  - CS 299-19 (for grads) 11531
-  - 11225 1 unit for every 3 hrs/wk you work
-- 20:28:57 From King Han to Everyone:
-  - <https://people.eecs.berkeley.edu/~ddgarcia/>
+- CUDA Intro: https://www.youtube.com/watch?v=4APkMJdiudU&list=PLC6u37oFvF40BAm7gwVP7uDdzmW83yHPe&ab_channel=JoshHolloway
+- CUDA Tutorials: https://www.youtube.com/watch?v=m0nhePeHwFs&list=PLKK11Ligqititws0ZOoGk3SW-TZCar4dK&ab_channel=Creel
+- CUDA Crash Course: https://www.youtube.com/watch?v=2NgpYFdsduY&list=PLxNPSjHT5qvtYRVdNN1yDcdSl39uHV_sU&ab_channel=CoffeeBeforeArch
+
+<embed src="GamesCrafters with GPU.pdf" width="500" height="375" type='application/pdf'>
