@@ -7,7 +7,7 @@
 using std::chrono::duration_cast;
 using std::chrono::high_resolution_clock;
 using std::chrono::milliseconds;
-using std::chrono::steady_clock;
+using std::chrono::system_clock;
 
 Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
     : num_empty_spaces(num_empty_spaces), next_tier(next_tier) {
@@ -84,8 +84,8 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
     unsigned long long child_position_hash_to_rv_size =
         sizeof(RecursiveValue) * child_num_positions;
 
-    steady_clock::time_point t1;
-    steady_clock::time_point t2;
+    system_clock::time_point t1;
+    system_clock::time_point t2;
 
     t1 = high_resolution_clock::now();
     cudaMalloc(&d_position_hash_to_rv, position_hash_to_rv_size);
