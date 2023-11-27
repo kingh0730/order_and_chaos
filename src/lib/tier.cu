@@ -146,13 +146,13 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
     //           << " from time " << t1.time_since_epoch().count() << " to "
     //           << t2.time_since_epoch().count() << std::endl;
 
-    // t1 = high_resolution_clock::now();
-    // cudaFree(d_child_position_hash_to_rv);
-    // t2 = high_resolution_clock::now();
-    // std::cout << "\tcudaFree(d_child_position_hash_to_rv): ";
-    // std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
-    //           << " from time " << t1.time_since_epoch().count() << " to "
-    //           << t2.time_since_epoch().count() << std::endl;
+    t1 = high_resolution_clock::now();
+    cudaFree(d_child_position_hash_to_rv);
+    t2 = high_resolution_clock::now();
+    std::cout << "\tcudaFree(d_child_position_hash_to_rv): ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
 
     break;
   }
