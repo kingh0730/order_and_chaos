@@ -4,7 +4,7 @@
 // Otherwise, use default value 3
 
 #ifndef TTT_N
-#define TTT_N 4
+#define TTT_N 3
 #endif
 
 #ifndef BLOCK_SIZE
