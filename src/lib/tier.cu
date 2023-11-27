@@ -1,7 +1,13 @@
 #include "tier.h"
+#include <chrono>
 #include <iostream>
 #include <sstream>
 #include <stdint.h>
+
+using std::chrono::duration_cast;
+using std::chrono::high_resolution_clock;
+using std::chrono::milliseconds;
+using std::chrono::steady_clock;
 
 Tier::Tier(unsigned int num_empty_spaces, Tier *next_tier)
     : num_empty_spaces(num_empty_spaces), next_tier(next_tier) {
@@ -75,22 +81,73 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
         sizeof(RecursiveValue) * num_positions;
     unsigned long long child_position_hash_to_rv_size =
         sizeof(RecursiveValue) * child_num_positions;
+
+    steady_clock::time_point t1;
+    steady_clock::time_point t2;
+
+    t1 = high_resolution_clock::now();
     cudaMalloc(&d_position_hash_to_rv, position_hash_to_rv_size);
+    t2 = high_resolution_clock::now();
+    std::cout << "\tcudaMalloc(..., position_hash_to_rv_size): ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
+
     // cudaMemcpy(d_position_hash_to_rv, position_hash_to_rv,
     //            position_hash_to_rv_size, cudaMemcpyHostToDevice);
+
+    t1 = high_resolution_clock::now();
     cudaMalloc(&d_child_position_hash_to_rv, child_position_hash_to_rv_size);
+    t2 = high_resolution_clock::now();
+    std::cout << "\tcudaMalloc(..., child_position_hash_to_rv_size): ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
+
+    t1 = high_resolution_clock::now();
     cudaMemcpy(d_child_position_hash_to_rv, child_position_hash_to_rv,
                child_position_hash_to_rv_size, cudaMemcpyHostToDevice);
+    t2 = high_resolution_clock::now();
+    std::cout << "\tcudaMemcpy(..., child, cudaMemcpyHostToDevice): ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
 
+    t1 = high_resolution_clock::now();
     solve_by_gpu<<<GRID_SIZE(num_positions, BLOCK_SIZE), BLOCK_SIZE>>>(
         d_position_hash_to_rv, d_child_position_hash_to_rv, num_empty_spaces,
         num_positions);
+    t2 = high_resolution_clock::now();
+    std::cout << "\tsolve_by_gpu: ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
 
+    t1 = high_resolution_clock::now();
     cudaMemcpy(position_hash_to_rv, d_position_hash_to_rv,
                position_hash_to_rv_size, cudaMemcpyDeviceToHost);
+    t2 = high_resolution_clock::now();
+    std::cout << "\tcudaMemcpy(..., self, cudaMemcpyDeviceToHost): ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
 
+    t1 = high_resolution_clock::now();
     cudaFree(d_position_hash_to_rv);
+    t2 = high_resolution_clock::now();
+    std::cout << "\tcudaFree(d_position_hash_to_rv): ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
+
+    t1 = high_resolution_clock::now();
     cudaFree(d_child_position_hash_to_rv);
+    t2 = high_resolution_clock::now();
+    std::cout << "\tcudaFree(d_child_position_hash_to_rv): ";
+    std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
+              << " from time " << t1.time_since_epoch().count() << " to "
+              << t2.time_since_epoch().count() << std::endl;
+
     break;
   }
 

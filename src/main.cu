@@ -123,7 +123,7 @@ int main() {
             << std::endl;
 
   auto t1 = high_resolution_clock::now();
-  auto tier_solved_by_cpu = solve(Tier::SolveBy::CPU, false);
+  auto tier_solved_by_cpu = nullptr; // solve(Tier::SolveBy::CPU, false);
   auto t2 = high_resolution_clock::now();
   std::cout << "\n=== CPU: ";
   std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
