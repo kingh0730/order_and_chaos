@@ -108,7 +108,7 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
     cudaMemcpy(d_child_position_hash_to_rv, child_position_hash_to_rv,
                child_position_hash_to_rv_size, cudaMemcpyHostToDevice);
     t2 = high_resolution_clock::now();
-    std::cout << "\tcudaMemcpy(..., child_position_hash_to_rv_size): ";
+    std::cout << "\tcudaMemcpy(..., child, cudaMemcpyHostToDevice): ";
     std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
               << " from time " << t1.time_since_epoch().count() << " to "
               << t2.time_since_epoch().count() << std::endl;
@@ -127,7 +127,7 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
     cudaMemcpy(position_hash_to_rv, d_position_hash_to_rv,
                position_hash_to_rv_size, cudaMemcpyDeviceToHost);
     t2 = high_resolution_clock::now();
-    std::cout << "\tcudaMemcpy(..., position_hash_to_rv_size): ";
+    std::cout << "\tcudaMemcpy(..., self, cudaMemcpyDeviceToHost): ";
     std::cout << duration_cast<milliseconds>(t2 - t1).count() << "ms"
               << " from time " << t1.time_since_epoch().count() << " to "
               << t2.time_since_epoch().count() << std::endl;
