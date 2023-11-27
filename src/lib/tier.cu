@@ -76,8 +76,8 @@ Tier::SolveResult Tier::solve(SolveBy solve_by) {
     unsigned long long child_position_hash_to_rv_size =
         sizeof(RecursiveValue) * child_num_positions;
     cudaMalloc(&d_position_hash_to_rv, position_hash_to_rv_size);
-    cudaMemcpy(d_position_hash_to_rv, position_hash_to_rv,
-               position_hash_to_rv_size, cudaMemcpyHostToDevice);
+    // cudaMemcpy(d_position_hash_to_rv, position_hash_to_rv,
+    //            position_hash_to_rv_size, cudaMemcpyHostToDevice);
     cudaMalloc(&d_child_position_hash_to_rv, child_position_hash_to_rv_size);
     cudaMemcpy(d_child_position_hash_to_rv, child_position_hash_to_rv,
                child_position_hash_to_rv_size, cudaMemcpyHostToDevice);
